@@ -11,8 +11,8 @@ public class RootController {
 		return "views/home";
 	}
 	
-	@GetMapping("/dashbord")
+	@GetMapping("/dashboard")
 	public String dashbord() {
-		return "views/dashbord";
+		return "views/dashboard";
 	}
 }

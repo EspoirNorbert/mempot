@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/base}">
+
+    <div layout:fragment="content">
+        <div class="content container-fluid mt-5">
+            <div class="card alert alert-dismissible shadow-sm mb-4 border-left-decoration bg-primary" role="alert">
+                <div class="inner">
+                    <div class="card-body p-3 p-lg-4 text-white">
+                        <h3 class="mb-3">Bienvenue sur votre tableau de bord, Seema sisty !</h3>
+                        <div class="row gx-5 gy-3">
+                            <div class="col-12 col-lg-9">
+                                <div>C'est l'endroit idéal pour suivre vos activités et accéder à toutes les fonctionnalités offertes.</div>
+                            </div>
+                        </div>
+                        <!--//row-->
+                        <button type="button" class="btn-close text-white" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <!--//app-card-body-->
+                </div>
+                <!--//inner-->
+            </div>
+            <div class="row">
+                <div class="col-xl-3 col-sm-2 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dash-widget-header">
+                                <span class="dash-widget-icon bg-dark">
+                                    <i class="fe fe-users"></i>
+                                </span>
+                                <div class="dash-count">
+                                    <a th:href="@{/#}" class="count-title">Filieres</a>
+                                    <a th:href="@{/#}" class="count">0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-2 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dash-widget-header">
+                                <span class="dash-widget-icon bg-primary">
+                                    <i class="fe fe-users"></i>
+                                </span>
+                                <div class="dash-count">
+                                    <a th:href="@{/#}" class="count-title">Niveaux</a>
+                                    <a th:href="@{/#}" class="count">0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-2 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dash-widget-header">
+                                <span class="dash-widget-icon bg-primary">
+                                    <i class="fe fe-users"></i>
+                                </span>
+                                <div class="dash-count">
+                                    <a th:href="@{/#}" class="count-title">Etudiants</a>
+                                    <a th:href="@{/#}" class="count">
+                                        0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-3 col-sm-2 col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="dash-widget-header">
+                                <span class="dash-widget-icon bg-primary">
+                                    <i class="fe fe-users"></i>
+                                </span>
+                                <div class="dash-count">
+                                    <a th:href="@{/#}" class="count-title">Memoires</a>
+                                    <a th:href="@{/#}" class="count">
+                                        0</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>
