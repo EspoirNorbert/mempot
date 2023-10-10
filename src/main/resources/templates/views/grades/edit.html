@@ -14,9 +14,9 @@
                                 <a th:href="@{/}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a th:href="@{/grades}">Regions</a>
+                                <a th:href="@{/grades}">Niveaux</a>
                             </li>
-                            <li class="breadcrumb-item active">Edition</li>
+                            <li class="breadcrumb-item active">Modification</li>
                         </ul>
                     </div>
                 </div>
@@ -24,11 +24,12 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Edition Niveau</h4>
-                    <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                    <h4 class="card-title">Modification niveau (<strong th:text="${grade.id}"></strong>)</h4>
                 </div>
                 <div class="card-body">
-
+                    <div class="alert alert-info">
+                        <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                    </div>
                     <form th:action="@{/grades/update}" method="post" th:object="${grade}" >
                         <input type="hidden"  name="id" th:field="*{id}">
                         <div class="form-group">

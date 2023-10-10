@@ -8,13 +8,13 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Niveaux</h3>
+                        <h3 class="page-title">Filieres</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a th:href="@{/}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a th:href="@{/grades}">Regions</a>
+                                <a th:href="@{/grades}">Niveaux</a>
                             </li>
                             <li class="breadcrumb-item active">Nouveau</li>
                         </ul>
@@ -25,10 +25,12 @@
             <div class="card">
                 <div class="card-header">
                     <h4 class="card-title">Nouveau niveau</h4>
-                    <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                  
                 </div>
                 <div class="card-body">
-
+                   <div class="alert alert-info">
+                    <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                   </div>
                     <form th:action="@{/grades/new}" method="post" th:object="${grade}" >
                         <div class="form-group">
                             <label for="name">Nom <span class="text-danger">*</span></label>
