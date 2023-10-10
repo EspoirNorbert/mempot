@@ -26,7 +26,7 @@ public class GradeController {
 	public String listGrade(Model model) {
 		List<Grade> grades  = gradeService.getAllGrades();
 		model.addAttribute("grades", grades);
-		return "grades/list";
+		return "views/grades/list";
 	}
 	
 	@GetMapping("/new")

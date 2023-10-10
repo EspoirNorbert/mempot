@@ -1,0 +1,9 @@
+<div 
+xmlns:th="http://www.thymeleaf.org"
+th:fragment="empty(emptyTitle,emptyBodyMessage)">
+    <div class="d-flex flex-column p-5 justify-content-center align-items-center bg-default-light rounded-2">
+        <i class="fa fa-list-alt fs-1 text-app" aria-hidden="true"></i>
+        <h3 class="text-app-secondary fw-bold" th:text="${emptyTitle}"></h3>
+        <p class="text-muted" th:text="${emptyBodyMessage}"></p>
+    </div>
+</div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{layouts/base}">
+
+    <div layout:fragment="content">
+        <div class="content container-fluid mt-5">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Niveau</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/}">Tableau de bord</a>
+                            </li>
+                            <li class="breadcrumb-item active">Niveaux</li>
+                        </ul>
+                    </div>
+                    <div class="col d-flex justify-content-end">
+                        <a th:href="@{/grades/new}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouveau niveau</a>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="row">
+                <div th:if="${grades.size() == 0}">
+                   <div th:replace="~{fragments/empty('Vous n\'avez creer aucun niveau', 
+                   	'Tous vos niveau seront sauvegardées ici pour que 
+                   	vous puissez les consulter tout moment.')}"></div>
+                </div>
+
+                <div th:unless="${grades.size() == 0}" class="col-md-12 d-flex">
+
+                    <div class="card card-table flex-fill">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Nom</th>
+                                            <th>Etudiants</th>
+                                            <th class="text-end">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="grade : ${grades}">
+                                            <td th:text="${grade.id}"></td>
+                                            <td th:text="${grade.name}"></td>
+                                            <td class="text-end">
+                                                <div class="actions">
+                                                    <a  
+                                                    th:href="@{/grades/editer/}+${grade.id}"
+                                                    class="btn btn-sm bg-primary-light me-2">
+                                                        <i class="fe fe-pencil"></i>
+                                                    </a>
+                                                    <a  
+                                                    th:href="@{/grades/supprimer/}+${region.id}"
+                                                    class="btn btn-sm bg-danger-light me-2">
+                                                        <i class="fe fe-trash"></i>
+                                                    </a>
+                                                   
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</html>

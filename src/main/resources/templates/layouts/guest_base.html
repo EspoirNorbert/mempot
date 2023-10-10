@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr" 
+    xmlns:th="http://www.thymeleaf.org"
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    >
+    <div th:replace="fragments/head"></div>
+    <body>
+        <div class="main-wrapper">
+          <!-- navbar -->
+          <div th:replace="fragments/navbar"></div>
+          <!-- content -->
+          <div layout:fragment="content"></div>
+        </div>
+       <!-- insert script -->
+       <div th:replace="fragments/scripts"></div>
+    </body>
+</html>
