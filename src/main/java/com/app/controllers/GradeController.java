@@ -18,22 +18,24 @@ import com.app.services.GradeService;
 @Controller
 @RequestMapping("/grades")
 public class GradeController {
+	
+	private static String MAIN_PATH = "views/grades";
 
 	@Autowired
 	private GradeService gradeService;
 	
 	@GetMapping
 	public String listGrade(Model model) {
-		List<Grade> grades  = gradeService.getAllGrades();
+		List<Grade> grades  = gradeService.list();
 		model.addAttribute("grades", grades);
-		return "views/grades/list";
+		return MAIN_PATH + "/list";
 	}
 	
 	@GetMapping("/new")
 	public String displayNewGradeForm(Model model) {
 		Grade grade = new Grade();
 		model.addAttribute("grade", grade);
-		return "grades/ajout";
+		return MAIN_PATH + "/new";
 	}
 	
 	@PostMapping("/new")
@@ -41,17 +43,37 @@ public class GradeController {
 			BindingResult bindingResult ) {
 		
 		if (bindingResult.hasErrors()) {
-			return "grades/ajout";
+			return MAIN_PATH + "/new";
 		}
 		
-		this.gradeService.createGrade(grade);
+		this.gradeService.save(grade);
 		
 		return "redirect:/grades";
 	}
 	
 	@GetMapping("/edit/{gradeId}")
-	public String displayEditGradeForm(Model model,@PathVariable("gradeId") Integer id) {
-		return null;
-		//Grade grade = this.gradeService.
+	public String displayEditGradeForm(@PathVariable("gradeId") Integer id,Model model) {
+		
+		Grade grade = gradeService.findById(id);
+
+		if (grade != null) {
+			model.addAttribute("grade", grade);
+			model.addAttribute("title", "Édition région " + id);
+		}
+		return MAIN_PATH + "/edit";
+	}
+	
+	@PostMapping("/update")
+	public String modifier(@ModelAttribute("grade") Grade grade) {
+		System.out.println(grade);
+		
+		this.gradeService.save(grade);
+		return "redirect:/grades";
+	}
+	
+	@GetMapping("/delete/{gradeId}")
+	public String supprimeProduit(@PathVariable("gradeId") Integer id ) {
+		this.gradeService.delete(id);
+		return "redirect:/grades";
 	}
 }

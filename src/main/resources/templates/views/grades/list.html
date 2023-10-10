@@ -47,15 +47,16 @@
                                         <tr th:each="grade : ${grades}">
                                             <td th:text="${grade.id}"></td>
                                             <td th:text="${grade.name}"></td>
+                                            <td> <span class="badge bg-primary">0</span> </td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  
-                                                    th:href="@{/grades/editer/}+${grade.id}"
+                                                    th:href="@{/grades/edit/}+${grade.id}"
                                                     class="btn btn-sm bg-primary-light me-2">
                                                         <i class="fe fe-pencil"></i>
                                                     </a>
                                                     <a  
-                                                    th:href="@{/grades/supprimer/}+${region.id}"
+                                                    th:href="@{/grades/delete/}+${grade.id}"
                                                     class="btn btn-sm bg-danger-light me-2">
                                                         <i class="fe fe-trash"></i>
                                                     </a>
