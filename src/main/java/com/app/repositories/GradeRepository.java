@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.app.models.Grade;
 
-public interface GradeRepository extends JpaRepository<Integer, Grade> {
+public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
 }
