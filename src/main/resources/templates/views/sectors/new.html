@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+        layout:decorate="~{layouts/base}">
+
+    <div layout:fragment="content">
+        <div class="content container-fluid mt-5">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Filieres</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/}">Tableau de bord</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/sectors}">Niveaux</a>
+                            </li>
+                            <li class="breadcrumb-item active">Nouveau</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Nouveau niveau</h4>
+                  
+                </div>
+                <div class="card-body">
+                   <div class="alert alert-info">
+                    <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                   </div>
+                    <form th:action="@{/sectors/new}" method="post" th:object="${sector}" >
+                        <div class="form-group">
+                            <label for="name">Nom <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" required th:field="*{name}" name="nom" 
+                                    th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
+                                    placeholder="Entrer le nom de la filiere (ex: Master en ingenierie des SI)">
+                            <div id="NameHelpBlock" class="form-text">
+                                Le nom de la filiere.
+                            </div>
+                            <!-- display error -->
+                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-field w-100"></div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Description (facultatif)</label>
+                            <textarea rows="5" cols="5" th:field="*{description}" class="form-control" placeholder="Une petite description du niveau"></textarea>
+                        </div>
+                        <div class="">
+                            <button type="submit" class="btn btn-primary">Creer</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

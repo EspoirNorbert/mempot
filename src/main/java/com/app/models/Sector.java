@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "sectors")
@@ -20,6 +21,7 @@ public class Sector implements Serializable {
 	private Integer id;
 	
 	@Column(nullable = false, length = 30)
+	@NotEmpty(message = "Le champs nom est requis")
 	private String name;
 	
 	@Column(columnDefinition = "TEXT")

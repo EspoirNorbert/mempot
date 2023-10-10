@@ -20,7 +20,7 @@ public class Grade implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 100)
 	@NotEmpty(message = "Le champs nom est requis")
 	private String name;
 	
