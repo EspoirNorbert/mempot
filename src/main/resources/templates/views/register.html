@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/auth_base}"
+>
+  <div layout:fragment="content">
+    <div class="login-right">
+      <div class="login-right-wrap">
+        <a th:href="@{/home}">
+          <img
+            class="d-block mx-auto mb-3"
+            th:src="@{/img/logo.png}"
+            alt="Logo application"
+            title="Page accueil"
+        /></a>
+        <p class="account-subtitle">Inscriver pour deposer votre memoire</p>
+        <form method="post" action="login.html">
+          <div class="form-group">
+            <label for="email" class="fw-bolder">Nom</label>
+            <input class="form-control" type="text" placeholder="Email" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="fw-bolder">Prenom</label>
+            <input class="form-control" type="text" placeholder="Email" />
+          </div>
+          <div class="form-group">
+            <label for="email" class="fw-bolder">Email</label>
+            <input class="form-control" type="text" placeholder="Email" />
+          </div>
+          <div class="form-group">
+            <label for="password" class="fw-bolder">Mot de passe</label>
+            <input
+              class="form-control"
+              type="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">
+              S'inscrire
+            </button>
+          </div>
+        </form>
+
+        <div class="text-center forgotpass">
+          <p class="text-muted">
+            Vous n'avez deja un compte?
+            <a th:href="@{/login}">Se connecter</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

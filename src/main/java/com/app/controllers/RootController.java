@@ -15,4 +15,5 @@ public class RootController {
 	public String dashbord() {
 		return "views/dashboard";
 	}
+	
 }

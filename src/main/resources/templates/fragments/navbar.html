@@ -3,7 +3,7 @@ xmlns:th="http://www.thymeleaf.org"
 class="navbar navbar-expand-sm navbar-light navbar-end bg-primary">
     <div class="container" bis_skin_checked="1">
         <a class="navbar-brand" th:href="@{/}">
-            <img th:src="@{assets/img/logo-small.png}" width="30" alt="Nono logo" class="me-2">
+            <img th:src="@{/img/logo-small.png}" width="30" alt="Nono logo" class="me-2">
             <span class="fs-4 text-white fw-bolder">DeposerTonMemoire</span>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
@@ -17,7 +17,7 @@ class="navbar navbar-expand-sm navbar-light navbar-end bg-primary">
                         <a class="nav-link btn btn-light" th:href="@{/register}">S'inscrire</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link btn btn-light" href="@{/login}">
+                        <a class="nav-link btn btn-light" th:href="@{/login}">
                            <i class="fa fa-user"></i> Se connecter</a>
                     </li>
                 </ul>
