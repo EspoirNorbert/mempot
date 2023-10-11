@@ -32,7 +32,7 @@ public class Grade implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
-	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "grade", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Student> students = new ArrayList<>();
 	
 	public Grade() {}

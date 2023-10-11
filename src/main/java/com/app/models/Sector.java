@@ -32,7 +32,7 @@ public class Sector implements Serializable {
 	@Column(columnDefinition = "TEXT")
 	private String description;
 	
-	@OneToMany(mappedBy = "student", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "sector", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	private List<Student> students = new ArrayList<>();
 	
 	public Sector() {}

@@ -37,11 +37,11 @@ public class Thesis implements Serializable {
 	@Column(name="submission_date" , nullable = false)
 	private LocalDate submissionDate;
 	
-	@Column(columnDefinition = "TEXT")
+	@Column(columnDefinition = "TEXT" , nullable = false)
 	private String filePath;
 	
 	@ManyToOne
-	@JoinColumn(name = "student_id")
+	@JoinColumn(name = "student_id",nullable = false)
 	private Student student;
 	
 	public Thesis() {}
