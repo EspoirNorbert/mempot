@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/admin")
 public class AdminController {
 
+	@GetMapping
+	public String home() {
+		return "views/dashboard";
+	}
+	
 	@GetMapping("/dashboard")
 	public String dashbord(org.springframework.ui.Model model,Authentication authentication) {
 		model.addAttribute("auth", authentication);
