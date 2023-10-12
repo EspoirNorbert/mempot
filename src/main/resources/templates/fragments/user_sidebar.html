@@ -4,7 +4,7 @@ class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
             <hr>
-            <button class="btn btn-primary rounded">Deposer</button>
+            <a th:href="@{/user/thesis/deposit}" class="btn btn-primary rounded">Deposer</a>
             <ul>
                 <li class="menu-title"></li>
                 <li>
@@ -20,7 +20,7 @@ class="sidebar" id="sidebar">
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/user/thesis}">
+                    <a th:href="@{/user/library}">
                         <i class="fa fa-books"></i>
                         <span>Bibliotheque</span>
                     </a>

@@ -1,8 +1,8 @@
 <div xmlns:th="http://www.thymeleaf.org" class="header">
     <div class="header-left">
-        <a href="index.html" class="logo">
+        <a th:href="@{/}" class="logo">
             <img th:src="@{/img/logo.png}" alt="Logo"></a>
-            <a href="index.html" class="logo logo-small">
+            <a th:href="@{/}" class="logo logo-small">
                 <img th:src="@{img/logo-small.png}" alt="Logo" width="30" height="30"></a>
             </div>
 
@@ -35,9 +35,9 @@
                                 <p class="text-muted mb-0">Administrator</p>
                             </div>
                         </div>
-                        <a class="dropdown-item" href="#">My Profile</a>
-                        <a class="dropdown-item" href="#">Account Settings</a>
-                        <a class="dropdown-item" th:href="@{/logout}">Logout</a>
+                        <a class="dropdown-item" th:href="@{/profile}">Profil</a>
+                        <a class="dropdown-item" href="#">Parametres de compte</a>
+                        <a class="dropdown-item" th:href="@{/logout}">Deconnecter</a>
                     </div>
                 </li>
 
