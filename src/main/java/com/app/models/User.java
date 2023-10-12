@@ -28,29 +28,29 @@ public class User implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+	protected Long id;
 	
 	@Column(name = "firstname" , nullable = false , length = 80)
 	@NotEmpty(message = "Le prenom est obligatoire")
-	private String firstName;
+	protected String firstName;
 	
 	@Column(name = "lastname" , nullable = false , length = 80)
 	@NotEmpty(message = "Le nom est obligatoire")
-	private String lastname;
+	protected String lastname;
 	
 	@Column(unique = true, length = 80 , nullable = false)
 	@NotEmpty(message = "L'email est obligatoire")
-	private String email;
+	protected String email;
 	
 	@Column(nullable = false , length = 80)
 	@NotEmpty(message = "Le mot de passe est obligatoire")
-	private String password;
+	protected String password;
 	
 	@Column(name="is_enable",columnDefinition = "boolean default true")
-	private Boolean isEnable;
+	protected Boolean isEnable;
 	
 	@Column(columnDefinition = "TEXT",nullable = true)
-	private String address;
+	protected String address;
 	
 	@ManyToMany (fetch = FetchType.EAGER , cascade = CascadeType.ALL)
 	@JoinTable(
