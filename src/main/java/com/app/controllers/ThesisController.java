@@ -23,6 +23,7 @@ public class ThesisController {
 	@GetMapping
 	public String list(Model model) {
 		List<Thesis> thesis  = thesisService.list();
+		
 		model.addAttribute("thesis", thesis);
 		return MAIN_PATH + "/list";
 	}
