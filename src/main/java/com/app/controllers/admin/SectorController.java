@@ -1,4 +1,4 @@
-package com.app.controllers;
+package com.app.controllers.admin;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import com.app.models.Sector;
 import com.app.services.SectorService;
 
 @Controller
-@RequestMapping("/sectors")
+@RequestMapping("/admin/sectors")
 public class SectorController {
 	
-	private static String MAIN_PATH = "views/sectors";
+	private static String MAIN_PATH = "views/admin/sectors";
 
 	@Autowired
 	private SectorService sectorService;

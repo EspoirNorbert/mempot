@@ -1,4 +1,4 @@
-package com.app.controllers;
+package com.app.controllers.admin;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import com.app.models.Thesis;
 import com.app.services.ThesisService;
 
 @Controller
-@RequestMapping("/thesis")
+@RequestMapping("/admin/thesis")
 public class ThesisController {
 	
-	private static String MAIN_PATH = "views/thesis";
+	private static String MAIN_PATH = "views/admin/thesis";
 
 	@Autowired
 	private ThesisService thesisService;

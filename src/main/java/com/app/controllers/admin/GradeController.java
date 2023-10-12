@@ -1,4 +1,4 @@
-package com.app.controllers;
+package com.app.controllers.admin;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import com.app.models.Grade;
 import com.app.services.GradeService;
 
 @Controller
-@RequestMapping("/grades")
+@RequestMapping("/admin/grades")
 public class GradeController {
 	
-	private static String MAIN_PATH = "views/grades";
+	private static String MAIN_PATH = "views/admin/grades";
 
 	@Autowired
 	private GradeService gradeService;

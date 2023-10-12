@@ -1,4 +1,4 @@
-package com.app.controllers;
+package com.app.controllers.admin;
 
 import java.util.List;
 
@@ -12,10 +12,10 @@ import com.app.models.Student;
 import com.app.services.StudentService;
 
 @Controller
-@RequestMapping("/students")
+@RequestMapping("/admin/students")
 public class StudentController {
 	
-	private static String MAIN_PATH = "views/students";
+	private static String MAIN_PATH = "views/admin/students";
 
 	@Autowired
 	private StudentService studentService;
