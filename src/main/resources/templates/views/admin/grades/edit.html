@@ -11,10 +11,10 @@
                         <h3 class="page-title">Niveaux</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a th:href="@{/}">Tableau de bord</a>
+                                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a th:href="@{/grades}">Niveaux</a>
+                                <a th:href="@{/admin/grades}">Niveaux</a>
                             </li>
                             <li class="breadcrumb-item active">Modification</li>
                         </ul>
@@ -30,7 +30,7 @@
                     <div class="alert alert-info">
                         <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
                     </div>
-                    <form th:action="@{/grades/update}" method="post" th:object="${grade}" >
+                    <form th:action="@{admin/grades/update}" method="post" th:object="${grade}" >
                         <input type="hidden"  name="id" th:field="*{id}">
                         <div class="form-group">
                             <label for="name">Nom <span class="text-danger">*</span></label>
