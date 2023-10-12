@@ -6,7 +6,6 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
-import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
@@ -20,7 +19,6 @@ import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "students")
-@DiscriminatorValue("ETU")
 public class Student extends User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -29,16 +27,16 @@ public class Student extends User implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 80)
+	@Column(length = 80)
 	@NotEmpty(message = "Le matricule est obligatoire")
 	private String matricule;
 	
 	@ManyToOne
-	@JoinColumn(name = "sector_id", nullable = false)
+	@JoinColumn(name = "sector_id")
 	private Sector sector;
 	
 	@ManyToOne
-	@JoinColumn(name="grade_id" , nullable = false)
+	@JoinColumn(name="grade_id")
 	private Grade grade;
 	
 	@OneToMany(mappedBy = "student",cascade = CascadeType.ALL, fetch = FetchType.LAZY)

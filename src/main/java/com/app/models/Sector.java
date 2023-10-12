@@ -37,6 +37,10 @@ public class Sector implements Serializable {
 	
 	public Sector() {}
 	
+	public Sector(String name) {
+		this.name = name;
+	}
+	
 	public Long getId() {
 		return id;
 	}
