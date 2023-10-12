@@ -23,7 +23,10 @@ public class SecurityConfig {
 				.requestMatchers("/register" , "/login").permitAll()
 				// autoriser les fichiers static
 				.requestMatchers("/css/**" , "js/**" , "img/**" , "plugins/**", "fonts/**").permitAll()
-				.requestMatchers("/dashboard", "/sectors/**","/grades/**", "/students/**").hasRole("ADMIN")
+				// Securisation des routes de l'admin
+				.requestMatchers("/admin/**").hasRole("ADMIN")
+				// Securisation des routes de l'utilisateur
+				.requestMatchers("/user/**").hasRole("USER")
 				// Toutes les requettes sont authentifiées
 				.anyRequest().authenticated()
 			)

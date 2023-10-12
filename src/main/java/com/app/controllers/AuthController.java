@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class AuthController {
 
-	
 	@GetMapping("/register")
 	public String register() {
 		return "views/register";
@@ -17,9 +16,4 @@ public class AuthController {
 		return "views/login";
 	}
 	
-	/*
-	@GetMapping("/logout")
-	public String logout() {
-		return "redirect:/login";
-	}*/
 }
