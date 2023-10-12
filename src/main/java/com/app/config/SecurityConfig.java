@@ -24,6 +24,7 @@ public class SecurityConfig {
 				// autoriser les fichiers static
 				.requestMatchers("/css/**" , "js/**" , "img/**" , "plugins/**", "fonts/**").permitAll()
 				// Toutes les requettes sont authentifiées
+				.requestMatchers("/dashboard", "/sectors/**","/grades/**", "/students/**").hasRole("ADMIN")
 				.anyRequest().authenticated()
 			)
 			// configuration du formulaire d'authentification

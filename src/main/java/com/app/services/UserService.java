@@ -26,8 +26,14 @@ public class UserService {
 		user.setRoles(Arrays.asList((role)));
 		this.save(user);
 	}
-		
+	
+	@Transactional
 	public void save(User user) {
 		userRepository.save(user);
+	}
+	
+	@Transactional
+	public User findByEmail(String email) {
+		return this.userRepository.findByEmail(email);
 	}
 }
