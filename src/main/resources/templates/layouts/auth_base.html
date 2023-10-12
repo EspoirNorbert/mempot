@@ -3,7 +3,7 @@
     xmlns:th="http://www.thymeleaf.org"
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     >
-    <div th:replace="fragments/head"></div>
+    <div th:replace="~{fragments/head}"></div>
     <body>
         <div class="main-wrapper login-body">
             <div class="login-wrapper">
@@ -20,6 +20,6 @@
             </div>
         </div>
        <!-- insert script -->
-       <div th:replace="fragments/scripts"></div>
+       <div th:replace="~{fragments/scripts}"></div>
     </body>
 </html>

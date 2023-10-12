@@ -1,0 +1,31 @@
+<div 
+xmlns:th="http://www.thymeleaf.org" 
+class="sidebar" id="sidebar">
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <hr>
+            <button class="btn btn-primary rounded">Deposer</button>
+            <ul>
+                <li class="menu-title"></li>
+                <li>
+                    <a th:href="@{/user/dashboard}">
+                        <i class="fe fe-home"></i>
+                        <span>Tableau de bord</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/user/thesis}">
+                        <i class="fa fa-books"></i>
+                        <span>Mes memoires</span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/user/thesis}">
+                        <i class="fa fa-books"></i>
+                        <span>Bibliotheque</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
