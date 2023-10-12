@@ -17,8 +17,9 @@ public class AuthController {
 		return "views/login";
 	}
 	
+	/*
 	@GetMapping("/logout")
 	public String logout() {
 		return "redirect:/login";
-	}
+	}*/
 }

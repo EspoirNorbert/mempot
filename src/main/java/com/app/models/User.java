@@ -32,7 +32,7 @@ public class User implements Serializable {
 	
 	@Column(name = "firstname" , nullable = false , length = 80)
 	@NotEmpty(message = "Le prenom est obligatoire")
-	protected String firstName;
+	protected String firstname;
 	
 	@Column(name = "lastname" , nullable = false , length = 80)
 	@NotEmpty(message = "Le nom est obligatoire")
@@ -69,12 +69,12 @@ public class User implements Serializable {
 		this.id = id;
 	}
 
-	public String getFirstName() {
-		return firstName;
+	public String getFirstname() {
+		return firstname;
 	}
 
 	public void setFirstName(String firstName) {
-		this.firstName = firstName;
+		this.firstname = firstName;
 	}
 
 	public String getLastname() {
@@ -124,4 +124,13 @@ public class User implements Serializable {
 	public List<Role> getRoles() {
 		return roles;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstname=" + firstname + ", lastname=" + lastname + ", email=" + email
+				+ ", password=" + password + ", isEnable=" + isEnable + ", address=" + address + ", roles=" + roles
+				+ "]";
+	}
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.app.controllers;
 
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -12,7 +13,8 @@ public class RootController {
 	}
 	
 	@GetMapping("/dashboard")
-	public String dashbord() {
+	public String dashbord(org.springframework.ui.Model model,Authentication authentication) {
+		model.addAttribute("auth", authentication);
 		return "views/dashboard";
 	}
 	

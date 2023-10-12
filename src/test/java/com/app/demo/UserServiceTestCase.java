@@ -1,5 +1,7 @@
 package com.app.demo;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -10,6 +12,7 @@ import com.app.models.Student;
 import com.app.models.User;
 import com.app.services.GradeService;
 import com.app.services.SectorService;
+import com.app.services.StudentService;
 import com.app.services.UserService;
 
 @SpringBootTest
@@ -18,8 +21,9 @@ class UserServiceTestCase {
 	@Autowired private UserService userService;
 	@Autowired private GradeService gradeService;
 	@Autowired private SectorService sectorService;
+	@Autowired private StudentService studentService;
 
-	@Test
+	//@Test
 	void createUser() {
 		User defautUser = new User();
 		defautUser.setEmail("admin@deposer.com");
@@ -31,7 +35,7 @@ class UserServiceTestCase {
 		userService.createUser(defautUser, "ADMIN");
 	}
 
-	@Test
+	//@Test
 	void createStudent() {
 		// Retrouve le niveau et les filieres
 		Grade master = this.gradeService.findByName("Master");
@@ -62,4 +66,10 @@ class UserServiceTestCase {
 		userService.createUser(jmp, "USER");
 	}
 
+	@Test void listStudent() {
+		List<Student> students = this.studentService.list();
+		for (Student student : students) {
+			System.out.println(student.getFirstname());
+		}
+	}
 }

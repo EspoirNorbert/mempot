@@ -37,7 +37,6 @@
                                 <table class="table table-hover table-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
                                             <th>Nom</th>
                                             <th>Prenom</th>
                                             <th>Matricule</th>
@@ -49,11 +48,12 @@
                                     <tbody>
                                         <tr th:each="student :${students}">
                                             <td th:text="${student.lastname}"></td>
-                                            <td th:text="${student.firstname}"></td>
+                                             <td th:text="${student.firstname}"></td>
                                             <td th:text="${student.matricule}"></td>
-                                            <td th:text="${student.sector.name}"></td>
-                                            <td th:text="${student.grade.name}"></td>
-                                            <td class="text-end">
+                                            <td><span class="badge badge-primary" th:text="${student.sector.name}"></span></td>
+                                            <td><span class="badge badge-primary" th:text="${student.grade.name}"></span></td>
+                                            
+                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  
                                                    href="#"

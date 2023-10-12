@@ -11,10 +11,10 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
+	
+	
 	@Bean
-	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-		
+	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {	
 		http
 			.authorizeHttpRequests((authorize) -> authorize  
 				// autoriser la page d'accueil
@@ -23,15 +23,16 @@ public class SecurityConfig {
 				.requestMatchers("/register" , "/login").permitAll()
 				// autoriser les fichiers static
 				.requestMatchers("/css/**" , "js/**" , "img/**" , "plugins/**", "fonts/**").permitAll()
-				// Toutes les requettes sont authentifiées
 				.requestMatchers("/dashboard", "/sectors/**","/grades/**", "/students/**").hasRole("ADMIN")
+				// Toutes les requettes sont authentifiées
 				.anyRequest().authenticated()
 			)
+			
 			// configuration du formulaire d'authentification
 			.formLogin(form -> {
 				form.loginPage("/login")
 				// rediriger l'utilisateur vers la page /dashbord
-				.defaultSuccessUrl("/dashbord");
+				.defaultSuccessUrl("/dashboard");
 			});
 		
 		return http.build();

@@ -11,7 +11,6 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.app.models.Role;
 import com.app.models.User;
 import com.app.services.UserService;
 
@@ -23,23 +22,23 @@ public class CustomUserDetailService implements UserDetailsService {
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-		System.out.println("Call method for authenticated user");
 		
-		User foundUser = this.userService.findByEmail(username);
+		User user = this.userService.findByEmail(username);
 		
-		if (foundUser != null) {
-			return new org.springframework.security.core.userdetails.User(
-					foundUser.getEmail(),foundUser.getPassword(),
-					this.getGrantedAuthorities(foundUser.getRoles()));
+		System.out.println("Call this method");
+		System.out.println(user);
+		
+		if (user == null) {
+			throw new UsernameNotFoundException("User not found");
 		}
 		
-		throw new UsernameNotFoundException("User not found !");
+		List<GrantedAuthority> authorities = user.getRoles().stream()
+        .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+        .collect(Collectors.toList());
+		
+		return new org.springframework.security.core
+				.userdetails.User(user.getEmail(), user.getPassword(), authorities);
 	}
 	
-	private List<GrantedAuthority> getGrantedAuthorities(List<Role> roles) {
-		return roles.stream()
-	            .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
-	            .collect(Collectors.toList());
-	}
 
 }
