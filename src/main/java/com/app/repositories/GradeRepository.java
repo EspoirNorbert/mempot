@@ -6,4 +6,5 @@ import com.app.models.Grade;
 
 public interface GradeRepository extends JpaRepository<Grade, Integer> {
 
+	Grade findByName(String name);
 }

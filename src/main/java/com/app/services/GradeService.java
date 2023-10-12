@@ -35,6 +35,11 @@ public class GradeService {
 		return grade;
 	}
 	
+	@Transactional(readOnly = true)
+	public Grade findByName(String name) {
+		return this.gradeRepository.findByName(name);
+	}
+	
 	@Transactional
 	public void delete (Integer id) {
 		Grade grade = this.findById(id);

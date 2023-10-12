@@ -35,6 +35,11 @@ public class SectorService {
 		return grade;
 	}
 	
+	@Transactional(readOnly = true)
+	public Sector findByName(String name) {
+		return this.sectorRepository.findByName(name);
+	}
+	
 	@Transactional
 	public void delete (Integer id) {
 		Sector grade = this.findById(id);

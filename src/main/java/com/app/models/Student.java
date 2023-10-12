@@ -60,6 +60,14 @@ public class Student extends User implements Serializable {
 		this.matricule = matricule;
 	}
 	
+	public void setGrade(Grade grade) {
+		this.grade = grade;
+	}
+	
+	public Grade getGrade() {
+		return grade;
+	}
+	
 	public Sector getSector() {
 		return sector;
 	}

@@ -5,6 +5,7 @@ import java.util.Arrays;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.models.Role;
 import com.app.models.User;
@@ -18,6 +19,7 @@ public class UserService {
 	@Autowired private PasswordEncoder passwordEncoder;
 	@Autowired private RoleRepository roleRepository;
 	
+	@Transactional
 	public void createUser(User user, String roleName) {
 		Role role = roleRepository.findByName(roleName);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));

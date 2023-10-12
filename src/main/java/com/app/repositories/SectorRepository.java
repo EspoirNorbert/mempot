@@ -6,4 +6,5 @@ import com.app.models.Sector;
 
 public interface SectorRepository extends JpaRepository<Sector, Integer> {
 
+	Sector findByName(String name);
 }
