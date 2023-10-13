@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+		layout:decorate="~{layouts/student_base}">
+
+    <div layout:fragment="content">
+        <div class="container-fluid mt-5">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Bibliotheque</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/}">Tableau de bord</a>
+                            </li>
+                            <li class="breadcrumb-item active">Bibliotheque</li>
+                        </ul>
+                    </div>
+                </div>
+              
+            </div>
+            <div class="row">
+                <div th:if="${thesis.size() == 0}">
+                   <div th:replace="~{fragments/empty('La bibliotheques des memoires est vide', 
+                   	'Tous vos memoires soumis seront afficher ici pour que 
+                   	vous puissez les consulter tout moment.')}"></div>
+                </div>
+
+                <div th:unless="${thesis.size() == 0}" class="col-md-12 d-flex">
+
+                    <div class="card card-table flex-fill">
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-center mb-0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Theme</th>
+                                            <th>Année Academique</th>
+                                            <th>Date soumission</th>
+                                            <th>Fichier</th>
+                                            <th>Etudiant</th>
+                                            <th class="text-end">Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="t : ${thesis}">
+                                            <td th:text="${t.id}"></td>
+                                            <td th:text="${t.topic}"></td>
+                                            <td th:text="${t.academicYear}"></td>
+                                            <td th:text="${t.submissionDate}"></td>
+                                            <td th:text="${t.filePath}"></td>
+                                            <td> <span class="badge bg-primary" th:text="${t.student.firstname}"></span> </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</html>

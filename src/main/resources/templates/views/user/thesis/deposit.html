@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
+        layout:decorate="~{layouts/student_base}">
+
+    <div layout:fragment="content">
+        <div class="content container-fluid mt-5">
+            <div class="page-header">
+                <div class="row align-items-center">
+                    <div class="col">
+                        <h3 class="page-title">Depots</h3>
+                        <ul class="breadcrumb">
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/user}">Tableau de bord</a>
+                            </li>
+                            <li class="breadcrumb-item">
+                                <a th:href="@{/user/thesis}">Depots</a>
+                            </li>
+                            <li class="breadcrumb-item active">Depot</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Depot memoire</h4>
+                </div>
+                <div class="card-body">
+                   <div class="alert alert-info  p-2">
+                     <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+                   </div>
+                   <hr>
+                   <div class="row">
+                    <div class="col-md-8">
+                        <h5>Informations basique</h5>
+                        <div class="form-group">
+                            <label for="name">Theme <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" required name="nom" 
+                                    placeholder="Entrer le nom de la filiere (ex: Master)">
+                            <div id="NameHelpBlock" class="form-text">
+                                Le titre du memoire
+                            </div>        
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Année academique <span class="text-danger">*</span></label>
+                            <input type="number" class="form-control" required name="nom" 
+                                    placeholder="Entrer l'année academique de la filiere (ex: 2023)">
+                            <div id="NameHelpBlock" class="form-text">
+                                L'année academique du memoire
+                            </div>        
+                        </div>
+                        <div class="form-group">
+                            <label for="name">Fichier du memoire (.pdf) <span class="text-danger">*</span></label>
+                            <input type="file" class="form-control" required name="nom" >
+                            <div id="NameHelpBlock" class="form-text">
+                                Fichier du memoire. Seule les pdf sont autorisé.
+                            </div>        
+                        </div>
+                        <div class="">
+                            <button type="submit" class="btn btn-primary">Envoyer</button>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <h5>Preview</h5>
+                        <div class="border border-dark h-75">
+                            <img src="" alt="">
+                        </div>
+                    </div>
+                   </div>
+                   
+                </div>
+            </div>
+        </div>
+    </div>
+</html>

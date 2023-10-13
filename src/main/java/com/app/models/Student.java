@@ -75,4 +75,12 @@ public class Student extends User implements Serializable {
 	public void setSector(Sector sector) {
 		this.sector = sector;
 	}
+	
+	public List<Thesis> getThesis() {
+		return thesis;
+	}
+	
+	public void setThesis(List<Thesis> thesis) {
+		this.thesis = thesis;
+	}
 }

@@ -6,4 +6,5 @@ import com.app.models.Thesis;
 
 public interface ThesisRepository extends JpaRepository<Thesis, Integer> {
 
+	
 }

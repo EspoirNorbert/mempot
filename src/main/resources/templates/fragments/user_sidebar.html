@@ -1,16 +1,12 @@
-<div 
-xmlns:th="http://www.thymeleaf.org" 
-class="sidebar" id="sidebar">
+<div xmlns:th="http://www.thymeleaf.org" class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
-       
+
             <div class="d-flex flex-content-justify">
-                <a 
-            th:href="@{/user/thesis/deposit}" 
-            class="btn btn-primary rounded ms-3 w-75">Deposer</a>
-           
+                <a th:href="@{/user/thesis/deposit}" class="btn btn-primary rounded ms-3 w-75">Deposer</a>
+
             </div>
-            
+
             <ul>
                 <li class="menu-title"></li>
                 <li>
@@ -22,12 +18,18 @@ class="sidebar" id="sidebar">
                 <li>
                     <a th:href="@{/user/thesis}">
                         <i class="fa fa-books"></i>
-                        <span>Mes memoires</span>
+                        <span>Mes depots</span>
                     </a>
                 </li>
                 <li>
-                    <a th:href="@{/user/library}">
-                        <i class="fa fa-books"></i>
+                    <a
+                        th:href="@{/user/library}">
+                        <!-- https://feathericons.dev/?search=book-open&iconset=feather -->
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/>
+                        </svg>
+
                         <span>Bibliotheque</span>
                     </a>
                 </li>
