@@ -8,9 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/admin")
 public class AdminController {
 
-	@GetMapping({"/dashbord" , ""})
+	@GetMapping({"/dashboard" , ""})
 	public String home() {
-		return "views/dashboard";
+		return "views/admin/dashboard";
+	}
+	
+	@GetMapping("/profile")
+	public String profile() {
+		return "views/admin/profile";
 	}
 	
 }
