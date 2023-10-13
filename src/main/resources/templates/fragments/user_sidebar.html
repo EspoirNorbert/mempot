@@ -3,8 +3,14 @@ xmlns:th="http://www.thymeleaf.org"
 class="sidebar" id="sidebar">
     <div class="sidebar-inner slimscroll">
         <div id="sidebar-menu" class="sidebar-menu">
-            <hr>
-            <a th:href="@{/user/thesis/deposit}" class="btn btn-primary rounded">Deposer</a>
+       
+            <div class="d-flex flex-content-justify">
+                <a 
+            th:href="@{/user/thesis/deposit}" 
+            class="btn btn-primary rounded ms-3 w-75">Deposer</a>
+           
+            </div>
+            
             <ul>
                 <li class="menu-title"></li>
                 <li>

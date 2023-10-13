@@ -4,16 +4,20 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.context.SecurityContextHolder;
+//import org.springframework.security.core.GrantedAuthority;
+//import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import com.app.models.Role;
 import com.app.models.User;
 import com.app.services.UserService;
-
 
 @Service
 public class CustomUserDetailService implements UserDetailsService {
@@ -32,13 +36,26 @@ public class CustomUserDetailService implements UserDetailsService {
 			throw new UsernameNotFoundException("User not found");
 		}
 		
-		List<GrantedAuthority> authorities = user.getRoles().stream()
-        .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
-        .collect(Collectors.toList());
-		
-		return new org.springframework.security.core
-				.userdetails.User(user.getEmail(), user.getPassword(), authorities);
+		return org.springframework.security.core.userdetails.User
+				.withUsername(user.getEmail())
+				.password(user.getPassword())
+				.authorities(this.getAutorities(user.getRoles()))
+				.build();
 	}
 	
-
+	private List<GrantedAuthority> getAutorities(List<Role> roles){
+		return roles.stream()
+        .map(role -> new SimpleGrantedAuthority("ROLE_" + role.getName()))
+        .collect(Collectors.toList());
+	}
+	
+	public User getCurrentUser() {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		
+		if (auth!= null) {
+			String email = auth.getName();
+			return this.userService.findByEmail(email);
+		}
+		return null;
+	}
 }

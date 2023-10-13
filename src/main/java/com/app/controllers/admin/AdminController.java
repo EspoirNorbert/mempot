@@ -1,6 +1,5 @@
 package com.app.controllers.admin;
 
-import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,14 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(value = "/admin")
 public class AdminController {
 
-	@GetMapping
+	@GetMapping({"/dashbord" , ""})
 	public String home() {
-		return "views/dashboard";
-	}
-	
-	@GetMapping("/dashboard")
-	public String dashbord(org.springframework.ui.Model model,Authentication authentication) {
-		model.addAttribute("auth", authentication);
 		return "views/dashboard";
 	}
 	
