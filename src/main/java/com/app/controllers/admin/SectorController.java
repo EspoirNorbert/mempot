@@ -48,7 +48,7 @@ public class SectorController {
 		
 		this.sectorService.save(sector);
 		
-		return "redirect:/sectors";
+		return "redirect:/admin/sectors";
 	}
 	
 	@GetMapping("/edit/{sectorId}")
@@ -68,12 +68,12 @@ public class SectorController {
 		System.out.println(sector);
 		
 		this.sectorService.save(sector);
-		return "redirect:/sectors";
+		return "redirect:/admin/sectors";
 	}
 	
 	@GetMapping("/delete/{sectorId}")
 	public String deleteGrade(@PathVariable("sectorId") Integer id ) {
 		this.sectorService.delete(id);
-		return "redirect:/sectors";
+		return "redirect:/admin/sectors";
 	}
 }

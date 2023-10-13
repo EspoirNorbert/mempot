@@ -14,7 +14,7 @@
                                 <a th:href="@{/}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a th:href="@{/sectors}">Niveaux</a>
+                                <a th:href="@{/admin/sectors}">Niveaux</a>
                             </li>
                             <li class="breadcrumb-item active">Nouveau</li>
                         </ul>
@@ -31,7 +31,7 @@
                    <div class="alert alert-info">
                     <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
                    </div>
-                    <form th:action="@{/sectors/new}" method="post" th:object="${sector}" >
+                    <form th:action="@{/admin/sectors/new}" method="post" th:object="${sector}" >
                         <div class="form-group">
                             <label for="name">Nom <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" required th:field="*{name}" name="nom" 

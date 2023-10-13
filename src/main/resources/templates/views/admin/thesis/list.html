@@ -52,7 +52,8 @@
                                             <td th:text="${t.topic}"></td>
                                             <td th:text="${t.academicYear}"></td>
                                             <td th:text="${t.submissionDate}"></td>
-                                            <td th:text="${t.filePath}"></td>
+                                            <td><a target="_blank" th:href="@{${t.filePath}}"><i class="fe fe-file fw-3"></i></a></td>
+
                                             <td> <span class="badge bg-primary" th:text="${t.student.firstname}"></span> </td>
                                             <td class="text-end">
                                                 <div class="actions">

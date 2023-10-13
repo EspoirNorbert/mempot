@@ -30,7 +30,7 @@
                     <div class="alert alert-info">
                         <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
                     </div>
-                    <form th:action="@{admin/grades/update}" method="post" th:object="${grade}" >
+                    <form th:action="@{/admin/grades/update}" method="post" th:object="${grade}" >
                         <input type="hidden"  name="id" th:field="*{id}">
                         <div class="form-group">
                             <label for="name">Nom <span class="text-danger">*</span></label>

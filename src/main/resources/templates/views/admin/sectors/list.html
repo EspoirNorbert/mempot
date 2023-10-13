@@ -17,7 +17,7 @@
                         </ul>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <a th:href="@{/sectors/new}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouvelle filiere</a>
+                        <a th:href="@{/admin/sectors/new}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouvelle filiere</a>
                     </div>
                 </div>
               
@@ -51,12 +51,12 @@
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  
-                                                    th:href="@{/sectors/edit/}+${sector.id}"
+                                                    th:href="@{/admin/sectors/edit/}+${sector.id}"
                                                     class="btn btn-sm bg-primary-light me-2">
                                                         <i class="fe fe-pencil"></i>
                                                     </a>
                                                     <a  
-                                                    th:href="@{/sectors/delete/}+${sector.id}"
+                                                    th:href="@{/admin/sectors/delete/}+${sector.id}"
                                                     class="btn btn-sm bg-danger-light me-2">
                                                         <i class="fe fe-trash"></i>
                                                     </a>

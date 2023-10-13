@@ -48,7 +48,7 @@ public class GradeController {
 		
 		this.gradeService.save(grade);
 		
-		return "redirect:/grades";
+		return "redirect:/admin/grades";
 	}
 	
 	@GetMapping("/edit/{gradeId}")
@@ -68,12 +68,12 @@ public class GradeController {
 		System.out.println(grade);
 		
 		this.gradeService.save(grade);
-		return "redirect:/grades";
+		return "redirect:/admin/grades";
 	}
 	
 	@GetMapping("/delete/{gradeId}")
 	public String supprimeProduit(@PathVariable("gradeId") Integer id ) {
 		this.gradeService.delete(id);
-		return "redirect:/grades";
+		return "redirect:/admin/grades";
 	}
 }
