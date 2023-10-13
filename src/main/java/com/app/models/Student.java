@@ -83,4 +83,13 @@ public class Student extends User implements Serializable {
 	public void setThesis(List<Thesis> thesis) {
 		this.thesis = thesis;
 	}
+
+	@Override
+	public String toString() {
+		return "Student [id=" + id + ", matricule=" + matricule + ", sector=" + sector.getName() + ", grade=" + 
+				grade.getName()
+				+ "]";
+	}
+	
+	
 }

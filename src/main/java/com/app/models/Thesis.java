@@ -30,7 +30,6 @@ public class Thesis implements Serializable {
 	private String topic;
 	
 	@Column(name="academic_year" , nullable = false)
-	@NotEmpty(message = "L'annee academique est obligatoire")
 	private Integer academicYear;
 	
 	@CreationTimestamp
@@ -84,5 +83,13 @@ public class Thesis implements Serializable {
 
 	public void setFilePath(String filePath) {
 		this.filePath = filePath;
+	}
+	
+	public void setStudent(Student student) {
+		this.student = student;
+	}
+	
+	public Student getStudent() {
+		return student;
 	}
 }

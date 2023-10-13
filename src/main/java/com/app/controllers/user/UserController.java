@@ -3,19 +3,33 @@ package com.app.controllers.user;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.app.models.Thesis;
+import com.app.services.FilesStorageService;
 import com.app.services.ThesisService;
+
+import jakarta.validation.Valid;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
 
 	@Autowired private ThesisService thesisService;
+	@Autowired private FilesStorageService filesStorageService;
 	
 	@GetMapping({"/dashboard" , ""})
 	public String home() {
@@ -30,8 +44,28 @@ public class UserController {
 	}
 	
 	@GetMapping("/thesis/deposit")
-	public String deposit(Model model) {
+	public String formDeposit(Model model) {
+		Thesis thesis = new Thesis();
+		model.addAttribute("thesis", thesis);
 		return "views/user/thesis/deposit";
+	}
+	
+	@PostMapping("/thesis/deposit")
+	public String upload(@Valid @ModelAttribute("thesis") Thesis thesis,
+			@RequestParam("file") MultipartFile file,BindingResult bindingResult) {
+		
+		System.out.println(thesis.getAcademicYear());
+		
+		if(bindingResult.hasErrors()) {
+			return "views/user/thesis/deposit";
+		}
+		
+		this.filesStorageService.save(file);
+		String pathFile= this.getFilePath(file);
+		thesis.setFilePath(pathFile);
+		this.thesisService.create(thesis);
+		return "redirect:/user/thesis";
+		
 	}
 	
 	@GetMapping("/library")
@@ -39,5 +73,12 @@ public class UserController {
 		List<Thesis> thesis = this.thesisService.list();
 		model.addAttribute("thesis", thesis);
 		return "views/user/library";
+	}
+	
+	
+	
+	private String getFilePath(MultipartFile file) {
+		return "/files/"+ com.app.utils.Helper.
+				replaceSpaceByDash(file.getOriginalFilename());
 	}
 }

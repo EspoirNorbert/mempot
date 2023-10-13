@@ -34,37 +34,37 @@
                    <div class="row">
                     <div class="col-md-8">
                         <h5>Informations basique</h5>
-                        <div class="form-group">
-                            <label for="name">Theme <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" required name="nom" 
-                                    placeholder="Entrer le nom de la filiere (ex: Master)">
-                            <div id="NameHelpBlock" class="form-text">
-                                Le titre du memoire
-                            </div>        
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Année academique <span class="text-danger">*</span></label>
-                            <input type="number" class="form-control" required name="nom" 
-                                    placeholder="Entrer l'année academique de la filiere (ex: 2023)">
-                            <div id="NameHelpBlock" class="form-text">
-                                L'année academique du memoire
-                            </div>        
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Fichier du memoire (.pdf) <span class="text-danger">*</span></label>
-                            <input type="file" class="form-control" required name="nom" >
-                            <div id="NameHelpBlock" class="form-text">
-                                Fichier du memoire. Seule les pdf sont autorisé.
-                            </div>        
-                        </div>
-                        <div class="">
-                            <button type="submit" class="btn btn-primary">Envoyer</button>
-                        </div>
+                        <form th:action="@{/user/thesis/deposit}" method="post" enctype="multipart/form-data" th:object="${thesis}">
+                            <div class="form-group">
+                                <label for="name">Theme <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" th:field="*{topic}" required name="nom" placeholder="Entrer le theme de votre memoire">
+                                <div id="NameHelpBlock" class="form-text">
+                                    Le titre du memoire
+                                </div>        
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Année academique <span class="text-danger">*</span></label>
+                                <input type="number" class="form-control" th:field="*{academicYear}" required name="academicYear" placeholder="Entrer l'année academique de la filiere (ex: 2023)">
+                                <div id="NameHelpBlock" class="form-text">
+                                    L'année academique du memoire
+                                </div>        
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Fichier du memoire (.pdf) <span class="text-danger">*</span></label>
+                                <input type="file" class="form-control" required name="file" id="pdfFile" accept=".pdf" >
+                                <div id="NameHelpBlock" class="form-text">
+                                    Fichier du memoire. Seule les pdf sont autorisé.
+                                </div>        
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Envoyer</button>
+                            </div>
+                        </form>
                     </div>
                     <div class="col-md-4">
                         <h5>Preview</h5>
                         <div class="border border-dark h-75">
-                            <img src="" alt="">
+                            <div id="pdfContainer"></div>
                         </div>
                     </div>
                    </div>
@@ -73,4 +73,5 @@
             </div>
         </div>
     </div>
+ 
 </html>
