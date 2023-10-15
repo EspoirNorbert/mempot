@@ -16,26 +16,71 @@
             title="Page accueil"
         /></a>
         <p class="account-subtitle">Inscriver pour deposer votre memoire</p>
-        <form method="post" action="login.html">
+        <form method="post" th:action="@{/register}" th:object="${student}">
+          <div class="alert alert-info">
+            <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+           </div>
           <div class="form-group">
-            <label for="email" class="fw-bolder">Nom</label>
-            <input class="form-control" type="text" placeholder="Email" />
+            <label for="firstname" class="fw-bolder">Nom <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" placeholder="Entrer votre nom: (Doe)" name="firstname" th:field="*{firstname}" />
+            <div id="FirstnameHelpBlock" class="form-text">
+              Le nom de famille inscrit dans l'ecole.
+          </div>
           </div>
           <div class="form-group">
-            <label for="email" class="fw-bolder">Prenom</label>
-            <input class="form-control" type="text" placeholder="Email" />
+            <label for="lastname" class="fw-bolder">Prenom(s) <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" placeholder="Entrer votre prenom: (John)"  th:field="*{lastname}" />
+            <div id="LastnameHelpBlock" class="form-text">
+              Le prenom(s) inscrit dans l'ecole.
+          </div>
           </div>
           <div class="form-group">
-            <label for="email" class="fw-bolder">Email</label>
-            <input class="form-control" type="text" placeholder="Email" />
+            <label for="matricule" class="fw-bolder">Matricule <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" placeholder="Entrer votre matricule scolaire"  th:field="*{matricule}" />
+            <div id="MatriculeHelpBlock" class="form-text">
+              Le matricule scolaire donnée par l'ecole.
+          </div>
+          </div>
+          <!-- grades -->
+          <div class="form-group">
+            <label for="grade" class="fw-bolder">Niveaux <span class="text-danger">*</span></label>
+            <select name="grades" id="grades" class="form-control" required th:field="*{gradeId}">
+              <option value="">Selectionner votre niveau scolaire</option>
+              <option th:each="grade : ${grades}" th:value="${grade.id}" th:text="${grade.name}"></option>
+            </select>
+            <div id="GradeHelpBlock" class="form-text">
+              Le Niveau scolaire dans lequel vous etre inscrit.
+          </div>
+          </div>
+          <!-- sectors -->
+          <div class="form-group">
+            <label for="sectors" class="fw-bolder">Filieres <span class="text-danger">*</span></label>
+            <select name="sectors" id="sectors" class="form-control" required th:field="*{sectorId}">
+              <option value="">Selectionner votre filiere</option>
+              <option th:each="sector : ${sectors}" th:value="${sector.id}" th:text="${sector.name}"></option>
+            </select>
+            <div id="SectorHelpBlock" class="form-text">
+              La filiere dans lequel vous etre inscrit.
+          </div>
           </div>
           <div class="form-group">
-            <label for="password" class="fw-bolder">Mot de passe</label>
+            <label for="email" class="fw-bolder">Email <span class="text-danger">*</span></label>
+            <input class="form-control" type="text" placeholder="johndoe@example.com" th:field="*{email}" />
+            <div id="EmailHelpBlock" class="form-text">
+              L'email personnel.
+          </div>
+          </div>
+          <div class="form-group">
+            <label for="password" class="fw-bolder">Mot de passe <span class="text-danger">*</span></label>
             <input
               class="form-control"
               type="password"
-              placeholder="Password"
+              placeholder="**********"
+              th:field="*{password}"
             />
+            <div id="EmailHelpBlock" class="form-text">
+              Le mot de passe personnel.
+          </div>
           </div>
           <div class="form-group">
             <button class="btn btn-primary btn-block" type="submit">
