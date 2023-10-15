@@ -46,8 +46,7 @@ public class SectorController {
 			return MAIN_PATH + "/new";
 		}
 		
-		this.sectorService.save(sector);
-		
+		this.sectorService.save(sector);	
 		return "redirect:/admin/sectors";
 	}
 	
@@ -66,7 +65,6 @@ public class SectorController {
 	@PostMapping("/update")
 	public String updateGrade(@ModelAttribute("sector") Sector sector) {
 		System.out.println(sector);
-		
 		this.sectorService.save(sector);
 		return "redirect:/admin/sectors";
 	}

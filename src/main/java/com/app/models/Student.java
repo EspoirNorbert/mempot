@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.persistence.Transient;
 import jakarta.validation.constraints.NotEmpty;
 
 @Entity
@@ -41,6 +42,12 @@ public class Student extends User implements Serializable {
 	
 	@OneToMany(mappedBy = "student",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<Thesis> thesis = new ArrayList<>();
+	
+	@Transient
+	private String gradeId;
+
+	@Transient
+	private String sectorId;
 	
 	public Student() {}
 	
@@ -82,6 +89,22 @@ public class Student extends User implements Serializable {
 	
 	public void setThesis(List<Thesis> thesis) {
 		this.thesis = thesis;
+	}
+	
+	public String getGradeId() {
+		return gradeId;
+	}
+	
+	public void setGradeId(String gradeId) {
+		this.gradeId = gradeId;
+	}
+	
+	public String getSectorId() {
+		return sectorId;
+	}
+	
+	public void setSectorId(String sectorId) {
+		this.sectorId = sectorId;
 	}
 
 	@Override

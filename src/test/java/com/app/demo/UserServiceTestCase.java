@@ -35,35 +35,54 @@ class UserServiceTestCase {
 		userService.createUser(defautUser, "ADMIN");
 	}
 
-	//@Test
+	@Test
 	void createStudent() {
 		// Retrouve le niveau et les filieres
 		Grade master = this.gradeService.findByName("Master");
 		Sector informatique = this.sectorService.findByName("Informatique");
-
-		// creer un etudiant
-		Student ghislain = new Student();
-		ghislain.setEmail("ghislain.akinocho@gmail.com");
-		ghislain.setFirstName("Ghislain");
-		ghislain.setLastname("Akinocho");
-		ghislain.setIsEnable(true);
-		ghislain.setPassword("user@123");
-		ghislain.setMatricule("123589637");
-		ghislain.setGrade(master);
-		ghislain.setSector(informatique);
-
-		Student jmp = new Student();
-		jmp.setEmail("jmp@gmail.com");
-		jmp.setFirstName("Jean-Marie");
-		jmp.setLastname("Preira");
-		jmp.setIsEnable(true);
-		jmp.setPassword("user@123");
-		jmp.setMatricule("123589638");
-		jmp.setGrade(master);
-		jmp.setSector(informatique);
-
-		userService.createUser(ghislain, "USER");
-		userService.createUser(jmp, "USER");
+		
+		if (userService.findByEmail("ghislain.akinocho@gmail.com") == null) {
+			// creer un etudiant
+			Student ghislain = new Student();
+			ghislain.setEmail("ghislain.akinocho@gmail.com");
+			ghislain.setFirstName("Ghislain");
+			ghislain.setLastname("Akinocho");
+			ghislain.setIsEnable(true);
+			ghislain.setPassword("user@123");
+			ghislain.setMatricule("123589637");
+			ghislain.setGrade(master);
+			ghislain.setSector(informatique);
+			
+			userService.createUser(ghislain, "USER");
+		}
+		
+		if (userService.findByEmail("jmp@gmail.com") == null)
+		{
+			Student jmp = new Student();
+			jmp.setEmail("jmp@gmail.com");
+			jmp.setFirstName("Jean-Marie");
+			jmp.setLastname("Preira");
+			jmp.setIsEnable(true);
+			jmp.setPassword("user@123");
+			jmp.setMatricule("123589638");
+			jmp.setGrade(master);
+			jmp.setSector(informatique);
+			userService.createUser(jmp, "USER");
+		}
+		
+		if (userService.findByEmail("rebichan@gmail.com") == null)
+		{
+			Student rebi = new Student();
+			rebi.setEmail("rebichan@gmail.com");
+			rebi.setFirstName("Rebi");
+			rebi.setLastname("Evolucy");
+			rebi.setIsEnable(true);
+			rebi.setPassword("rebi");
+			rebi.setMatricule("123589610");
+			rebi.setGrade(master);
+			rebi.setSector(informatique);
+			userService.createUser(rebi, "USER");
+		}
 	}
 
 	@Test void listStudent() {
