@@ -37,6 +37,10 @@ public class Grade implements Serializable {
 	
 	public Grade() {}
 	
+	public Grade(Long id) {
+		this.id=id;
+	}
+	
 	public Grade(String name) {
 		this.name = name;
 	}

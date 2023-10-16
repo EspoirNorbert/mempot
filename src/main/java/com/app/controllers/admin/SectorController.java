@@ -51,7 +51,7 @@ public class SectorController {
 	}
 	
 	@GetMapping("/edit/{sectorId}")
-	public String displayEditGradeForm(@PathVariable("sectorId") Integer id,Model model) {
+	public String displayEditGradeForm(@PathVariable("sectorId") Long id,Model model) {
 		
 		Sector sector = sectorService.findById(id);
 
@@ -70,7 +70,7 @@ public class SectorController {
 	}
 	
 	@GetMapping("/delete/{sectorId}")
-	public String deleteGrade(@PathVariable("sectorId") Integer id ) {
+	public String deleteGrade(@PathVariable("sectorId") Long id ) {
 		this.sectorService.delete(id);
 		return "redirect:/admin/sectors";
 	}

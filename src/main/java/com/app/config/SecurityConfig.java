@@ -20,7 +20,7 @@ public class SecurityConfig {
 				// autoriser la page d'accueil
 				.requestMatchers("/" , "/home").permitAll()
 				// autoriser la page d'inscription
-				.requestMatchers("/register" , "/login").permitAll()
+				.requestMatchers("/register" , "/login", "/save").permitAll()
 				// autoriser les fichiers static
 				.requestMatchers("/css/**" , "js/**" , "img/**" , "plugins/**", "fonts/**").permitAll()
 				// Securisation des routes de l'admin

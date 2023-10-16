@@ -25,7 +25,7 @@ public class GradeService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Grade findById(Integer id) {
+	public Grade findById(Long id) {
 		Grade grade = null;
 		Optional<Grade> optionalGrade = gradeRepository.findById(id);
 		
@@ -41,7 +41,7 @@ public class GradeService {
 	}
 	
 	@Transactional
-	public void delete (Integer id) {
+	public void delete (Long id) {
 		Grade grade = this.findById(id);
 		if (grade != null)
 			this.gradeRepository.delete(grade);

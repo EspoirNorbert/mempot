@@ -25,7 +25,7 @@ public class SectorService {
 	}
 	
 	@Transactional(readOnly = true)
-	public Sector findById(Integer id) {
+	public Sector findById(Long id) {
 		Sector grade = null;
 		Optional<Sector> optionalGrade = sectorRepository.findById(id);
 		
@@ -41,7 +41,7 @@ public class SectorService {
 	}
 	
 	@Transactional
-	public void delete (Integer id) {
+	public void delete (Long id) {
 		Sector grade = this.findById(id);
 		if (grade != null)
 			this.sectorRepository.delete(grade);

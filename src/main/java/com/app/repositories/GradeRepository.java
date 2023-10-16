@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.app.models.Grade;
 
-public interface GradeRepository extends JpaRepository<Grade, Integer> {
+public interface GradeRepository extends JpaRepository<Grade, Long> {
 
 	Grade findByName(String name);
 }

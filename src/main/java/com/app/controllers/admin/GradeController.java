@@ -52,7 +52,7 @@ public class GradeController {
 	}
 	
 	@GetMapping("/edit/{gradeId}")
-	public String displayEditGradeForm(@PathVariable("gradeId") Integer id,Model model) {
+	public String displayEditGradeForm(@PathVariable("gradeId") Long id,Model model) {
 		
 		Grade grade = gradeService.findById(id);
 
@@ -72,7 +72,7 @@ public class GradeController {
 	}
 	
 	@GetMapping("/delete/{gradeId}")
-	public String supprimeProduit(@PathVariable("gradeId") Integer id ) {
+	public String supprimeProduit(@PathVariable("gradeId") Long id ) {
 		this.gradeService.delete(id);
 		return "redirect:/admin/grades";
 	}
