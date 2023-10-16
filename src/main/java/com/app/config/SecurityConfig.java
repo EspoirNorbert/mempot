@@ -37,10 +37,7 @@ public class SecurityConfig {
 				// rediriger l'utilisateur vers la page /dashbord
 				.successHandler(authenticationSuccessHandler());
 			})
-			.logout((logout) -> 
-					logout.logoutUrl("/logout").
-		
-					permitAll());
+			.logout((logout) -> logout.logoutUrl("/logout").permitAll());
 		
 		return http.build();
 	}

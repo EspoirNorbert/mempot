@@ -22,9 +22,9 @@ public class CustomAuthenticationSuccessHandler implements AuthenticationSuccess
 				authorityListToSet(authentication.getAuthorities());
 
 		if (roles.contains("ROLE_ADMIN")) {
-			response.sendRedirect("/admin");
+			response.sendRedirect("/admin/dashboard");
 		} else {
-			response.sendRedirect("/user");
+			response.sendRedirect("/user/dashboard");
 		}
 	}
 }

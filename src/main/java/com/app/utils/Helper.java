@@ -27,4 +27,10 @@ public class Helper {
 		
 		throw new NullPointerException("RegisterRequest object is null");
 	}
+	
+	public static String getDefautlAvatar(String firstname , String lastname) {
+		return 
+				"https://ui-avatars.com/api/?name=" + firstname + "+"+ lastname 
+				+ "&background=2962ff&color=fff&size=100";
+	}
 }

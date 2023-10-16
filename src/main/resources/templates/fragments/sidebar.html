@@ -5,31 +5,31 @@ class="sidebar" id="sidebar">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
                 <li class="menu-title"></li>
-                <li>
-                    <a th:href="@{/admin/dashboard}">
+                <li th:classappend="${requestURI.startsWith('/admin/dashboard') ? 'active' : ''}">
+                    <a  th:href="@{/admin/dashboard}">
                         <i class="fe fe-home"></i>
                         <span>Tableau de bord</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/admin/grades') ? 'active' : ''}">
                     <a th:href="@{/admin/grades}">
                         <i class="fa fa-books"></i>
                         <span>Niveaux</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/admin/sectors') ? 'active' : ''}">
                     <a th:href="@{/admin/sectors}">
                         <i class="fa fa-globeX"></i>
                         <span>Filieres</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/admin/students') ? 'active' : ''}">
                     <a th:href="@{/admin/students}">
                         <i class="fa fa-globeX"></i>
                         <span>Etudiants</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/admin/thesis') ? 'active' : ''}">
                     <a th:href="@{/admin/thesis}">
                         <i class="fa fa-globeX"></i>
                         <span>Memoires</span>

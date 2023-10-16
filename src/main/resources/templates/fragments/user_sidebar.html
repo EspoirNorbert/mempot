@@ -9,19 +9,19 @@
 
             <ul>
                 <li class="menu-title"></li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/user/dashboard') ? 'active' : ''}">
                     <a th:href="@{/user/dashboard}">
                         <i class="fe fe-home"></i>
                         <span>Tableau de bord</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/user/thesis') ? 'active' : ''}">
                     <a th:href="@{/user/thesis}">
                         <i class="fa fa-books"></i>
                         <span>Mes depots</span>
                     </a>
                 </li>
-                <li>
+                <li th:classappend="${requestURI.startsWith('/user/library') ? 'active' : ''}">
                     <a
                         th:href="@{/user/library}">
                         <!-- https://feathericons.dev/?search=book-open&iconset=feather -->

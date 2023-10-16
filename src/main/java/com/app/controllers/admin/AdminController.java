@@ -13,7 +13,7 @@ public class AdminController {
 		return "views/admin/dashboard";
 	}
 	
-	@GetMapping("/profile")
+	@GetMapping("/profil")
 	public String profile() {
 		return "views/admin/profile";
 	}

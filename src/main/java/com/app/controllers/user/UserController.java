@@ -67,7 +67,10 @@ public class UserController {
 		return "views/user/library";
 	}
 	
-	
+	@GetMapping("/profil")
+	public String profile() {
+		return "views/user/profile";
+	}
 	
 	private String getFilePath(MultipartFile file) {
 		return "/files/"+ com.app.utils.Helper.
