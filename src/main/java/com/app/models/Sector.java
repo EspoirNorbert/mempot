@@ -68,4 +68,12 @@ public class Sector implements Serializable {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
+	public List<Student> getStudents() {
+		return students;
+	}
+	
+	public void setStudents(List<Student> students) {
+		this.students = students;
+	}
 }

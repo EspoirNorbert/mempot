@@ -4,7 +4,6 @@
 		layout:decorate="~{layouts/base}">
 
     <div layout:fragment="content">
-       <div class="page-wrapper">
         <div class="container-fluid mt-5">
             <div class="page-header">
                 <div class="row align-items-center">
@@ -48,7 +47,9 @@
                                         <tr th:each="grade : ${grades}">
                                             <td th:text="${grade.id}"></td>
                                             <td th:text="${grade.name}"></td>
-                                            <td> <span class="badge bg-primary">0</span> </td>
+                                            <td>
+                                                <span class="badge bg-primary" th:text="${grade.students.size()}"></span>
+                                            </td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  
@@ -75,6 +76,6 @@
                
             </div>
         </div>
-       </div>
+       
     </div>
 </html>

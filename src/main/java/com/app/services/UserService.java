@@ -29,6 +29,7 @@ public class UserService {
 		Role role = roleRepository.findByName(roleName);
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 		user.setRoles(Arrays.asList((role)));
+		user.setIsEnable(true);
 		this.save(user);
 	}
 	
@@ -44,6 +45,7 @@ public class UserService {
 	public void save(User user) {
 		userRepository.save(user);
 	}
+	
 	
 	@Transactional
 	public User findByEmail(String email) {

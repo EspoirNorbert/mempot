@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate="~{layouts/base}">
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/base}">
 
     <div layout:fragment="content">
         <div class="container-fluid mt-5">
@@ -17,16 +15,18 @@
                         </ul>
                     </div>
                     <div class="col d-flex justify-content-end">
-                        <a th:href="@{/admin/sectors/new}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouvelle filiere</a>
+                        <a th:href="@{/admin/sectors/new}" class="btn btn-primary">
+                            <i class="fa fa-plus"></i>
+                            Nouvelle filiere</a>
                     </div>
                 </div>
-              
+
             </div>
             <div class="row">
                 <div th:if="${sectors.size() == 0}">
-                   <div th:replace="~{fragments/empty('Vous n\'avez creer aucune filiere', 
-                   	'Tous vos filieres seront sauvegardées ici pour que 
-                   	vous puissez les consulter tout moment.')}"></div>
+                    <div th:replace="~{fragments/empty('Vous n\'avez creer aucune filiere',
+                                           	'Tous vos filieres seront sauvegardées ici pour que
+                                           	vous puissez les consulter tout moment.')}"></div>
                 </div>
 
                 <div th:unless="${sectors.size() == 0}" class="col-md-12 d-flex">
@@ -47,20 +47,18 @@
                                         <tr th:each="sector : ${sectors}">
                                             <td th:text="${sector.id}"></td>
                                             <td th:text="${sector.name}"></td>
-                                            <td> <span class="badge bg-primary">0</span> </td>
+                                            <td>
+                                                <span class="badge bg-primary" th:text="${sector.students.size()}"></span>
+                                            </td>
                                             <td class="text-end">
                                                 <div class="actions">
-                                                    <a  
-                                                    th:href="@{/admin/sectors/edit/}+${sector.id}"
-                                                    class="btn btn-sm bg-primary-light me-2">
+                                                    <a th:href="@{/admin/sectors/edit/}+${sector.id}" class="btn btn-sm bg-primary-light me-2">
                                                         <i class="fe fe-pencil"></i>
                                                     </a>
-                                                    <a  
-                                                    th:href="@{/admin/sectors/delete/}+${sector.id}"
-                                                    class="btn btn-sm bg-danger-light me-2">
+                                                    <a th:href="@{/admin/sectors/delete/}+${sector.id}" class="btn btn-sm bg-danger-light me-2">
                                                         <i class="fe fe-trash"></i>
                                                     </a>
-                                                   
+
                                                 </div>
                                             </td>
                                         </tr>
@@ -71,7 +69,7 @@
                     </div>
 
                 </div>
-               
+
             </div>
         </div>
     </div>

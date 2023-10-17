@@ -12,9 +12,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.beans.RegisterRequest;
+import com.app.config.CustomUserDetailService;
 import com.app.models.Grade;
 import com.app.models.Sector;
 import com.app.models.Student;
+import com.app.models.User;
 import com.app.services.GradeService;
 import com.app.services.SectorService;
 import com.app.services.UserService;
@@ -28,6 +30,7 @@ public class AuthController {
 	@Autowired private GradeService gradeService;
 	@Autowired private SectorService sectorService;
 	@Autowired private UserService userService;
+	@Autowired private CustomUserDetailService authService;
 
 	@GetMapping("/register")
 	public String registerForm(Model model) {
@@ -52,11 +55,11 @@ public class AuthController {
 		}
 		
 		Student student = Helper.convertRegisterFormToStudent(registerRequest);
-		System.out.println(student);
 		
 		this.userService.createStudent(student);
 		
-		reditAttributes.addFlashAttribute("success", 
+		reditAttributes
+			.addFlashAttribute("success", 
 				"Vous etes inscrit avec success "
 				+ "! vous pouvez vous connecter des maintenant !");
 		
@@ -67,4 +70,26 @@ public class AuthController {
 	public String login() {
 		return "views/login";
 	}
+	
+	@PostMapping("/profile")
+	public String updateProfile(@Valid @ModelAttribute("currentUser") User user, 
+			BindingResult results) {
+		
+		System.out.println(user.getFirstname());
+		String viewAccordingProfile = 
+				user.getRoles().get(0).getName().equals("USER") ? "user" : "admin";
+		
+		if (results.hasErrors()) {
+			return "views/"+ viewAccordingProfile + "/profil";
+		}
+		
+		// set userId
+		user.setId(authService.getCurrentUser().getId());
+		
+		// save object
+		userService.save(user);
+		
+		return "redirect:/"+viewAccordingProfile+"/profil";	
+	}
+	
 }

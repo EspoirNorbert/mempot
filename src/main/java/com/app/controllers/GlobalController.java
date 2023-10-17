@@ -20,9 +20,7 @@ public class GlobalController {
 	
 	@ModelAttribute("currentUser")
 	public void getCurrentUser(Model model, org.apache.coyote.Request request) {
-		System.out.println("Get current User is called !!!!!!");
 		User auth = userService.getCurrentUser();
-		
 		if (auth != null) {
 			model.addAttribute("userAvatar", Helper.getDefautlAvatar(auth.getFirstname(), auth.getLastname()));		
 			model.addAttribute("currentUser", auth);

@@ -8,10 +8,10 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Etudiant</h3>
+                        <h3 class="page-title">Etudiants</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
-                                <a th:href="@{/}">Tableau de bord</a>
+                                <a th:href="@{/user/dashboard}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item active">Etudiants</li>
                         </ul>
@@ -37,21 +37,45 @@
                                 <table class="table table-hover table-center mb-0">
                                     <thead>
                                         <tr>
-                                            <th>Nom</th>
-                                            <th>Prenom</th>
-                                            <th>Matricule</th>
+                                            <th>Nom/Prenoms</th>
                                             <th>Filiere</th>
                                             <th>Niveau</th>
+                                            <th>Compte</th>
                                             <th class="text-end">Actions</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr th:each="student :${students}">
-                                            <td th:text="${student.lastname}"></td>
-                                             <td th:text="${student.firstname}"></td>
-                                            <td th:text="${student.matricule}"></td>
+                                            <td>
+                                                <h2 class="table-avatar">
+                                                    <img class="avatar-img rounded-circle me-3" 
+                                                    th:src="@{'https://ui-avatars.com/api/?name=' + ${student.firstname} + '+' + ${student.lastname} + '&background=680a83&color=fff&size=30'}" 
+                                                    th:alt="${student.firstname + ' ' + student.lastname + ' Image'}">
+                                                    <a th:href="@{/}">
+                                                        <h6  th:text="${student.firstname} + ' ' + ${student.lastname}"></h6>
+                                                        <span th:text="'#' + ${student.matricule}"></span>
+                                                    </a>
+                                                </h2>
+                                            </td>
                                             <td><span class="badge badge-primary" th:text="${student.sector.name}"></span></td>
                                             <td><span class="badge badge-primary" th:text="${student.grade.name}"></span></td>
+                                            <td>
+                                                <span th:if="${student.isEnable}" class="badge badge-success">
+                                                   <!-- https://feathericons.dev/?search=unlock&iconset=feather -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                        <rect height="11" rx="2" ry="2" width="18" x="3" y="11" />
+                                                        <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+                                                    </svg>
+  
+                                                </span>
+                                                <span th:if="${!student.isEnable}" class="badge badge-danger">
+                                                    <!-- https://feathericons.dev/?search=lock&iconset=feather -->
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                                                        <rect height="11" rx="2" ry="2" width="18" x="3" y="11" />
+                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                                                    </svg>
+                                                </span>
+                                            </td>
                                             
                                              <td class="text-end">
                                                 <div class="actions">
