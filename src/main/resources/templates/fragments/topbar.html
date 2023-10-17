@@ -32,7 +32,7 @@
                             <div class="avatar avatar-sm">
                                 <span 
                             th:text="${#strings.substring(currentUser.firstname, 0, 1)}+${#strings.substring(currentUser.lastname, 0, 1)}"
-                            class="avatar-title rounded-circle border border-white"></span>
+                            class="avatar-title rounded-circle border border-white bg-avatar-title"></span>
                             </div>
                             <div class="user-text">
                                 <h6 th:text="${currentUser.firstname} + ' ' + ${#strings.toUpperCase(currentUser.lastname)}" ></h6>

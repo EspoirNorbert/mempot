@@ -35,6 +35,12 @@ class="sidebar" id="sidebar">
                         <span>Memoires</span>
                     </a>
                 </li>
+                <li th:classappend="${requestURI.startsWith('/admin/profil') ? 'active' : ''}">
+                    <a th:href="@{/admin/profil}">
+                        <i class="fa fa-globeX"></i>
+                        <span>Parametres</span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>
