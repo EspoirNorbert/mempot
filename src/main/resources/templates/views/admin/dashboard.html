@@ -25,12 +25,12 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                     <div class="card">
                         <div class="card-body">
                             <div class="dash-widget-header">
-                                <span class="dash-widget-icon bg-dark">
+                                <span class="dash-widget-icon bg-primary">
                                     <i class="fe fe-users"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <a th:href="@{/#}" class="count-title">Filieres</a>
-                                    <a th:href="@{/#}" class="count">0</a>
+                                    <a th:href="@{/admin/sectors}" class="count-title">Filieres</a>
+                                    <a th:href="@{/admin/sectors}" class="count" th:text="${totalSector}"></a>
                                 </div>
                             </div>
                         </div>
@@ -44,8 +44,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                                     <i class="fe fe-users"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <a th:href="@{/#}" class="count-title">Niveaux</a>
-                                    <a th:href="@{/#}" class="count">0</a>
+                                    <a th:href="@{/admin/grades}" class="count-title">Niveaux</a>
+                                    <a th:href="@{/admin/grades}" class="count" th:text="${totalGrade}"></a>
                                 </div>
                             </div>
                         </div>
@@ -59,9 +59,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                                     <i class="fe fe-users"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <a th:href="@{/#}" class="count-title">Etudiants</a>
-                                    <a th:href="@{/#}" class="count">
-                                        0</a>
+                                    <a th:href="@{/admin/students}" class="count-title">Etudiants</a>
+                                    <a th:href="@{/admin/students}" class="count" th:text="${totalStudent}"></a>
                                 </div>
                             </div>
                         </div>
@@ -75,9 +74,8 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                                     <i class="fe fe-users"></i>
                                 </span>
                                 <div class="dash-count">
-                                    <a th:href="@{/#}" class="count-title">Memoires</a>
-                                    <a th:href="@{/#}" class="count">
-                                        0</a>
+                                    <a th:href="@{/admin/thesis}" class="count-title">Memoires</a>
+                                    <a th:href="@{/admin/thesis}" class="count" th:text="${totalThesis}"></a>
                                 </div>
                             </div>
                         </div>

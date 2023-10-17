@@ -46,4 +46,9 @@ public class GradeService {
 		if (grade != null)
 			this.gradeRepository.delete(grade);
 	}
+	
+	@Transactional
+	public long count() {
+		return gradeRepository.count();
+	}
 }

@@ -46,4 +46,9 @@ public class SectorService {
 		if (grade != null)
 			this.sectorRepository.delete(grade);
 	}
+	
+	@Transactional
+	public long count() {
+		return sectorRepository.count();
+	}
 }
