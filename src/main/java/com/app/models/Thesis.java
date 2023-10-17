@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -34,6 +35,7 @@ public class Thesis implements Serializable {
 	
 	@CreationTimestamp
 	@Column(name="submission_date" , nullable = false)
+	@DateTimeFormat(pattern = "dd-MMM-yyyy")
 	private LocalDate submissionDate;
 	
 	@Column(columnDefinition = "TEXT" , nullable = false)

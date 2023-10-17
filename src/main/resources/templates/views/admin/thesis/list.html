@@ -8,7 +8,7 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Memoire</h3>
+                        <h3 class="page-title">Memoires</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a th:href="@{/}">Tableau de bord</a>
@@ -41,7 +41,6 @@
                                             <th>Theme</th>
                                             <th>Année Academique</th>
                                             <th>Date soumission</th>
-                                            <th>Fichier</th>
                                             <th>Etudiant</th>
                                             <th class="text-end">Actions</th>
                                         </tr>
@@ -49,18 +48,24 @@
                                     <tbody>
                                         <tr th:each="t : ${thesis}">
                                             <td th:text="${t.id}"></td>
-                                            <td th:text="${t.topic}"></td>
+                                            <td class="text-truncate" th:text="${t.topic}"></td>
                                             <td th:text="${t.academicYear}"></td>
                                             <td th:text="${t.submissionDate}"></td>
-                                            <td><a target="_blank" th:href="@{${t.filePath}}"><i class="fe fe-file fw-3"></i></a></td>
-
-                                            <td> <span class="badge bg-primary" th:text="${t.student.firstname}"></span> </td>
+                                            <td> <span class="badge bg-primary" 
+                                                th:text="${t.student.firstname} + ' ' + ${t.student.lastname}"></span> </td>
                                             <td class="text-end">
                                                 <div class="actions">
                                                     <a  
                                                     th:href="@{/thesis/edit/}+${t.id}"
                                                     class="btn btn-sm bg-primary-light me-2">
                                                         <i class="fe fe-pencil"></i>
+                                                    </a>
+                                                    <a  
+                                                    target="_blank"
+                                                    title="Visualiser le memoire"
+                                                    th:href="@{${t.filePath}}"
+                                                    class="btn btn-sm bg-primary-light me-2">
+                                                        <i class="fe fe-file"></i>
                                                     </a>
                                                 </div>
                                             </td>
