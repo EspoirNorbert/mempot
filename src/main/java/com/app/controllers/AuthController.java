@@ -80,7 +80,7 @@ public class AuthController {
 				user.getRoles().get(0).getName().equals("USER") ? "user" : "admin";
 		
 		if (results.hasErrors()) {
-			return "views/"+ viewAccordingProfile + "/profil";
+			return "views/"+ viewAccordingProfile + "/profile";
 		}
 		
 		// set userId

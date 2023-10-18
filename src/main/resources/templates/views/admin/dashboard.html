@@ -26,7 +26,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                         <div class="card-body">
                             <div class="dash-widget-header">
                                 <span class="dash-widget-icon bg-primary">
-                                    <i class="fe fe-users"></i>
+                                    <i class="fas fa-university"></i>
                                 </span>
                                 <div class="dash-count">
                                     <a th:href="@{/admin/sectors}" class="count-title">Filieres</a>
@@ -41,7 +41,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                         <div class="card-body">
                             <div class="dash-widget-header">
                                 <span class="dash-widget-icon bg-primary">
-                                    <i class="fe fe-users"></i>
+                                    <i class="fas fa-level-up-alt"></i>
                                 </span>
                                 <div class="dash-count">
                                     <a th:href="@{/admin/grades}" class="count-title">Niveaux</a>
@@ -56,7 +56,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                         <div class="card-body">
                             <div class="dash-widget-header">
                                 <span class="dash-widget-icon bg-primary">
-                                    <i class="fe fe-users"></i>
+                                    <i class="fas fa-graduation-cap"></i>
                                 </span>
                                 <div class="dash-count">
                                     <a th:href="@{/admin/students}" class="count-title">Etudiants</a>
@@ -71,13 +71,39 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layo
                         <div class="card-body">
                             <div class="dash-widget-header">
                                 <span class="dash-widget-icon bg-primary">
-                                    <i class="fe fe-users"></i>
+                                    <i class="fas fa-book"></i>
                                 </span>
                                 <div class="dash-count">
                                     <a th:href="@{/admin/thesis}" class="count-title">Memoires</a>
                                     <a th:href="@{/admin/thesis}" class="count" th:text="${totalThesis}"></a>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">Filieres recentes</div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">Niveux recent</div>
+                        <div class="card-body">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header">Etudiant recement arrivées</div>
+                        <div class="card-body">
+                            
                         </div>
                     </div>
                 </div>

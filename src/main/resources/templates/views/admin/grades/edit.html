@@ -1,57 +1,82 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-        layout:decorate="~{layouts/base}">
-
-    <div layout:fragment="content">
-        <div class="content container-fluid mt-5">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Niveaux</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/admin/grades}">Niveaux</a>
-                            </li>
-                            <li class="breadcrumb-item active">Modification</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title">Modification niveau (<strong th:text="${grade.id}"></strong>)</h4>
-                </div>
-                <div class="card-body">
-                    <div class="alert alert-info">
-                        <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
-                    </div>
-                    <form th:action="@{/admin/grades/update}" method="post" th:object="${grade}" >
-                        <input type="hidden"  name="id" th:field="*{id}">
-                        <div class="form-group">
-                            <label for="name">Nom <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" required th:field="*{name}" name="nom" 
-                                    th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
-                                    placeholder="Entrer le nom de la filiere (ex: Master)">
-                            <div id="NameHelpBlock" class="form-text">
-                                Le nom de la filiere.
-                            </div>
-                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-field w-100"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Description (facultatif)</label>
-                            <textarea rows="5" cols="5" th:field="*{description}" class="form-control" placeholder="Une petite description du niveau"></textarea>
-                        </div>
-                        <div>
-                            <button type="submit" class="btn btn-primary">Modifier</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}"
+>
+  <div layout:fragment="content">
+    <div class="content container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Modification niveau</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/grades}">Niveaux</a>
+              </li>
+              <li class="breadcrumb-item active">Modification</li>
+            </ul>
+          </div>
         </div>
-       </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title fw-bold">Modifier un niveau</h4>
+        </div>
+        <div class="card-body">
+          <div th:replace="~{fragments/require_alert}"></div>
+          <form
+            th:action="@{/admin/grades/update}"
+            method="post"
+            th:object="${grade}"
+          >
+            <div class="form-group">
+              <label for="name" class="fw-bold"
+                >Nom
+                <span class="text-danger">*</span>
+              </label>
+              <input
+                type="text"
+                class="form-control"
+                required
+                th:field="*{name}"
+                name="nom"
+                th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
+                placeholder="Entrer le nom de la filiere (ex: Master)"
+              />
+              <div id="NameHelpBlock" class="form-text">
+                Le nom du filiere mise à jour.
+              </div>
+             
+              <div
+                th:if="${#fields.hasErrors('name')}"
+                th:errors="*{name}"
+                class="invalid-field w-100"
+              ></div>
+            </div>
+            <div class="form-group">
+              <label for="name" class="fw-bold">Description (facultatif)</label>
+              <textarea
+                rows="5"
+                cols="5"
+                th:field="*{description}"
+                class="form-control"
+                placeholder="Une petite description pour le niveau"
+              ></textarea>
+            </div>
+            <div class="text-end">
+              <a th:href="@{/admin/grades}" class="btn btn-outline-app me-3"
+                >Annuler</a
+              >
+              <button type="submit" class="btn btn-primary">Mettre à jour</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </html>

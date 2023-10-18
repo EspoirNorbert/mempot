@@ -1,44 +1,43 @@
 <div 
 xmlns:th="http://www.thymeleaf.org" 
 class="sidebar" id="sidebar">
-    <div class="sidebar-inner slimscroll">
+    <div class="sidebar-inner slimscroll" style="background-color: #823996;color:white">
         <div id="sidebar-menu" class="sidebar-menu">
             <ul>
-                <li class="menu-title"></li>
                 <li th:classappend="${requestURI.startsWith('/admin/dashboard') ? 'active' : ''}">
                     <a  th:href="@{/admin/dashboard}">
-                        <i class="fe fe-home"></i>
+                        <i class="fas fa-home"></i>
                         <span>Tableau de bord</span>
                     </a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/admin/grades') ? 'active' : ''}">
                     <a th:href="@{/admin/grades}">
-                        <i class="fa fa-books"></i>
+                        <i class="fas fa-level-up-alt"></i>
                         <span>Niveaux</span>
                     </a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/admin/sectors') ? 'active' : ''}">
                     <a th:href="@{/admin/sectors}">
-                        <i class="fa fa-globeX"></i>
+                        <i class="fas fa-university"></i>
                         <span>Filieres</span>
                     </a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/admin/students') ? 'active' : ''}">
                     <a th:href="@{/admin/students}">
-                        <i class="fa fa-globeX"></i>
+                        <i class="fas fa-graduation-cap"></i>
                         <span>Etudiants</span>
                     </a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/admin/thesis') ? 'active' : ''}">
                     <a th:href="@{/admin/thesis}">
-                        <i class="fa fa-globeX"></i>
+                        <i class="fas fa-book"></i>
                         <span>Memoires</span>
                     </a>
                 </li>
-                <li th:classappend="${requestURI.startsWith('/admin/profil') ? 'active' : ''}">
-                    <a th:href="@{/admin/profil}">
-                        <i class="fa fa-globeX"></i>
-                        <span>Parametres</span>
+                <li th:classappend="${requestURI.startsWith('/admin/profile') ? 'active' : ''}">
+                    <a th:href="@{/admin/profile}">
+                        <i class="far fa-user me-2 text-app"></i> 
+                        <span>Profile</span>
                     </a>
                 </li>
             </ul>

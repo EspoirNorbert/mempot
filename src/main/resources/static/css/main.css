@@ -1,4 +1,35 @@
 
+.text-app {
+    color: #680a83;
+}
+
 .bg-avatar-title {
     background-color: #680a83;
 }
+
+.bg-transparent {
+    background: transparent;
+}
+
+.border-none {
+    border: none;
+}
+
+.bg-app {
+    background-color: #680a83;
+}
+
+.btn-outline-app {
+    color: #680a83;
+    border-color: #680a83;
+  }
+  .btn-outline-app:hover {
+    background-color: #8d19ad;
+    border-color: #8d19ad;
+    color: #fff;
+  }
+
+  .avatar_more {
+    background-color: #cfd3da;
+    color: #000000;
+  }

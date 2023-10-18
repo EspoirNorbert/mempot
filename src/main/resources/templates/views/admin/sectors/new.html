@@ -8,15 +8,15 @@
             <div class="page-header">
                 <div class="row align-items-center">
                     <div class="col">
-                        <h3 class="page-title">Filieres</h3>
+                        <h3 class="page-title fw-bolder">Ajout Nouvelle Filiere</h3>
                         <ul class="breadcrumb">
                             <li class="breadcrumb-item">
                                 <a th:href="@{/}">Tableau de bord</a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a th:href="@{/admin/sectors}">Niveaux</a>
+                                <a th:href="@{/admin/sectors}">Filieres</a>
                             </li>
-                            <li class="breadcrumb-item active">Nouveau</li>
+                            <li class="breadcrumb-item active">Ajout nouvelle filiere</li>
                         </ul>
                     </div>
                 </div>
@@ -24,23 +24,19 @@
             </div>
             <div class="card">
                 <div class="card-header">
-                    <h4 class="card-title">Nouveau niveau</h4>
-                  
+                    <h4 class="card-title fw-bold">Creer une nouvelle filiere</h4>
                 </div>
                 <div class="card-body">
-                   <div class="alert alert-info">
-                    <p class="card-text mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
-                   </div>
+                    <div th:replace="~{fragments/require_alert}"></div>
                     <form th:action="@{/admin/sectors/new}" method="post" th:object="${sector}" >
                         <div class="form-group">
-                            <label for="name">Nom <span class="text-danger">*</span></label>
+                            <label for="name" class="fw-bold">Nom <span class="text-danger">*</span></label>
                             <input type="text" class="form-control" required th:field="*{name}" name="nom" 
                                     th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
                                     placeholder="Entrer le nom de la filiere (ex: Master en ingenierie des SI)">
                             <div id="NameHelpBlock" class="form-text">
-                                Le nom de la filiere.
+                                Le nom de la nouvelle filiere.
                             </div>
-                            <!-- display error -->
                             <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-field w-100"></div>
                             
                         </div>
@@ -48,8 +44,9 @@
                             <label for="name">Description (facultatif)</label>
                             <textarea rows="5" cols="5" th:field="*{description}" class="form-control" placeholder="Une petite description du niveau"></textarea>
                         </div>
-                        <div class="">
-                            <button type="submit" class="btn btn-primary">Creer</button>
+                        <div class="text-end">
+                            <a th:href="@{/admin/sectors}" class="btn btn-outline-app me-3">Annuler</a>
+                            <button type="submit" class="btn btn-primary">Creer filiere</button>
                         </div>
                     </form>
                 </div>
