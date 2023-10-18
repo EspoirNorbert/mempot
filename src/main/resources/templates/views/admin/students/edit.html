@@ -16,7 +16,7 @@
                 <a th:href="@{/admin/dashboard}">Tableau de bord</a>
               </li>
               <li class="breadcrumb-item">
-                <a th:href="@{/admin/grades}">Etudiant</a>
+                <a th:href="@{/admin/students}">Etudiant</a>
               </li>
               <li class="breadcrumb-item active">Modification</li>
             </ul>
@@ -34,18 +34,27 @@
             method="post"
             th:object="${student}"
           >
+          <input type="hidden" name="id" th:field="*{id}">
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Nom  <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" th:field="*{lastname}">
+                <input type="text" required class="form-control" th:field="*{lastname}">
             </div>
           
             </div>
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Prénom(s)  <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" th:field="*{firstname}">
+                <input type="text" required class="form-control" th:field="*{firstname}">
+            </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="mb-3">
+                <label class="mb-2 fw-bold">Adresse (Facultatif)</label>
+                <input type="text" class="form-control" th:field="*{address}" placeholder="7 rue des Fleurs 37000 Tours">
             </div>
             </div>
           </div>
@@ -53,7 +62,7 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Matricule  <span class="text-danger">*</span></label>
-                <input type="text" class="form-control" th:field="*{matricule}">
+                <input type="text" required  class="form-control" th:field="*{matricule}">
             </div>
           
             </div>

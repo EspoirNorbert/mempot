@@ -39,18 +39,28 @@ public class StudentService {
 	}
 
 	public void update(Student student) {
-		if (findById(student.getId()) != null) {
+		Student studentToFound = this.findById(student.getId());
+		
+		if (student != null) {
 
 			// search sector
 			Sector sector = sectorService.findById(student.getSector().getId());
-			student.setSector(sector);
+			studentToFound.setSector(sector);
 
 			// search grade
 			Grade grade = gradeService.findById(student.getGrade().getId());
-			student.setGrade(grade);
+			studentToFound.setGrade(grade);
+			
+			// update some field
+			studentToFound.setEmail(student.getEmail());
+			studentToFound.setFirstName(student.getFirstname());
+			studentToFound.setMatricule(student.getMatricule());
+			studentToFound.setAddress(student.getAddress());
+			
+			System.out.println("New Student " + studentToFound);
 			
 			// save
-			studentRepository.save(student);
+			studentRepository.save(studentToFound);
 		}
 	}
 

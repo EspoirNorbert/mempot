@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.app.beans.RegisterRequest;
+import com.app.beans.UpdateStudentRequest;
 import com.app.models.Grade;
 import com.app.models.Sector;
 import com.app.models.Student;
@@ -52,7 +52,7 @@ public class StudentController {
 			return "redirect:/admin/students";
 		}
 		
-		RegisterRequest student = Helper.convertStudentToRegisterForm(studentToFound);
+		UpdateStudentRequest student = Helper.studentToUpdateStudentRequest(studentToFound);
 		
 		System.out.println(student);
 		List<Sector> sectors = sectorService.list();
@@ -66,16 +66,22 @@ public class StudentController {
 	
 	@PostMapping("/update")
 	public String modifier(@Valid @ModelAttribute("student") 
-			RegisterRequest requestStudent,BindingResult result) {
+	UpdateStudentRequest requestStudent,BindingResult result,Model model) {
 		
-		Student student = Helper.convertRegisterFormToStudent(requestStudent);
+		Student student = Helper.
+				updateStudentRequestToStudent(requestStudent);
 		System.out.println(student);
+		System.out.println(result);
 		
 		if (result.hasErrors()) {
+			List<Sector> sectors = sectorService.list();
+			List<Grade> grades = gradeService.list();
+			model.addAttribute("grades", grades);
+			model.addAttribute("sectors", sectors);
 			return MAIN_PATH+ "/edit";
 		}
 	
-		this.userService.save(student);
+		this.studentService.update(student);
 		return "redirect:/admin/students";
 	}
 	
