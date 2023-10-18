@@ -44,14 +44,6 @@ public class Student extends User implements Serializable {
 	
 	public Student() {}
 	
-	public Long getId() {
-		return id;
-	}
-	
-	public void setId(Long id) {
-		this.id = id;
-	}
-	
 	public String getMatricule() {
 		return matricule;
 	}

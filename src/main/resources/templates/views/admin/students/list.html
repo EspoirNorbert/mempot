@@ -1,101 +1,142 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate="~{layouts/base}">
-
-    <div layout:fragment="content">
-        <div class="container-fluid mt-5">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Etudiants</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/user/dashboard}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item active">Etudiants</li>
-                        </ul>
-                    </div>
-                   <!--  <div class="col d-flex justify-content-end">
-                        <a th:href="@{/thesis/new}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouveau Etudiant</a>
-                    </div> -->
-                </div>
-              
-            </div>
-            <div class="row">
-                <div th:if="${students.size() == 0}">
-                   <div th:replace="~{fragments/empty('Vous n\'avez creer aucun Etudiant', 
-                   	'Tous vos Etudiants seront sauvegardées ici pour que 
-                   	vous puissez les consulter tout moment.')}"></div>
-                </div>
-
-                <div th:unless="${students.size() == 0}" class="col-md-12 d-flex">
-
-                    <div class="card card-table flex-fill">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>Nom/Prenoms</th>
-                                            <th>Filiere</th>
-                                            <th>Niveau</th>
-                                            <th>Compte</th>
-                                            <th class="text-end">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="student :${students}">
-                                            <td>
-                                                <h2 class="table-avatar">
-                                                    <img class="avatar-img rounded-circle me-3" 
-                                                    th:src="@{'https://ui-avatars.com/api/?name=' + ${student.firstname} + '+' + ${student.lastname} + '&background=680a83&color=fff&size=30'}" 
-                                                    th:alt="${student.firstname + ' ' + student.lastname + ' Image'}">
-                                                    <a th:href="@{/}">
-                                                        <h6  th:text="${student.firstname} + ' ' + ${student.lastname}"></h6>
-                                                        <span th:text="'#' + ${student.matricule}"></span>
-                                                    </a>
-                                                </h2>
-                                            </td>
-                                            <td><span class="badge badge-primary" th:text="${student.sector.name}"></span></td>
-                                            <td><span class="badge badge-primary" th:text="${student.grade.name}"></span></td>
-                                            <td>
-                                                <span th:if="${student.isEnable}" class="badge badge-success">
-                                                   <!-- https://feathericons.dev/?search=unlock&iconset=feather -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                        <rect height="11" rx="2" ry="2" width="18" x="3" y="11" />
-                                                        <path d="M7 11V7a5 5 0 0 1 9.9-1" />
-                                                    </svg>
-  
-                                                </span>
-                                                <span th:if="${!student.isEnable}" class="badge badge-danger">
-                                                    <!-- https://feathericons.dev/?search=lock&iconset=feather -->
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" class="main-grid-item-icon" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
-                                                        <rect height="11" rx="2" ry="2" width="18" x="3" y="11" />
-                                                        <path d="M7 11V7a5 5 0 0 1 10 0v4" />
-                                                    </svg>
-                                                </span>
-                                            </td>
-                                            
-                                             <td class="text-end">
-                                                <div class="actions">
-                                                    <a  
-                                                   href="#"
-                                                    class="btn btn-sm bg-primary-light me-2">
-                                                        <i class="fe fe-pencil"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-               
-            </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}"
+>
+  <div layout:fragment="content">
+    <div class="container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Etudiants</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/user/dashboard}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item active">Etudiants</li>
+            </ul>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div th:if="${students.size() == 0}">
+          <div
+            th:replace="~{fragments/empty('Vous n\'avez creer aucun Etudiant','Tous vos Etudiants seront sauvegardées ici pour que vous puissez les consulter tout moment.')}"></div>
+        </div>
+
+        <div th:unless="${students.size() == 0}" class="col-md-12 d-flex">
+          <div class="card card-table flex-fill">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-center mb-0">
+                  <thead>
+                    <tr>
+                      <th>Etudiant</th>
+                      <th>Matricule</th>
+                      <th>Email</th>
+                      <th>Memoires</th>
+                      <th>Filiere</th>
+                      <th>Niveau</th>
+                      <th>Etat</th>
+                      <th colspan="2">Date inscription</th> 
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="student :${students}">
+                      <td>
+                        <h2 class="table-avatar">
+                          <img
+                            class="avatar-img avatar-sm rounded-circle me-3"
+                            th:src="@{'https://ui-avatars.com/api/?name=' + ${student.firstname} + '+' + ${student.lastname} + '&background=680a83&color=fff&size=80'}"
+                            th:alt="${student.firstname + ' ' + student.lastname + ' Image'}"
+                          />
+                          <a href="#">
+                            <h6
+                            class="fw-bold"
+                              th:text="${student.firstname} + ' ' + ${student.lastname}"
+                            ></h6>
+                          </a>
+                        </h2>
+                      </td>
+                      <td>
+                        <span th:text="${student.matricule}"></span>
+                      </td>
+                      <td>
+                        <span th:text="${student.email}"></span>
+                      </td>
+                      <td>
+                        <span th:text="${student.thesis.size()} + ' memoires'"></span>
+                      </td>
+                      <td>
+                        <span
+                          th:text="${student.sector.name}"
+                        ></span>
+                      </td>
+                      <td>
+                        <span
+                          th:text="${student.grade.name}"
+                        ></span>
+                      </td>
+                      <td>
+                        <span th:text="${student.isEnable? 'Activé' : 'Desactivé'}" th:class="${student.isEnable} ? 'badge bg-success-light' : 'badge bg-danger-light'"></span>
+                    </td>
+                    <td>17 juin 2023</td>
+                    <td class="text-end">
+                        <div class="dropdown">
+                          <a
+                            class="btn-icon btn btn-ghost btn-sm rounded-circle"
+                            id="dropdownMenuLink"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15px"
+                              height="15px"
+                              viewbox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="text-secondary"
+                            >
+                              <circle cx="12" cy="12" r="1"></circle>
+                              <circle cx="12" cy="5" r="1"></circle>
+                              <circle cx="12" cy="19" r="1"></circle>
+                            </svg>
+                          </a>
+                          <!-- Dropdown menu -->
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuLink"
+                          >
+                            <div class="d-flex flex-column">
+                              <a class="dropdown-item"  th:href="@{'/admin/students/edit/' + ${student.id}}">
+                                <i class="fas fa-edit me-3 text-app"></i>
+                                <span th:text="'Modifier'"></span>
+                              </a>
+                              <a class="dropdown-item" 
+                                th:href="@{'/admin/students/'+${student.id}+'/'+ ${student.isEnable ? 'deactivate': 'activate'} }">
+                              <i th:classappend="${student.isEnable ? 'fas fa-lock' : 'fas fa-lock-open'}" class="me-3 text-app"></i>
+                              <span th:text="${student.isEnable ? 'Désactiver' : 'Activer'}"></span>
+                           </a>
+                           
+                            
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </html>

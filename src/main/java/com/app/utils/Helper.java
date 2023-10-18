@@ -28,6 +28,23 @@ public class Helper {
 		throw new NullPointerException("RegisterRequest object is null");
 	}
 	
+	public static RegisterRequest convertStudentToRegisterForm(Student student) {
+			
+			if (student != null) {
+				RegisterRequest registerRequest = new RegisterRequest();
+				registerRequest.setFirstname(student.getFirstname());
+				registerRequest.setLastname(student.getLastname());
+				registerRequest.setMatricule(student.getMatricule());
+				registerRequest.setEmail(student.getEmail());
+				registerRequest.setPassword(registerRequest.getPassword());
+				registerRequest.setGrade(student.getGrade().getId().toString());
+				registerRequest.setSector(student.getSector().getId().toString());
+				return registerRequest;
+			}
+			
+			throw new NullPointerException("RegisterRequest object is null");
+		}
+	
 	public static String getDefautlAvatar(String firstname , String lastname) {
 		return 
 				"https://ui-avatars.com/api/?name=" + firstname + "+"+ lastname 

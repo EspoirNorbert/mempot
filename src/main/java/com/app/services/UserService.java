@@ -1,6 +1,7 @@
 package com.app.services;
 
 import java.util.Arrays;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -50,5 +51,32 @@ public class UserService {
 	@Transactional
 	public User findByEmail(String email) {
 		return this.userRepository.findByEmail(email);
+	}
+	
+	@Transactional
+	public User findById(Long id) {
+		Optional<User> user =  this.userRepository.findById(id);
+		if (user.isPresent()) {
+			return user.get();
+		}
+		return null;
+	}
+	
+	@Transactional
+	public void activateUser(Long userId) {
+		Optional<User> user = this.userRepository.findById(userId); 
+		if (user.isPresent()) {
+			user.get().setIsEnable(true);
+			this.save(user.get());
+		}
+	}
+	
+	@Transactional
+	public void deactivateUser(Long userId) {
+		Optional<User> user = this.userRepository.findById(userId); 
+		if (user.isPresent()) {
+			user.get().setIsEnable(false);
+			this.save(user.get());
+		}
 	}
 }
