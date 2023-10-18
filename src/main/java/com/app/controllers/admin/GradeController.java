@@ -63,6 +63,18 @@ public class GradeController {
 		return MAIN_PATH + "/edit";
 	}
 	
+	@GetMapping("/detail/{gradeId}")
+	public String displayDetailGradeForm(@PathVariable("gradeId") Long id,Model model) {
+		
+		Grade grade = gradeService.findById(id);
+
+		if (grade != null) {
+			model.addAttribute("grade", grade);
+			model.addAttribute("title", "Édition région " + id);
+		}
+		return MAIN_PATH + "/detail";
+	}
+	
 	@PostMapping("/update")
 	public String modifier(@ModelAttribute("grade") Grade grade) {
 		System.out.println(grade);

@@ -1,76 +1,129 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{layouts/base}">
-
-    <div layout:fragment="content">
-        <div class="container-fluid mt-5">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Filieres</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item active">Filieres</li>
-                        </ul>
-                    </div>
-                    <div class="col d-flex justify-content-end">
-                        <a th:href="@{/admin/sectors/new}" class="btn btn-primary">
-                            <i class="fa fa-plus"></i>
-                            Nouvelle filiere</a>
-                    </div>
-                </div>
-
-            </div>
-            <div class="row">
-                <div th:if="${sectors.size() == 0}">
-                    <div th:replace="~{fragments/empty('Vous n\'avez creer aucune filiere',
-                                           	'Tous vos filieres seront sauvegardées ici pour que
-                                           	vous puissez les consulter tout moment.')}"></div>
-                </div>
-
-                <div th:unless="${sectors.size() == 0}" class="col-md-12 d-flex">
-
-                    <div class="card card-table flex-fill">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Nom</th>
-                                            <th>Etudiants</th>
-                                            <th class="text-end">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="sector : ${sectors}">
-                                            <td th:text="${sector.id}"></td>
-                                            <td th:text="${sector.name}"></td>
-                                            <td>
-                                                <span class="badge bg-primary" th:text="${sector.students.size()}"></span>
-                                            </td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a th:href="@{/admin/sectors/edit/}+${sector.id}" class="btn btn-sm bg-primary-light me-2">
-                                                        <i class="fe fe-pencil"></i>
-                                                    </a>
-                                                    <a th:href="@{/admin/sectors/delete/}+${sector.id}" class="btn btn-sm bg-danger-light me-2">
-                                                        <i class="fe fe-trash"></i>
-                                                    </a>
-
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}"
+>
+  <div layout:fragment="content">
+    <div class="container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Filieres</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item active">Filieres</li>
+            </ul>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <a th:href="@{/admin/sectors/new}" class="btn btn-primary">
+              <i class="fa fa-plus"></i> Nouvelle filiere</a>
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div th:if="${sectors.size() == 0}">
+          <div
+            th:replace="~{fragments/empty('Vous n\'avez creer aucune filiere',
+                                           	'Tous vos filieres seront sauvegardées ici pour que
+                                           	vous puissez les consulter tout moment.')}"
+          ></div>
+        </div>
+
+        <div th:unless="${sectors.size() == 0}" class="col-md-12 d-flex">
+          <div class="card card-table flex-fill">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-center mb-0">
+                  <thead>
+                    <tr>
+                      <th>N°</th>
+                      <th>Nom</th>
+                      <th colspan="2">Etudiants</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="sector : ${sectors}">
+                      <td th:text="${sector.id}"></td>
+                      <td th:text="${sector.name}"></td>
+                      <td>
+                        <div
+                          th:if="${sector.students.size() != 0}"
+                          class="avatar-group"
+                        >
+                          <div
+                            class="avatar avatar-xs"
+                            th:each="student : ${sector.students}"
+                          >
+                            <!-- grade are not students -->
+                            <img
+                              class="avatar-img rounded-circle border border-white"
+                              alt="User Image"
+                              height="24"
+                              width="24"
+                              th:src="'https://ui-avatars.com/api/?name='+${student.firstname}+'+'+${student.lastname}+'&background=680a83&color=fff&size=80'"
+                              th:title="${student.firstname} + ' ' + ${student.lastname}"
+                            />
+                          </div>
+                        </div>
+                        <span th:unless="${sector.students.size() != 0}"
+                          >Aucun etudiant n'est inscrit dans cette filiere.</span
+                        >
+                      </td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <a
+                            class="btn-icon btn btn-ghost btn-sm rounded-circle"
+                            id="dropdownMenuLink"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15px"
+                              height="15px"
+                              viewbox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="text-secondary"
+                            >
+                              <circle cx="12" cy="12" r="1"></circle>
+                              <circle cx="12" cy="5" r="1"></circle>
+                              <circle cx="12" cy="19" r="1"></circle>
+                            </svg>
+                          </a>
+                          <!-- Dropdown menu -->
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuLink"
+                          >
+                            <div class="d-flex flex-column">
+                              <a class="dropdown-item" th:href="@{'/admin/sectors/detail/' + ${sector.id}}">
+                                <i class="fas fa-eye me-3 text-app"></i>
+                                <span th:text="'Voir'"></span>
+                              </a>
+                              <a class="dropdown-item"  th:href="@{'/admin/sectors/edit/' + ${sector.id}}">
+                                <i class="fas fa-edit me-3 text-app"></i>
+                                <span th:text="'Modifier'"></span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </html>

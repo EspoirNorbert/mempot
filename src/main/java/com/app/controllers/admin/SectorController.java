@@ -62,6 +62,18 @@ public class SectorController {
 		return MAIN_PATH + "/edit";
 	}
 	
+	@GetMapping("/detail/{sectorId}")
+	public String displayDetailGrade(@PathVariable("sectorId") Long id,Model model) {
+		
+		Sector sector = sectorService.findById(id);
+
+		if (sector != null) {
+			model.addAttribute("sector", sector);
+			model.addAttribute("title", "Édition région " + id);
+		}
+		return MAIN_PATH + "/detail";
+	}
+	
 	@PostMapping("/update")
 	public String updateGrade(@ModelAttribute("sector") Sector sector) {
 		System.out.println(sector);
