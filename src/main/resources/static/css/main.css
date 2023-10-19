@@ -176,3 +176,19 @@ div.authors {
     text-decoration: none;
     background-color: transparent;
 }
+
+.h-size {
+    height: 90%;
+}
+
+.custom-alert-info {
+    background-color: #bee3f8;
+}
+
+.custom-alert-success {
+    background-color: #C6F6D5;
+}
+
+.custom-alert-danger {
+    background-color: #FED7D7;
+}
