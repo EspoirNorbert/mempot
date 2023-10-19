@@ -1,55 +1,60 @@
 <div xmlns:th="http://www.thymeleaf.org" class="header">
-    <div class="header-left">
-        <a th:href="@{/}" class="logo">
-            <img th:src="@{/img/logo.png}" alt="Logo"></a>
-            <a th:href="@{/}" class="logo logo-small">
-                <img th:src="@{img/logo-small.png}" alt="Logo" width="30" height="30"></a>
-            </div>
+  <div class="header-left">
+    <a th:href="@{/}" class="logo">
+      <img th:src="@{/img/logo.png}" alt="Logo"
+    /></a>
+    <a th:href="@{/}" class="logo logo-small">
+      <img th:src="@{img/logo-small.png}" alt="Logo" width="30" height="30"
+    /></a>
+  </div>
 
-            <a href="javascript:void(0);" class="text-dark" id="toggle_btn">
-                <i class="fas fa-align-left"></i>
-            </a>
+  <a href="javascript:void(0);" class="text-dark" id="toggle_btn">
+    <i class="fs-5 fas fa-align-left"></i>
+  </a>
 
-            <a class="mobile_btn" id="mobile_btn">
-                <i class="fas fa-bars"></i>
-            </a>
+  <a class="mobile_btn" id="mobile_btn">
+    <i class="fas fa-bars"></i>
+  </a>
 
-            <ul class="nav user-menu">
-
-
-                <li class="nav-item dropdown has-arrow">
-                    <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
-                        <div class="avatar avatar-sm">
-                            <span 
-                            th:text="${#strings.substring(currentUser.firstname, 0, 1)}+${#strings.substring(currentUser.lastname, 0, 1)}"
-                            class="avatar-title rounded-circle border border-white bg-avatar-title"></span>
-                        </div>
-                    </a>
-                    <div class="dropdown-menu" style="width: 250px;">
-                        <div class="user-header">
-                            <div class="avatar avatar-sm">
-                                <span 
-                            th:text="${#strings.substring(currentUser.firstname, 0, 1)}+${#strings.substring(currentUser.lastname, 0, 1)}"
-                            class="avatar-title rounded-circle border border-white bg-avatar-title"></span>
-                            </div>
-                            <div class="user-text">
-                                <h6 class="fw-bolder" th:text="${currentUser.firstname} + ' ' + ${#strings.toUpperCase(currentUser.lastname)}" ></h6>
-                                <p class="text-muted mb-0" th:text="${currentUser.email}"> </p>
-                            </div>
-                        </div>
-                        <a class="dropdown-item" th:href="@{${currentUser.roles[0].name == 'USER'} ? '/user/profile' : '/admin/profile'}">
-                            <i class="far fa-user me-2"></i> Mon profil
-                        </a>
-                        
-                        <form class="dropdown-item" th:action="@{/logout}" method="post">
-                            <button type="submit" class="bg-transparent border-none">
-                                <i class="fas fa-power-off"></i> Se déconnecter</button>
-                        </form>
-                        
-                    </div>
-                </li>
-
-            </ul>
-
+  <ul class="nav user-menu">
+    <li class="nav-item dropdown has-arrow">
+      <a href="#" class="dropdown-toggle nav-link" data-bs-toggle="dropdown">
+        <div class="avatar avatar-sm">
+          <span
+            th:text="${#strings.substring(currentUser.firstname, 0, 1)}+${#strings.substring(currentUser.lastname, 0, 1)}"
+            class="avatar-title rounded-circle border border-white bg-avatar-title"
+          ></span>
         </div>
+      </a>
+      <div class="dropdown-menu" style="width: 250px">
+        <div class="user-header">
+          <div class="avatar avatar-sm">
+            <span
+              th:text="${#strings.substring(currentUser.firstname, 0, 1)}+${#strings.substring(currentUser.lastname, 0, 1)}"
+              class="avatar-title rounded-circle border border-white bg-avatar-title"
+            ></span>
+          </div>
+          <div class="user-text">
+            <h6
+              class="fw-bolder"
+              th:text="${currentUser.firstname} + ' ' + ${#strings.toUpperCase(currentUser.lastname)}"
+            ></h6>
+            <p class="text-muted mb-0" th:text="${currentUser.email}"></p>
+          </div>
+        </div>
+        <a
+          class="dropdown-item"
+          th:href="@{${currentUser.roles[0].name == 'USER'} ? '/user/profile' : '/admin/profile'}"
+        >
+          <i class="far fa-user me-2"></i> Mon profil
+        </a>
 
+        <form class="dropdown-item" th:action="@{/logout}" method="post">
+          <button type="submit" class="bg-transparent border-none">
+            <i class="fas fa-power-off"></i> Se déconnecter
+          </button>
+        </form>
+      </div>
+    </li>
+  </ul>
+</div>

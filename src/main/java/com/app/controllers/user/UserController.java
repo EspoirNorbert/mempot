@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -45,6 +46,44 @@ public class UserController {
 		return "views/user/thesis/deposit";
 	}
 	
+	@GetMapping("/thesis/detail/{thesisId}")
+	public String detailsThesis(@PathVariable("thesisId") Long id,Model model) {
+		
+		Thesis thesis = thesisService.findById(id);
+
+		if (thesis != null) {
+			model.addAttribute("thesis", thesis);
+		}
+		return "views/user/thesis/detail";
+	}
+	
+	@GetMapping("/thesis/edit/{thesisId}")
+	public String displayEditThesisForm(@PathVariable("thesisId") Long id,Model model) {
+		
+		Thesis thesis = thesisService.findById(id);
+
+		if (thesis == null) {
+			return "views/user/thesis";
+		}
+		
+		model.addAttribute("thesis", thesis);
+		return "views/user/thesis/edit";
+	}
+	
+	@PostMapping("/thesis/update")
+	public String modifier(@Valid @ModelAttribute("Thesis") 
+	Thesis thesis,BindingResult result,Model model) {
+		
+		if (result.hasErrors()) {
+			return "views/user/thesis/edit";
+		}
+		
+		System.out.println(thesis.getTopic());
+		this.thesisService.update(thesis);
+		return "redirect:/user/thesis";
+	}
+	
+	
 	@PostMapping("/thesis/deposit")
 	public String upload(@Valid @ModelAttribute("thesis") Thesis thesis,
 			@RequestParam("file") MultipartFile file,BindingResult bindingResult) {
@@ -64,7 +103,19 @@ public class UserController {
 	public String library(Model model) {
 		List<Thesis> thesis = this.thesisService.list();
 		model.addAttribute("thesis", thesis);
-		return "views/user/library";
+		return "views/user/libraries/list";
+	}
+	
+	@GetMapping("/library/thesis/{thesisId}")
+	public String getLibraryOneThesis(@PathVariable("thesisId") Long id, Model model) {
+		
+		Thesis thesis = thesisService.findById(id);
+
+		if (thesis != null) {
+			model.addAttribute("thesis", thesis);
+		}
+		
+		return "views/user/libraries/detail";
 	}
 	
 	@GetMapping("/profile")

@@ -4,7 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.app.models.Thesis;
 
-public interface ThesisRepository extends JpaRepository<Thesis, Integer> {
+public interface ThesisRepository extends JpaRepository<Thesis, Long> {
 
 	
 }

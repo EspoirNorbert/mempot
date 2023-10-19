@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}"
+>
+  <div layout:fragment="content">
+    <div class="content container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder" th:text="'Modification memoire'">
+              Modification memoire
+            </h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/dashboard}" th:text="'Tableau de bord'"
+                  >Tableau de bord</a
+                >
+              </li>
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/thesis}" th:text="'Memoires'">Memoires</a>
+              </li>
+              <li class="breadcrumb-item active" th:text="'Modification'">
+                Modification
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-8">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="card-title fw-bold">Modifier un memoire</h4>
+            </div>
+            <div class="card-body">
+              <div th:replace="~{fragments/require_alert}"></div>
+              <form
+                th:action="@{/admin/thesis/update}"
+                method="post"
+                th:object="${thesis}"
+              >
+                <input type="hidden" name="id" th:field="*{id}" />
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold"
+                    >Theme <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="text"
+                    required
+                    class="form-control"
+                    th:field="*{topic}"
+                  />
+                  <div id="NameHelpBlock" class="form-text">
+                    La taille du theme est de 200 caracteres maximal.
+                </div>
+                </div>
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold"
+                    >Année academique
+                    <span class="text-danger">*</span></label
+                  >
+                  <input
+                    type="number"
+                    required
+                    class="form-control"
+                    th:field="*{academicYear}"
+                  />
+                </div>
+                
+                <div class="text-end">
+                  <a th:href="@{/admin/thesis}" class="btn btn-outline-app me-3"
+                    >Annuler</a
+                  >
+                  <button type="submit" class="btn btn-primary">
+                    Mettre à jour
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header d-lg-flex">
+              <h4 class="mb-0 fw-bold">Information memoire</h4>
+            </div>
+          
+              <div class="p-0 card-body">
+                <div class="list-group list-group-flush">
+                  <div class="list-group-item">
+                    <span class="text-body">Identifiant du memoire</span>
+                    <h5 class="fs-5" th:text="${thesis.id}"></h5>
+                  </div>
+                  <div class="list-group-item">
+                    <span class="text-body">Date de soumission</span>
+                    <h5 class="fs-5" th:text="${thesis.submissionDate}"></h5>
+                  </div>
+                  <div class="list-group-item" th:with="currentStudent=${thesis.student.firstname + ' ' + thesis.student.lastname}">
+                    <span class="text-body">Etudiant</span>
+                   <div class="d-flex mt-2">
+                    <img  
+                    th:src="@{'https://ui-avatars.com/api/?name=' + ${thesis.student.firstname} + '+' + ${thesis.student.lastname} + '&background=680a83&color=fff&size=80'}"
+                    th:alt="${currentStudent} + ' Image'"
+                    class="avatar-sm rounded-circle">
+                    <div class="ms-2">
+                      <h5 class="fs-5 mb-1" th:text="${currentStudent}"> </h5>
+                      <small th:text="${thesis.student.sector.name}"></small>
+                    </div>
+                   </div>
+                  </div>
+                 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

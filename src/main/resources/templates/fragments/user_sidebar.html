@@ -1,27 +1,25 @@
 <div xmlns:th="http://www.thymeleaf.org" class="sidebar" id="sidebar">
-    <div class="sidebar-inner slimscroll">
+    <div class="sidebar-inner slimscroll sidebar-bg">
         <div id="sidebar-menu" class="sidebar-menu">
-
-            <div class="d-flex flex-content-justify">
-                <a th:href="@{/user/thesis/deposit}" class="btn btn-primary rounded ms-3 w-75">Deposer</a>
-
+            <div class="drive-button mt-3 ">
+                <a th:href="@{/user/thesis/deposit}" class="btn btn-primary w-80 shadow-sm">
+                    <i class="fas fa-plus me-2"></i> Deposer
+                </a>
             </div>
-
-            <ul>
-                <li class="menu-title"></li>
+            <ul>     
                 <li th:classappend="${requestURI.startsWith('/user/dashboard') ? 'active' : ''}">
-                    <a th:href="@{/user/dashboard}"><i class="fas fa-home text-app"></i><span>Tableau de bord</span></a>
+                    <a th:href="@{/user/dashboard}"><i class="fas fa-home"></i><span>Tableau de bord</span></a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/user/thesis') ? 'active' : ''}">
-                    <a th:href="@{/user/thesis}"><i class="fas fa-book text-app"></i><span>Mes depots</span></a>
+                    <a th:href="@{/user/thesis}"><i class="fas fa-folder-open"></i><span>Mes depots</span></a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/user/library') ? 'active' : ''}">
-                    <a th:href="@{/user/library}"><i class="fas fa-bookmark text-app"></i> <span> Bibliotheque</span></a>
+                    <a th:href="@{/user/library}"><i class="fas fa-bookmark"></i> <span> Bibliotheque</span></a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/user/profile') ? 'active' : ''}">
-                    <a th:href="@{/user/profile}"><i class="far fa-user me-2 text-app"></i> Profile</span>
-                    </a>
+                    <a th:href="@{/user/profile}"><i class="far fa-user"></i> <span> Profile</span></a>
                 </li>
+              
             </ul>
         </div>
     </div>

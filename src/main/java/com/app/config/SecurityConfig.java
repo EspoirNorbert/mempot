@@ -12,11 +12,11 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-	
+
 	@Bean
 	SecurityFilterChain filterChain(HttpSecurity http) throws Exception {	
 		http
-			.authorizeHttpRequests((authorize) -> authorize  
+		.authorizeHttpRequests((authorize) -> authorize  
 				// autoriser la page d'accueil
 				.requestMatchers("/" , "/home").permitAll()
 				// autoriser la page d'inscription
@@ -29,19 +29,24 @@ public class SecurityConfig {
 				.requestMatchers("/user/**").hasRole("USER")
 				// Toutes les requettes sont authentifiées
 				.anyRequest().authenticated()
-			)
-			
-			// configuration du formulaire d'authentification
-			.formLogin(form -> {
-				form.loginPage("/login")
-				// rediriger l'utilisateur vers la page /dashbord
-				.successHandler(authenticationSuccessHandler());
-			})
-			.logout((logout) -> logout.logoutUrl("/logout").permitAll());
-		
+				)
+		// Configuration des entetes pour l'autorisation des frameOptions
+		.headers(headers -> headers
+				.frameOptions(frameOptions -> 
+				frameOptions.sameOrigin()
+
+						))
+		// configuration du formulaire d'authentification
+		.formLogin(form -> {
+			form.loginPage("/login")
+			// rediriger l'utilisateur vers la page /dashbord
+			.successHandler(authenticationSuccessHandler());
+		})
+		.logout((logout) -> logout.logoutUrl("/logout").permitAll());
+
 		return http.build();
 	}
-	
+
 	@Bean
 	AuthenticationSuccessHandler authenticationSuccessHandler() {
 		return new CustomAuthenticationSuccessHandler();

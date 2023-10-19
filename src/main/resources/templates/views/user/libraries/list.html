@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/student_base}"
+>
+  <div layout:fragment="content">
+    <div class="container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Bibliotheque</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item active">Bibliotheque</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div th:if="${thesis.size() == 0}">
+            <div
+              th:replace="~{fragments/empty('La bibliotheques des memoires est vide', 
+                           'Tous vos memoires soumis seront afficher ici pour que 
+                           vous puissez les consulter tout moment.')}"
+            ></div>
+          </div>
+
+          <table
+            th:unless="${thesis.size() == 0}"
+            class="table table-hover table-center mb-5 shadow-sm bg-white"
+          >
+            <tbody>
+              <tr th:each="t : ${thesis}">
+                <td class="d-flex p-4 border-bottom-0">
+                 <a th:href="@{${t.filePath}}" target="_blank">
+                   <div class="media d-none d-sm-block">
+                     <img class="img-fluid" th:src="@{/img/default-thesis.jpeg}" alt="Image document">
+                   </div>
+                 </a>
+                </td>
+                <td>
+                <a class="lib-link-title" th:href="@{'/user/library/thesis/'+${t.id}}">
+                  <h5 class="fw-bold mb-0" th:text="${t.topic}"></h5>
+                </a>
+                  <!-- autor -->
+                  <span class="authors-results" th:text="${t.student.firstname} + ' ' + ${t.student.lastname}"></span>
+                  <!-- Filiere et annee -->
+                  <div class="mb-1">
+                    <span
+                      class="text-muted"
+                      th:text="${t.student.sector.name} + ' | ' + ${t.student.grade.name} + '. ' + ${t.academicYear} "
+                    ></span>
+                  </div>
+                  <div>
+                    <span class="bg-primary text-white p-1">Mémoire D'étudiant</span>
+                    <a th:href="@{'/user/library/thesis/'+${t.id}}" class="lib-link-title">
+                      <strong
+                      class="ms-1"
+                      th:text="'mempot-'+${t.id}"
+                    ></strong>
+                    </a>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</html>

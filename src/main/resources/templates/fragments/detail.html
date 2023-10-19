@@ -1,0 +1,100 @@
+<div xmlns:th="http://www.thymeleaf.org">
+  <section class="section-corps row">
+    <!-- First section for details -->
+    <section class="col-12 col-md-3 mb-3">
+      <!-- dowload part -->
+      <div class="section-content shadow bg-app text-white text- mb-3">
+        <a th:href="@{${thesis.filePath}}" download="@{${thesis.filePath}}" target="_blank">
+          <div class="file">
+            <span class="fas fa-download" aria-hidden="true"></span>
+            <span> Télécharger pour visualiser</span>
+          </div>
+        </a>
+      </div>
+      <!-- Date and versions -->
+      <div class="section-content shadow bg-white">
+        <h5 class="fw-bolder">Dates et identifiants</h5>
+
+        <div class="bg-beige versions pt-1 pb-1">
+          <span th:text="${thesis.submissionDate}"></span>
+        </div>
+        <h5 class="fw-bolder mt-3">Identifiants</h5>
+        Mempot ID:
+        <strong th:text="${thesis.id}"></strong>
+      </div>
+    </section>
+    <!-- End first section -->
+
+    <!-- start secound section -->
+    <section class="col-12 col-md-9">
+      <!-- first header -->
+      <div class="header-section">
+        <span class="typdoc">Mémoire D'étudiant</span>
+        <strong class="ms-2 strong">Année : [[${thesis.academicYear}]] </strong>
+      </div>
+
+      <!-- content section start -->
+      <section class="section-content shadow bg-white">
+        <!-- Title -->
+        <div class="d-flex justify-content-between">
+          <div class="d-flex align-items-center">
+            <h2 class="title-lang fw-bold mb-0" th:text="${thesis.topic}"></h2>
+          </div>
+        </div>
+
+        <!-- author-->
+        <div id="authors-simplified">
+          <div class="authors p-2 mt-3">
+            Etudiant:
+            <strong
+              th:text="${thesis.student.firstname} + ' ' + ${thesis.student.lastname}"
+            ></strong>
+          </div>
+        </div>
+
+        <!-- sector section -->
+        <div class="row mt-3">
+          <div class="col-lg-5">
+            <div class="domains">
+              <h6 class="fw-bolder mb-3">Filiere</h6>
+              <span
+                class="bg-light-app p-2 text-white"
+                th:text="${thesis.student.sector.name}"
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- level section -->
+        <div class="row mt-3">
+          <div class="col-lg-5">
+            <div class="domains">
+              <h6 class="fw-bolder mb-3">Niveau</h6>
+              <span
+                class="bg-light-app p-2 text-white"
+                th:text="${thesis.student.grade.name}"
+              ></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- viewer -->
+        <div
+          class="viewer panel-doc d-none d-sm-block mt-5"
+        >
+          <h6 class="fw-bolder mb-3 p-3 border-bottom">Fichiers et aperçu</h6>
+          <div class="viewer-content active">
+            <iframe
+              th:src="@{${thesis.filePath}}"
+              allowfullscreen="allowfullscreen"
+            ></iframe>
+            <br />
+          </div>
+        </div>
+      </section>
+      <!-- End first section -->
+    </section>
+
+    <!-- End global section -->
+  </section>
+</div>

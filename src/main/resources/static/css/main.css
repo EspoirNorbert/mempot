@@ -1,3 +1,11 @@
+.sidebar-bg {
+    background-color: #680a83;
+    color: white;
+}
+
+.sidebar-menu ul li a {
+    color: white;
+}
 
 .text-app {
     color: #680a83;
@@ -19,17 +27,152 @@
     background-color: #680a83;
 }
 
+.bg-light-app {
+    background-color: #7c2296;
+}
+
 .btn-outline-app {
     color: #680a83;
     border-color: #680a83;
-  }
-  .btn-outline-app:hover {
+}
+.btn-outline-app:hover {
     background-color: #8d19ad;
     border-color: #8d19ad;
     color: #fff;
-  }
+}
 
-  .avatar_more {
+.avatar_more {
     background-color: #cfd3da;
     color: #000000;
+}
+
+.text-body {
+    opacity: 1;
+    color: #64748b !important;
+}
+
+.sidebar-menu > ul > li:hover {
+    background-color: rgba(130, 57, 150, 0.8);
+}
+
+.sidebar-menu > ul > li.active:hover {
+    background-color: #7c2296;
+    color: #fff;
+}
+
+.active-border-right {
+    border-left: 3px solid white;
+}
+
+.sidebar-menu li.active a {
+    background-color: #7c2296;
+    color: #fff;
+    border-left: 3px solid white;
   }
+
+  .drive-button {
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-left: 15px;
+}
+
+.drive-button a {
+    display: flex;
+    align-items: center;
+    background-color: white; /* Couleur bleue de Google Drive */
+    color: #7c2296;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 48px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+
+
+.drive-button a i {
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+}
+
+.nav-tabs.nav-tabs-solid > li > a.active,
+.nav-tabs.nav-tabs-solid > li > a.active:hover,
+.nav-tabs.nav-tabs-solid > li > a.active:focus {
+    background-color: #680a83;
+    border-color: #680a83;
+    color: #fff;
+}
+
+.w-80 {
+    width: 80%;
+}
+
+div.file {
+    fill: #fff;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 2;
+}
+
+.section-content {
+    padding: 16px 26px;
+}
+
+.typdoc {
+    background-color: #680a83;
+    color: #fff;
+    font-size: .85rem;
+    font-weight: 700;
+    line-height: 2.5;
+    padding: 5px 8px;
+}
+
+.section-corps.row .header-section {
+    margin-bottom: 23px;
+}
+
+div.authors {
+    background: #f5f5f5;
+}
+
+.viewer-content.active {
+    display: block;
+    height: 570px;
+}
+
+.viewer-content iframe {
+    min-height: 95%;
+    width: 100%;
+    padding: 5px;
+    border: 2px solid dashed;
+}
+
+.panel-doc {
+    background-color: #f4f4f4;;
+}
+
+.media {
+    height: 94px;
+    width: 74px;
+}
+
+.media img {
+    background: #fff;
+    border: 1px solid #e8e8e8;
+    height: 100%;
+    width: 100%;
+}
+
+.authors-results {
+    color: #337ab7;
+    font-size: .85rem;
+    font-weight: 700;
+}
+
+.lib-link-title {
+    color: #000;
+    text-decoration: none;
+    background-color: transparent;
+}

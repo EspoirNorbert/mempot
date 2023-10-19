@@ -25,3 +25,15 @@ document.getElementById('pdfFile').addEventListener('change', function (event) {
     }
     });
 }
+
+
+const togglePassword = document.querySelector("#togglePassword");
+if (togglePassword != undefined) {
+    const password = document.querySelector("#password");
+    togglePassword.addEventListener("click", () => {
+      const type = password.getAttribute("type") === "password" ? "text" : "password";
+      password.setAttribute("type", type);
+      // Toggle the eye and bi-eye icon`;
+      togglePassword.classList.toggle("bi-eye");
+    });
+}

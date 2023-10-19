@@ -1,80 +1,132 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
-		xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-		layout:decorate="~{layouts/student_base}">
-
-    <div layout:fragment="content">
-        <div class="container-fluid mt-5">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title">Mes Depots</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item active">Depots</li>
-                        </ul>
-                    </div>
-                   <div class="col d-flex justify-content-end">
-                        <a th:href="@{/user/thesis/deposit}" class="btn btn-primary"> <i class="fa fa-plus"></i> Nouveau depot</a>
-                    </div>
-                </div>
-              
-            </div>
-            <div class="row">
-                <div th:if="${thesis.size() == 0}">
-                   <div th:replace="~{fragments/empty('Vous n\'avez deposer aucun memoire', 
-                   	'Tous vos depots seront sauvegardées ici pour que 
-                   	vous puissez les consulter tout moment.')}"></div>
-                </div>
-
-                <div th:unless="${thesis.size() == 0}" class="col-md-12 d-flex">
-
-                    <div class="card card-table flex-fill">
-                        <div class="card-body">
-                            <div class="table-responsive">
-                                <table class="table table-hover table-center mb-0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Theme</th>
-                                            <th>Année Academique</th>
-                                            <th>Date soumission</th>
-                                            <th class="text-end">Actions</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr th:each="t : ${thesis}">
-                                            <td th:text="${t.id}"></td>
-                                            <td class="text-truncate" th:text="${t.topic}"></td>
-                                            <td th:text="${t.academicYear}"></td>
-                                            <td th:text="${t.submissionDate}"></td>
-                                            <td class="text-end">
-                                                <div class="actions">
-                                                    <a  
-                                                    th:href="@{/thesis/edit/}+${t.id}"
-                                                    class="btn btn-sm bg-primary-light me-2">
-                                                        <i class="fe fe-pencil"></i>
-                                                    </a>
-                                                    <a  
-                                                    title="Visualiser le fichier"
-                                                    th:href="@{${t.filePath}}"
-                                                    class="btn btn-sm bg-primary-light me-2">
-                                                        <i class="fe fe-file"></i>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-               
-            </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/student_base}"
+>
+  <div layout:fragment="content">
+    <div class="container-fluid mt-5">
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Mes Depots</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item active">Depots</li>
+            </ul>
+          </div>
+          <div class="col d-flex justify-content-end">
+            <a th:href="@{/user/thesis/deposit}" class="btn btn-primary">
+              <i class="fa fa-plus"></i> Nouveau depot</a
+            >
+          </div>
         </div>
+      </div>
+      <div class="row">
+        <div th:if="${thesis.size() == 0}">
+          <div
+            th:replace="~{fragments/empty('Vous n\'avez deposer aucun memoire', 
+                   	'Tous vos depots seront sauvegardées ici pour que 
+                   	vous puissez les consulter tout moment.')}"
+          ></div>
+        </div>
+
+        <div th:unless="${thesis.size() == 0}" class="col-md-12 d-flex">
+          <div class="card card-table flex-fill">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover table-center mb-0">
+                  <thead>
+                    <tr>
+                      <th>Theme</th>
+                      <th class="text-center">Année Academique</th>
+                      <th class="text-center">Date de depot</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr th:each="t : ${thesis}">
+                      <td>
+                        <h6 class="fw-bold" th:text="${t.topic}"></h6>
+                        <div>
+                          <span class="bg-primary text-white p-1">Mémoire D'étudiant</span>
+                          <a th:href="@{'/user/thesis/detail/'+${t.id}}" class="lib-link-title">
+                            <strong
+                            class="ms-1 bg-light-app p-1 text-white"
+                            th:text="'mempot-'+${t.id}"
+                          ></strong>
+                          </a>
+                        </div>
+                      </td>
+                      <td class="text-center" th:text="${t.academicYear}"></td>
+                      <td class="text-center" th:text="${t.submissionDate}"></td>
+                      <td class="text-end">
+                        <div class="dropdown">
+                          <a
+                            class="btn-icon btn btn-ghost btn-sm rounded-circle"
+                            id="dropdownMenuLink"
+                            data-bs-toggle="dropdown"
+                            href="#"
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="15px"
+                              height="15px"
+                              viewbox="0 0 24 24"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="2"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              class="text-secondary"
+                            >
+                              <circle cx="12" cy="12" r="1"></circle>
+                              <circle cx="12" cy="5" r="1"></circle>
+                              <circle cx="12" cy="19" r="1"></circle>
+                            </svg>
+                          </a>
+                          <!-- Dropdown menu -->
+                          <div
+                            class="dropdown-menu"
+                            aria-labelledby="dropdownMenuLink"
+                          >
+                            <div class="d-flex flex-column">
+                              <a
+                                class="dropdown-item"
+                                th:href="@{'/user/thesis/detail/' + ${t.id}}"
+                              >
+                                <i class="fas fa-eye me-3 text-app"></i>
+                                <span th:text="'Voir'"></span>
+                              </a>
+                              <a
+                              target="_blank"
+                              class="dropdown-item"
+                              th:href="@{${t.filePath}}"
+                            >
+                              <i class="fas fa-external-link-alt me-3 text-app"></i>
+                              <span th:text="'Ouvrir'"></span>
+                            </a>
+                              <a
+                                class="dropdown-item"
+                                th:href="@{'/user/thesis/edit/' + ${t.id}}"
+                              >
+                                <i class="fas fa-edit me-3 text-app"></i>
+                                <span th:text="'Modifier'"></span>
+                              </a>
+                            </div>
+                          </div>
+                        </div>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
 </html>

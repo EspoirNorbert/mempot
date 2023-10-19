@@ -48,31 +48,35 @@
                     <div class="card">
                         <div class="card-body">
                             <h5 class="card-title d-flex justify-content-between fw-bolder mb-3">
-                                <span>Informations personnelles</span>
+                                <span>Mes informations</span>
                             </h5>
                             <div class="row">
                                 <p class="col-sm-2 text-muted">Nom</p>
-                                <p class="col-sm-10" th:text="${currentUser.firstname} + ' ' + ${currentUser.lastname}"></p>
+                                <p class="col-sm-10 fw-bold" th:text="${currentUser.lastname}"></p>
+                            </div>
+                            <div class="row">
+                                <p class="col-sm-2 text-muted">Prenoms</p>
+                                <p class="col-sm-10 fw-bold" th:text="${currentUser.firstname}"></p>
                             </div>
                             <div class="row">
                                 <p class="col-sm-2 text-muted">Email</p>
-                                <p class="col-sm-10" th:text="${currentUser.email}"></p>
+                                <p class="col-sm-10 fw-bold" th:text="${currentUser.email}"></p>
                             </div>
                             <div class="row">
                                 <p class="col-sm-2 text-muted">Address</p>
-                                <p class="col-sm-10 mb-0" th:text="${currentUser.address == null ? 'Non definie' : currentUser.address}"></p>
+                                <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.address == null ? 'Non definie' : currentUser.address}"></p>
                             </div>
                             <!-- student -->
                             <div th:if="${currentUser.roles[0].name == 'USER'}">
                                 <div class="row">
                                     <p class="col-sm-2 text-muted">Filiere</p>
-                                    <p class="col-sm-10 mb-0" th:text="${currentUser.sector.name}"></p>
+                                    <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.sector.name}"></p>
                                 </div>
                             </div>
                             <div th:if="${currentUser.roles[0].name == 'USER'}">
                                 <div class="row">
                                     <p class="col-sm-2 text-muted">Niveau</p>
-                                    <p class="col-sm-10 mb-0" th:text="${currentUser.grade.name}"></p>
+                                    <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.grade.name}"></p>
                                 </div>
                             </div>
                         </div>

@@ -89,7 +89,7 @@ public class AuthController {
 		// save object
 		userService.save(user);
 		
-		return "redirect:/"+viewAccordingProfile+"/profil";	
+		return "redirect:/"+viewAccordingProfile+"/profile";	
 	}
 	
 }
