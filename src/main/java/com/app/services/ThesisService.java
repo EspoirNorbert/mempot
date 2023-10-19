@@ -23,6 +23,10 @@ public class ThesisService {
 	public List<Thesis> list() {
 		return thesisRepository.findAll();
 	}
+	
+	public List<Thesis> getLatestGrades() {
+		return thesisRepository.findFirst5ByOrderByIdDesc();
+	}
 
 	public void save(Thesis thesis) {
 		thesisRepository.save(thesis);

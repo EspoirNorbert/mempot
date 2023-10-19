@@ -20,6 +20,10 @@ public class GradeService {
 		return gradeRepository.findAll();
 	}
 	
+	public List<Grade> getLatestGrades() {
+		return gradeRepository.findFirst5ByOrderByIdDesc();
+	}
+	
 	public void save(Grade grade) {
 		gradeRepository.save(grade);
 	}

@@ -20,6 +20,10 @@ public class SectorService {
 		return sectorRepository.findAll();
 	}
 	
+	public List<Sector> getLatestGrades() {
+		return sectorRepository.findFirst5ByOrderByIdDesc();
+	}
+	
 	public void save(Sector grade) {
 		sectorRepository.save(grade);
 	}

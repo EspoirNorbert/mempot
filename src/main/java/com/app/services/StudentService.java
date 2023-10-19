@@ -22,6 +22,10 @@ public class StudentService {
 	public List<Student> list() {
 		return studentRepository.findAll();
 	}
+	
+	public List<Student> getLatestGrades() {
+		return studentRepository.findFirst5ByOrderByIdDesc();
+	}
 
 	public Student findByMatricule(String matricule) {
 		return this.studentRepository.findByMatricule(matricule);

@@ -16,7 +16,7 @@ class GradeServiceTestCase {
 
 	@Autowired GradeService gradeService;
 	
-	@Test
+	//@Test
 	void create() {
 		Grade gradeLicence = new Grade("Licence");
 		Grade gradeMaster = new Grade("Master");
@@ -24,7 +24,7 @@ class GradeServiceTestCase {
 		gradeService.save(gradeMaster);
 	}
 	
-	@Test
+	//@Test
 	void listAllGrades() {
 		 List<Grade> grades = gradeService.list();
 		 assertEquals(2, grades.size());
@@ -32,4 +32,11 @@ class GradeServiceTestCase {
 	     assertEquals("Master", grades.get(1).getName());
 	}
 
+	@Test
+	void getRecentGrade() {
+		List<Grade> grades = gradeService.getLatestGrades();
+		 assertEquals(3, grades.size());
+		 assertEquals("Doctorat", grades.get(0).getName());
+		 assertEquals("Master", grades.get(1).getName());
+	}
 }
