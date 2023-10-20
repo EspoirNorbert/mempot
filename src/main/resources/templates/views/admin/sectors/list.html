@@ -6,29 +6,29 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Filieres</h3>
+            <h3 class="page-title fw-bolder">Filières</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
-                <a th:href="@{/}">Tableau de bord</a>
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
               </li>
-              <li class="breadcrumb-item active">Filieres</li>
+              <li class="breadcrumb-item active">Filières</li>
             </ul>
           </div>
           <div class="col d-flex justify-content-end">
             <a th:href="@{/admin/sectors/new}" class="btn btn-primary">
-              <i class="fa fa-plus"></i> Nouvelle filiere</a>
+              <i class="fa fa-plus"></i> Nouvelle Filière</a>
           </div>
         </div>
       </div>
       <div class="row">
         <div th:if="${sectors.size() == 0}">
           <div
-            th:replace="~{fragments/empty('Vous n\'avez creer aucune filiere',
-                                           	'Tous vos filieres seront sauvegardées ici pour que
+            th:replace="~{fragments/empty('Vous n\'avez creer aucune Filière',
+                                           	'Tous vos Filières seront sauvegardées ici pour que
                                            	vous puissez les consulter tout moment.')}"
           ></div>
         </div>
@@ -70,7 +70,7 @@
                           </div>
                         </div>
                         <span th:unless="${sector.students.size() != 0}"
-                          >Aucun etudiant n'est inscrit dans cette filiere.</span
+                          >Aucun etudiant n'est inscrit dans cette Filière.</span
                         >
                       </td>
                       <td class="text-end">

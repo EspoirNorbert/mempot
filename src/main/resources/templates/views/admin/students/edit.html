@@ -6,7 +6,7 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="content container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
@@ -89,9 +89,9 @@
             </div>
             <div class="col-md-6">
               <div class="mb-3">
-                <label class="mb-2 fw-bold">Filieres  <span class="text-danger">*</span></label>
+                <label class="mb-2 fw-bold">Filières  <span class="text-danger">*</span></label>
                 <select name="sectors" id="sectors" class="form-control" required th:field="*{sector}">
-                  <option value="">Selectionner votre filiere</option>
+                  <option value="">Selectionner votre Filière</option>
                   <option th:each="sector : ${sectors}" th:value="${sector.id}" 
                   th:selected="${sector == sector.name}"
                   th:text="${sector.name}"></option>

@@ -24,7 +24,7 @@ public class ThesisService {
 		return thesisRepository.findAll();
 	}
 	
-	public List<Thesis> getLatestGrades() {
+	public List<Thesis> getLatestThesis() {
 		return thesisRepository.findFirst5ByOrderByIdDesc();
 	}
 

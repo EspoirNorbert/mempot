@@ -6,11 +6,11 @@
   layout:decorate="~{layouts/student_base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder" th:text="'Memoire de ' + ${thesis.student.firstname} + ' ' + ${thesis.student.lastname}"></h3>
+            <h3 class="page-title fw-bolder" th:text="'Mémoire  de ' + ${thesis.student.firstname} + ' ' + ${thesis.student.lastname}"></h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <a th:href="@{/user/dashboard}">Tableau de bord</a>
@@ -18,7 +18,7 @@
               <li class="breadcrumb-item">
                 <a th:href="@{/user/library}">Bibliotheque</a>
               </li>
-              <li class="breadcrumb-item active" th:text="'Memoire mempot-'+${thesis.id}"></li>
+              <li class="breadcrumb-item active" th:text="'Mémoire  mempot-'+${thesis.id}"></li>
             </ul>
           </div>
         </div>

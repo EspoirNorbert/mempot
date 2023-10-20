@@ -6,12 +6,12 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="content container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder" th:text="'Modification memoire'">
-              Modification memoire
+            <h3 class="page-title fw-bolder" th:text="'Modification Mémoire '">
+              Modification Mémoire 
             </h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
@@ -20,7 +20,7 @@
                 >
               </li>
               <li class="breadcrumb-item">
-                <a th:href="@{/admin/thesis}" th:text="'Memoires'">Memoires</a>
+                <a th:href="@{/admin/thesis}" th:text="'Mémoire s'">Mémoires</a>
               </li>
               <li class="breadcrumb-item active" th:text="'Modification'">
                 Modification
@@ -33,7 +33,7 @@
         <div class="col-md-8">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title fw-bold">Modifier un memoire</h4>
+              <h4 class="card-title fw-bold">Modifier un Mémoire </h4>
             </div>
             <div class="card-body">
               <div th:replace="~{fragments/require_alert}"></div>
@@ -85,13 +85,13 @@
         <div class="col-md-4">
           <div class="card">
             <div class="card-header d-lg-flex">
-              <h4 class="mb-0 fw-bold">Information memoire</h4>
+              <h4 class="mb-0 fw-bold">Information Mémoire </h4>
             </div>
           
               <div class="p-0 card-body">
                 <div class="list-group list-group-flush">
                   <div class="list-group-item">
-                    <span class="text-body">Identifiant du memoire</span>
+                    <span class="text-body">Identifiant du Mémoire </span>
                     <h5 class="fs-5" th:text="${thesis.id}"></h5>
                   </div>
                   <div class="list-group-item">

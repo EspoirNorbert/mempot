@@ -1,56 +1,82 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" 
-        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-        layout:decorate="~{layouts/base}">
-
-    <div layout:fragment="content">
-        <div class="content container-fluid mt-5">
-            <div class="page-header">
-                <div class="row align-items-center">
-                    <div class="col">
-                        <h3 class="page-title fw-bolder">Ajout Nouvelle Filiere</h3>
-                        <ul class="breadcrumb">
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/}">Tableau de bord</a>
-                            </li>
-                            <li class="breadcrumb-item">
-                                <a th:href="@{/admin/sectors}">Filieres</a>
-                            </li>
-                            <li class="breadcrumb-item active">Ajout nouvelle filiere</li>
-                        </ul>
-                    </div>
-                </div>
-
-            </div>
-            <div class="card">
-                <div class="card-header">
-                    <h4 class="card-title fw-bold">Creer une nouvelle filiere</h4>
-                </div>
-                <div class="card-body">
-                    <div th:replace="~{fragments/require_alert}"></div>
-                    <form th:action="@{/admin/sectors/new}" method="post" th:object="${sector}" >
-                        <div class="form-group">
-                            <label for="name" class="fw-bold">Nom <span class="text-danger">*</span></label>
-                            <input type="text" class="form-control" required th:field="*{name}" name="nom" 
-                                    th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
-                                    placeholder="Entrer le nom de la filiere (ex: Master en ingenierie des SI)">
-                            <div id="NameHelpBlock" class="form-text">
-                                Le nom de la nouvelle filiere.
-                            </div>
-                            <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="invalid-field w-100"></div>
-                            
-                        </div>
-                        <div class="form-group">
-                            <label for="name">Description (facultatif)</label>
-                            <textarea rows="5" cols="5" th:field="*{description}" class="form-control" placeholder="Une petite description du niveau"></textarea>
-                        </div>
-                        <div class="text-end">
-                            <a th:href="@{/admin/sectors}" class="btn btn-outline-app me-3">Annuler</a>
-                            <button type="submit" class="btn btn-primary">Creer filiere</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}"
+>
+  <div layout:fragment="content">
+    <div>
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Ajout Nouvelle Filière</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item">
+                <a th:href="@{/admin/sectors}">Filières</a>
+              </li>
+              <li class="breadcrumb-item active">Ajout nouvelle Filière</li>
+            </ul>
+          </div>
         </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title fw-bold">Creer une nouvelle Filière</h4>
+        </div>
+        <div class="card-body">
+          <div th:replace="~{fragments/require_alert}"></div>
+          <form
+            th:action="@{/admin/sectors/new}"
+            method="post"
+            th:object="${sector}"
+          >
+            <div class="form-group">
+              <label for="name" class="fw-bold"
+                >Nom <span class="text-danger">*</span></label
+              >
+              <input
+                type="text"
+                class="form-control"
+                required
+                th:field="*{name}"
+                name="nom"
+                th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
+                placeholder="Entrer le nom de la Filière (ex: Master en ingenierie des SI)"
+              />
+              <div id="NameHelpBlock" class="form-text">
+                Le nom de la nouvelle Filière.
+              </div>
+              <div
+                th:if="${#fields.hasErrors('name')}"
+                th:errors="*{name}"
+                class="invalid-field w-100"
+              ></div>
+            </div>
+            <div class="form-group">
+              <label for="name">Description (facultatif)</label>
+              <textarea
+                rows="5"
+                cols="5"
+                th:field="*{description}"
+                class="form-control"
+                placeholder="Une petite description du niveau"
+              ></textarea>
+            </div>
+            <div class="text-end">
+              <a th:href="@{/admin/sectors}" class="btn btn-outline-app me-3"
+                >Annuler</a
+              >
+              <button type="submit" class="btn btn-primary">
+                Creer Filière
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
+  </div>
 </html>

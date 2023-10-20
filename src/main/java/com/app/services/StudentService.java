@@ -23,8 +23,8 @@ public class StudentService {
 		return studentRepository.findAll();
 	}
 	
-	public List<Student> getLatestGrades() {
-		return studentRepository.findFirst5ByOrderByIdDesc();
+	public List<Student> getLatestStudents() {
+		return studentRepository.findFirst10ByOrderByIdDesc();
 	}
 
 	public Student findByMatricule(String matricule) {

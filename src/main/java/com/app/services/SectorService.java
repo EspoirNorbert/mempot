@@ -20,7 +20,7 @@ public class SectorService {
 		return sectorRepository.findAll();
 	}
 	
-	public List<Sector> getLatestGrades() {
+	public List<Sector> getLatestSectors() {
 		return sectorRepository.findFirst5ByOrderByIdDesc();
 	}
 	

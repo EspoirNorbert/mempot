@@ -6,17 +6,17 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Detail Filiere</h3>
+            <h3 class="page-title fw-bolder">Detail Filière</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
-                <a th:href="@{/}">Tableau de bord</a>
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
               </li>
               <li class="breadcrumb-item">
-                <a th:href="@{/admin/sectors}">Filieres</a>
+                <a th:href="@{/admin/sectors}">Filières</a>
               </li>
               <li class="breadcrumb-item active">Details</li>
             </ul>
@@ -27,7 +27,7 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-              <h4 class="card-title fw-bold" th:text="'Identifiant de la filiere : ' + ${sector.id}"></h4>
+              <h4 class="card-title fw-bold" th:text="'Identifiant de la Filière : ' + ${sector.id}"></h4>
             </div>
             <div class="card-body">
               <div class="info">

@@ -6,16 +6,16 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Memoires</h3>
+            <h3 class="page-title fw-bolder">Mémoires</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <a th:href="@{/}">Tableau de bord</a>
               </li>
-              <li class="breadcrumb-item active">Memoires</li>
+              <li class="breadcrumb-item active">Mémoires</li>
             </ul>
           </div>
         </div>
@@ -23,8 +23,8 @@
       <div class="row">
         <div th:if="${thesis.size() == 0}">
           <div
-            th:replace="~{fragments/empty('Vous n\'avez creer aucun memoire', 
-                   	'Tous vos memoires seront sauvegardées ici pour que 
+            th:replace="~{fragments/empty('Vous n\'avez creer aucun Mémoire ', 
+                   	'Tous vos Mémoire s seront sauvegardées ici pour que 
                    	vous puissez les consulter tout moment.')}"
           ></div>
         </div>
@@ -38,7 +38,7 @@
                     <tr>
                       <th>N°</th>
                       <th>Theme</th>
-                      <th>Filiere</th>
+                      <th>Filière</th>
                       <th>Niveau</th>
                       <th>Année Academique</th>
                       <th>Date soumission</th>

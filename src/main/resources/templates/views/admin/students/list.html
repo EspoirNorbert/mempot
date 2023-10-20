@@ -6,14 +6,14 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
             <h3 class="page-title fw-bolder">Etudiants</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
-                <a th:href="@{/user/dashboard}">Tableau de bord</a>
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
               </li>
               <li class="breadcrumb-item active">Etudiants</li>
             </ul>
@@ -36,8 +36,8 @@
                       <th>Etudiant</th>
                       <th>Matricule</th>
                       <th>Email</th>
-                      <th>Memoires</th>
-                      <th>Filiere</th>
+                      <th>Mémoire s</th>
+                      <th>Filière</th>
                       <th>Niveau</th>
                       <th>Etat</th>
                       <th colspan="2">Date inscription</th> 
@@ -67,7 +67,7 @@
                         <span th:text="${student.email}"></span>
                       </td>
                       <td>
-                        <span th:text="${student.thesis.size()} + ' memoires'"></span>
+                        <span th:text="${student.thesis.size()} + ' Mémoire s'"></span>
                       </td>
                       <td>
                         <span

@@ -9,5 +9,5 @@ import com.app.models.Student;
 public interface StudentRepository extends JpaRepository<Student, Long> {
 	
 	Student findByMatricule(String matricule);
-	List<Student> findFirst5ByOrderByIdDesc();
+	List<Student> findFirst10ByOrderByIdDesc();
 }

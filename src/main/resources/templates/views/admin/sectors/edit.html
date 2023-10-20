@@ -6,17 +6,17 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="content container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Modification Filiere</h3>
+            <h3 class="page-title fw-bolder">Modification Filière</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
-                <a th:href="@{/}">Tableau de bord</a>
+                <a th:href="@{/admin/dashboard}">Tableau de bord</a>
               </li>
               <li class="breadcrumb-item">
-                <a th:href="@{/admin/sectors}">Filieres</a>
+                <a th:href="@{/admin/sectors}">Filières</a>
               </li>
               <li class="breadcrumb-item active">Modification</li>
             </ul>
@@ -26,7 +26,7 @@
       <div class="card">
         <div class="card-header">
           <h4 class="card-title  fw-bold">
-            Modifier une filiere
+            Modifier une Filière
           </h4>
         </div>
         <div class="card-body">
@@ -46,10 +46,10 @@
                 th:field="*{name}"
                 name="nom"
                 th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
-                placeholder="Entrer le nom de la filiere (ex: Master)"
+                placeholder="Entrer le nom de la Filière (ex: Master)"
               />
               <div id="NameHelpBlock" class="form-text">
-                Le nom de la filiere mise à jour.
+                Le nom de la Filière mise à jour.
               </div>
               <div
                 th:if="${#fields.hasErrors('name')}"

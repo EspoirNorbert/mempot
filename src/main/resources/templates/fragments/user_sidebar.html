@@ -11,7 +11,7 @@
                     <a th:href="@{/user/dashboard}"><i class="fas fa-home"></i><span>Tableau de bord</span></a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/user/thesis') ? 'active' : ''}">
-                    <a th:href="@{/user/thesis}"><i class="fas fa-folder-open"></i><span>Mes depots</span></a>
+                    <a th:href="@{/user/thesis}"><i class="fas fa-folder-open"></i><span>Mes Dépôts</span></a>
                 </li>
                 <li th:classappend="${requestURI.startsWith('/user/library') ? 'active' : ''}">
                     <a th:href="@{/user/library}"><i class="fas fa-bookmark"></i> <span> Bibliotheque</span></a>

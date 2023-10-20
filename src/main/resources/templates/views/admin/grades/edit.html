@@ -6,7 +6,7 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div class="content container-fluid mt-5">
+    <div>
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
@@ -46,7 +46,7 @@
                 th:field="*{name}"
                 name="nom"
                 th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
-                placeholder="Entrer le nom de la filiere (ex: Master)"
+                placeholder="Entrer le nom de la Filière (ex: Master)"
               />
               <div id="NameHelpBlock" class="form-text">
                 Le nom du niveau mise à jour.

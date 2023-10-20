@@ -1,11 +1,17 @@
 package com.app.controllers.admin;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.app.models.Grade;
+import com.app.models.Sector;
+import com.app.models.Student;
+import com.app.models.Thesis;
 import com.app.services.GradeService;
 import com.app.services.SectorService;
 import com.app.services.StudentService;
@@ -26,11 +32,21 @@ public class AdminController {
 		Long totalGrade = this.gradeService.count();
 		Long totalStudent = this.studentService.count();
 		Long totalThesis = this.thesisService.count();
+	
+		List<Sector> sectors = this.sectorService.getLatestSectors();
+		List<Grade> grades = this.gradeService.getLatestGrades();
+		List<Student> students = this.studentService.getLatestStudents();
+		List<Thesis> thesis = this.thesisService.getLatestThesis();
 		
 		model.addAttribute("totalSector", totalSector);
 		model.addAttribute("totalGrade", totalGrade);
 		model.addAttribute("totalStudent", totalStudent);
 		model.addAttribute("totalThesis", totalThesis);
+		
+		model.addAttribute("sectors", sectors);
+		model.addAttribute("grades", grades);
+		model.addAttribute("students", students);
+		model.addAttribute("thesis", thesis);
 		
 		return "views/admin/dashboard";
 	}

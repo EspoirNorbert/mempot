@@ -6,21 +6,21 @@
   layout:decorate="~{layouts/student_base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Mes Depots</h3>
+            <h3 class="page-title fw-bolder">Mes Dépôts</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <a th:href="@{/}">Tableau de bord</a>
               </li>
-              <li class="breadcrumb-item active">Depots</li>
+              <li class="breadcrumb-item active">Dépôts</li>
             </ul>
           </div>
           <div class="col d-flex justify-content-end">
             <a th:href="@{/user/thesis/deposit}" class="btn btn-primary">
-              <i class="fa fa-plus"></i> Nouveau depot</a
+              <i class="fa fa-plus"></i> Nouveau Dépôt</a
             >
           </div>
         </div>
@@ -28,8 +28,8 @@
       <div class="row">
         <div th:if="${thesis.size() == 0}">
           <div
-            th:replace="~{fragments/empty('Vous n\'avez deposer aucun memoire', 
-                   	'Tous vos depots seront sauvegardées ici pour que 
+            th:replace="~{fragments/empty('Vous n\'avez deposer aucun Mémoire ', 
+                   	'Tous vos Dépôts seront sauvegardées ici pour que 
                    	vous puissez les consulter tout moment.')}"
           ></div>
         </div>
@@ -43,7 +43,7 @@
                     <tr>
                       <th>Theme</th>
                       <th class="text-center">Année Academique</th>
-                      <th class="text-center">Date de depot</th>
+                      <th class="text-center">Date de Dépôt</th>
                     </tr>
                   </thead>
                   <tbody>

@@ -1,143 +1,196 @@
 <div xmlns:th="http://www.thymeleaf.org" class="col-md-12">
-    <div class="profile-header bg-white">
-        <div class="row align-items-center">
-            <div class="col-auto profile-image">
-                <a href="javascript:void(0)">
-                    <img alt="User Image" th:src="@{${userAvatar}}" class="rounded-circle">
-                </a>
-            </div>
-            <div class="col ml-md-n2 profile-user-info">
-                <h4 class="user-name mb-0 fw-bold" th:text="${currentUser.firstname} + ' '+ ${currentUser.lastname}"></h4>
-                <h6 class="text-muted" th:text="${currentUser.email}"></h6>
-                <div class="user-Location">
-                    <i class="fas fa-map-marker-alt"></i>  <span 
-                    th:classappend="${currentUser.address == null ? 'badge bg-primary' : ''}"
-                    th:text="${currentUser.address == null ? 'Pas addresse' : currentUser.address}"></span> </div>
-            </div>
-            <div class="col-auto profile-btn">
-                <a href="javascript:void(0)" class="btn btn-primary">
-                    <i class="fa fa-edit"></i>
-                    Modifier
-                </a>
-            </div>
+  <div class="profile-header bg-white">
+    <div class="row align-items-center">
+      <div class="col-auto profile-image">
+        <a href="javascript:void(0)">
+          <img
+            alt="User Image"
+            th:src="@{${userAvatar}}"
+            class="rounded-circle"
+          />
+        </a>
+      </div>
+      <div class="col ml-md-n2 profile-user-info">
+        <h4
+          class="user-name mb-0 fw-bold"
+          th:text="${currentUser.firstname} + ' '+ ${currentUser.lastname}"
+        ></h4>
+        <h6 class="text-muted" th:text="${currentUser.email}"></h6>
+        <div class="user-Location">
+          <i class="fas fa-map-marker-alt"></i>
+          <span
+            th:classappend="${currentUser.address == null ? 'badge bg-primary' : ''}"
+            th:text="${currentUser.address == null or currentUser.address == '' ? 'Pas addresse' : currentUser.address}"
+          ></span>
         </div>
+      </div>
+      <div class="col-auto profile-btn">
+        <a href="javascript:void(0)" onclick="alert('Fonctionnalité Non disponible')" class="btn btn-primary">
+          <i class="fa fa-edit"></i>
+          Modifier
+        </a>
+      </div>
     </div>
-    <div class="profile-menu">
-        <ul class="nav nav-tabs nav-tabs-solid">
-            <li class="nav-item">
-                <a data-bs-toggle="tab" href="#per_details_tab" class="nav-link active">
-                    <i class="fas fa-info-circle"></i>
-                    A propos</a>
-            </li>
-            <li class="nav-item">
-                <a data-bs-toggle="tab" href="#password_tab" class="nav-link">
-                    <i class="fas fa-lock"></i>
-                    Changer le mot de passe</a>
-            </li>
-            <li class="nav-item">
-                <a data-bs-toggle="tab" href="#edit_profil_tab" class="nav-link">
-                    <i class="fas fa-pencil-alt me-1"></i>
-                    Modifier le profil</a>
-            </li>
-        </ul>
+  </div>
+  <div class="profile-menu">
+    <ul class="nav nav-tabs nav-tabs-solid">
+      <li class="nav-item">
+        <a data-bs-toggle="tab" href="#per_details_tab" class="nav-link active">
+          <i class="fas fa-info-circle"></i>
+          A propos</a
+        >
+      </li>
+      <li class="nav-item">
+        <a data-bs-toggle="tab" href="#password_tab" class="nav-link">
+          <i class="fas fa-lock"></i>
+          Changer le mot de passe</a
+        >
+      </li>
+      <li class="nav-item">
+        <a data-bs-toggle="tab" href="#edit_profil_tab" class="nav-link" >
+          <i class="fas fa-pencil-alt me-1"></i>
+          Modifier le profil</a
+        >
+      </li>
+    </ul>
+  </div>
+  <div class="tab-content profile-tab-cont">
+    <div id="per_details_tab" class="tab-pane fade show active">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="card">
+            <div class="card-body">
+              <h5
+                class="card-title d-flex justify-content-between fw-bolder mb-3"
+              >
+                <span>Mes informations</span>
+              </h5>
+              <div class="row">
+                <p class="col-sm-2 text-muted">Nom</p>
+                <p
+                  class="col-sm-10 fw-bold"
+                  th:text="${currentUser.lastname}"
+                ></p>
+              </div>
+              <div class="row">
+                <p class="col-sm-2 text-muted">Prenoms</p>
+                <p
+                  class="col-sm-10 fw-bold"
+                  th:text="${currentUser.firstname}"
+                ></p>
+              </div>
+              <div class="row">
+                <p class="col-sm-2 text-muted">Email</p>
+                <p class="col-sm-10 fw-bold" th:text="${currentUser.email}"></p>
+              </div>
+              <div class="row">
+                <p class="col-sm-2 text-muted">Address</p>
+                <p
+                  class="col-sm-10 mb-0 fw-bold"
+                  th:text="${currentUser.address == null ? 'Non definie' : currentUser.address}"
+                ></p>
+              </div>
+              <!-- student -->
+              <div th:if="${currentUser.roles[0].name == 'USER'}">
+                <div class="row">
+                  <p class="col-sm-2 text-muted">Filière</p>
+                  <p
+                    class="col-sm-10 mb-0 fw-bold"
+                    th:text="${currentUser.sector.name}"
+                  ></p>
+                </div>
+              </div>
+              <div th:if="${currentUser.roles[0].name == 'USER'}">
+                <div class="row">
+                  <p class="col-sm-2 text-muted">Niveau</p>
+                  <p
+                    class="col-sm-10 mb-0 fw-bold"
+                    th:text="${currentUser.grade.name}"
+                  ></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="tab-content profile-tab-cont">
-        <div id="per_details_tab" class="tab-pane fade show active">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title d-flex justify-content-between fw-bolder mb-3">
-                                <span>Mes informations</span>
-                            </h5>
-                            <div class="row">
-                                <p class="col-sm-2 text-muted">Nom</p>
-                                <p class="col-sm-10 fw-bold" th:text="${currentUser.lastname}"></p>
-                            </div>
-                            <div class="row">
-                                <p class="col-sm-2 text-muted">Prenoms</p>
-                                <p class="col-sm-10 fw-bold" th:text="${currentUser.firstname}"></p>
-                            </div>
-                            <div class="row">
-                                <p class="col-sm-2 text-muted">Email</p>
-                                <p class="col-sm-10 fw-bold" th:text="${currentUser.email}"></p>
-                            </div>
-                            <div class="row">
-                                <p class="col-sm-2 text-muted">Address</p>
-                                <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.address == null ? 'Non definie' : currentUser.address}"></p>
-                            </div>
-                            <!-- student -->
-                            <div th:if="${currentUser.roles[0].name == 'USER'}">
-                                <div class="row">
-                                    <p class="col-sm-2 text-muted">Filiere</p>
-                                    <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.sector.name}"></p>
-                                </div>
-                            </div>
-                            <div th:if="${currentUser.roles[0].name == 'USER'}">
-                                <div class="row">
-                                    <p class="col-sm-2 text-muted">Niveau</p>
-                                    <p class="col-sm-10 mb-0 fw-bold" th:text="${currentUser.grade.name}"></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+    <div id="password_tab" class="tab-pane fade">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-bolder mb-3">Modifier votre mot de passe</h5>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <form novalidate="">
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold">Mot de passe actuel</label>
+                  <input type="password" class="form-control" />
                 </div>
-            </div>
-        </div>
-        <div id="password_tab" class="tab-pane fade">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title fw-bolder mb-3">Modifier votre mot de passe</h5>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <form novalidate="">
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Mot de passe actuel</label>
-                                    <input type="password" class="form-control"></div>
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Nouveau mot de passe</label>
-                                    <input type="password" class="form-control"></div>
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Répéter le nouveau mot de passe</label>
-                                    <input type="password" class="form-control">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Definir le nouveau mot de passe</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold">Nouveau mot de passe</label>
+                  <input type="password" class="form-control" />
                 </div>
-            </div>
-        </div>
-        <div id="edit_profil_tab" class="tab-pane fade">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title fw-bolder mb-3">Modifier le profil</h5>
-                    <div class="row">
-                        <div class="col-md-12 col-lg-12">
-                            <form th:action="@{/profile}" method="post" th:object="${currentUser}">
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Nom</label>
-                                    <input type="text" class="form-control" th:field="*{lastname}">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Prénom(s)</label>
-                                    <input type="text" class="form-control" th:field="*{firstname}">
-                                </div>
-                                <div class="mb-3">
-                                    <label class="mb-2 fw-bold">Adresse e-mail</label>
-                                    <input type="text" class="form-control" th:field="*{email}">
-                                </div>
-                                <div class="mb-3 fw-bold">
-                                    <label class="mb-2">Adresse</label>
-                                    <input type="text" class="form-control" th:field="*{address}">
-                                </div>
-                                <button type="submit" class="btn btn-primary">Enregistrer le profil</button>
-                            </form>
-                        </div>
-                    </div>
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold"
+                    >Répéter le nouveau mot de passe</label
+                  >
+                  <input type="password" class="form-control" />
                 </div>
+                <button type="submit" class="btn btn-primary" disabled>
+                  Definir le nouveau mot de passe
+                </button>
+              </form>
             </div>
+          </div>
         </div>
+      </div>
     </div>
+    <div id="edit_profil_tab" class="tab-pane fade">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title fw-bolder mb-3">Modifier le profil</h5>
+          <div class="row">
+            <div class="col-md-12 col-lg-12">
+              <form
+                th:action="@{/profile}"
+                method="post"
+                th:object="${currentUser}"
+              >
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold">Nom</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{lastname}"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold">Prénom(s)</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{firstname}"
+                  />
+                </div>
+                <div class="mb-3">
+                  <label class="mb-2 fw-bold">Adresse e-mail</label>
+                  <input type="text" class="form-control" th:field="*{email}" />
+                </div>
+                <div class="mb-3 fw-bold">
+                  <label class="mb-2">Adresse</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    th:field="*{address}"
+                  />
+                </div>
+                <button type="submit" class="btn btn-primary">
+                  Enregistrer le profil
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

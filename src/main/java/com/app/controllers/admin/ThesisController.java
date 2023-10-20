@@ -47,10 +47,22 @@ public class ThesisController {
 		if (thesis == null) {
 			return "redirect:/admin/students";
 		}
-	
 		
 		model.addAttribute("thesis", thesis);
 		return MAIN_PATH + "/edit";
+	}
+	
+	@GetMapping("/detail/{thesisId}")
+	public String detailThesis(@PathVariable("thesisId") Long id,Model model) {
+		
+		Thesis thesis = thesisService.findById(id);
+
+		if (thesis == null) {
+			return "redirect:/admin/students";
+		}
+	
+		model.addAttribute("thesis", thesis);
+		return MAIN_PATH + "/detail";
 	}
 	
 	@PostMapping("/update")

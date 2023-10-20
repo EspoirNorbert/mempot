@@ -12,7 +12,9 @@
             <div th:replace="~{fragments/user_sidebar}"></div>
             <!-- Page content -->
             <div class="page-wrapper p-2 mt-5">
-                <div layout:fragment="content"></div>
+                <div class="content container-fluid">
+                    <div layout:fragment="content"></div>
+                </div>
             </div>
         </div>
        <!-- insert script -->

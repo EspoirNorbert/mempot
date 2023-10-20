@@ -6,7 +6,7 @@
   layout:decorate="~{layouts/student_base}"
 >
   <div layout:fragment="content">
-    <div class="container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
@@ -24,8 +24,8 @@
         <div class="row">
           <div th:if="${thesis.size() == 0}">
             <div
-              th:replace="~{fragments/empty('La bibliotheques des memoires est vide', 
-                           'Tous vos memoires soumis seront afficher ici pour que 
+              th:replace="~{fragments/empty('La bibliotheques des Mémoire s est vide', 
+                           'Tous vos Mémoire s soumis seront afficher ici pour que 
                            vous puissez les consulter tout moment.')}"
             ></div>
           </div>
@@ -49,7 +49,7 @@
                 </a>
                   <!-- autor -->
                   <span class="authors-results" th:text="${t.student.firstname} + ' ' + ${t.student.lastname}"></span>
-                  <!-- Filiere et annee -->
+                  <!-- Filière et annee -->
                   <div class="mb-1">
                     <span
                       class="text-muted"

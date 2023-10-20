@@ -6,26 +6,26 @@
   layout:decorate="~{layouts/student_base}"
 >
   <div layout:fragment="content">
-    <div class="content container-fluid mt-5">
+    <div >
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
-            <h3 class="page-title fw-bolder">Depots</h3>
+            <h3 class="page-title fw-bolder">Dépôts</h3>
             <ul class="breadcrumb">
               <li class="breadcrumb-item">
                 <a th:href="@{/user}">Tableau de bord</a>
               </li>
               <li class="breadcrumb-item">
-                <a th:href="@{/user/thesis}">Depots</a>
+                <a th:href="@{/user/thesis}">Dépôts</a>
               </li>
-              <li class="breadcrumb-item active">Depot</li>
+              <li class="breadcrumb-item active">Dépôt</li>
             </ul>
           </div>
         </div>
       </div>
       <div class="card">
         <div class="card-header">
-          <h4 class="card-title fw-bold">Depot memoire</h4>
+          <h4 class="card-title fw-bold">Dépôt Mémoire </h4>
         </div>
         <div class="card-body">
          <div th:replace="~{fragments/require_alert}"></div>
@@ -48,10 +48,10 @@
                     th:field="*{topic}"
                     required
                     name="nom"
-                    placeholder="Entrer le theme de votre memoire"
+                    placeholder="Entrer le theme de votre Mémoire "
                   />
                   <div id="NameHelpBlock" class="form-text">
-                    Le titre du memoire
+                    Le titre du Mémoire 
                   </div>
                 </div>
                 <div class="form-group">
@@ -64,15 +64,15 @@
                     th:field="*{academicYear}"
                     required
                     name="academicYear"
-                    placeholder="Entrer l'année academique de la filiere (ex: 2023)"
+                    placeholder="Entrer l'année academique de la Filière (ex: 2023)"
                   />
                   <div id="NameHelpBlock" class="form-text">
-                    L'année academique du memoire
+                    L'année academique du Mémoire 
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="name"
-                    >Fichier du memoire (.pdf)
+                    >Fichier du Mémoire  (.pdf)
                     <span class="text-danger">*</span></label
                   >
                   <input
@@ -84,12 +84,12 @@
                     accept=".pdf"
                   />
                   <div id="NameHelpBlock" class="form-text">
-                    Fichier du memoire. Seule les pdf sont autorisé.
+                    Fichier du Mémoire . Seule les pdf sont autorisé.
                   </div>
                 </div>
                 <div>
                     <a th:href="@{/user/thesis}" class="btn btn-outline-app me-3">Annuler</a>
-                  <button type="submit" class="btn btn-primary">Valider le depot</button>
+                  <button type="submit" class="btn btn-primary">Valider le Dépôt</button>
                 </div>
               </form>
             </div>
