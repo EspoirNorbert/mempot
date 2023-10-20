@@ -10,7 +10,7 @@
   }
 
 .sidebar-bg {
-    background-color: #680a83;
+    background-color: #555b6b;
     color: white;
 }
 
@@ -19,11 +19,11 @@
 }
 
 .text-app {
-    color: #680a83;
+    color: #555b6b;
 }
 
 .bg-avatar-title {
-    background-color: #680a83;
+    background-color: #555b6b;
 }
 
 .bg-transparent {
@@ -35,20 +35,20 @@
 }
 
 .bg-app {
-    background-color: #680a83;
+    background-color: #555b6b;
 }
 
 .bg-light-app {
-    background-color: #7c2296;
+    background-color: #7a8194;
 }
 
 .btn-outline-app {
-    color: #680a83;
-    border-color: #680a83;
+    color: #7a8194;
+    border-color: #7a8194;
 }
 .btn-outline-app:hover {
-    background-color: #8d19ad;
-    border-color: #8d19ad;
+    background-color: #7a8194;
+    border-color: #7a8194;
     color: #fff;
 }
 
@@ -63,11 +63,11 @@
 }
 
 .sidebar-menu > ul > li:hover {
-    background-color: rgba(130, 57, 150, 0.8);
+    background-color: rgba(140, 135, 142, 0.8);
 }
 
 .sidebar-menu > ul > li.active:hover {
-    background-color: #7c2296;
+    background-color: #7a8194;
     color: #fff;
 }
 
@@ -76,7 +76,7 @@
 }
 
 .sidebar-menu li.active a {
-    background-color: #7c2296;
+    background-color: #7a8194;
     color: #fff;
     border-left: 3px solid white;
   }
@@ -93,7 +93,7 @@
     display: flex;
     align-items: center;
     background-color: white; /* Couleur bleue de Google Drive */
-    color: #7c2296;
+    color: #555b6b;
     padding: 10px 20px;
     border: none;
     border-radius: 48px;
@@ -110,8 +110,8 @@
 .nav-tabs.nav-tabs-solid > li > a.active,
 .nav-tabs.nav-tabs-solid > li > a.active:hover,
 .nav-tabs.nav-tabs-solid > li > a.active:focus {
-    background-color: #680a83;
-    border-color: #680a83;
+    background-color: #555b6b;
+    border-color: #555b6b;
     color: #fff;
 }
 
@@ -132,7 +132,7 @@ div.file {
 }
 
 .typdoc {
-    background-color: #680a83;
+    background-color: #555b6b;
     color: #fff;
     font-size: .85rem;
     font-weight: 700;
@@ -203,3 +203,58 @@ div.authors {
 .custom-alert-danger {
     background-color: #FED7D7;
 }
+
+.logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    width: 50px; /* Ajustez la largeur de l'image selon vos besoins */
+    height: auto; /* Cela garantit que l'image conserve son rapport hauteur/largeur */
+    margin-right: 10px; /* Espace entre l'image et le texte (ajustez selon vos préférences) */
+}
+
+.logo-text {
+    /* Vos styles de texte personnalisés */
+    color: #333; /* Couleur du texte */
+    /* Autres styles de texte... */
+    font-weight: bolder;
+    font-size: 25pt;
+}
+
+
+.home-submit {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    url(https://www.servicescape.com/img/blog/post/postbg95097.webp);
+    background-position: top -50px center;
+    background-repeat: no-repeat;
+    border-top: 1px solid #fff;
+    padding-top: 60px;
+    position: relative; /* Ajout de cette propriété pour empiler correctement le gradient et le contenu */
+}
+
+.deposit-index-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.btn-primary-orange {
+    background: #515b9d;
+    border: 1px solid #515b9d;
+    color: #fff;
+    margin-right: -1px;
+    margin-bottom: 6px;
+    padding: 19px 18px 16px;
+    transition: 0.5s;
+}
+
+/***
+
+color: #555b6b
+deuxieme: #515b9d
+troisieme: #f2a452
+quatrieme: #010100
+**/

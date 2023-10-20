@@ -41,7 +41,7 @@ input:-webkit-autofill:focus {
   height: 40px;
 }
 .form-control:focus {
-  border-color: #680a83;
+  border-color: #555b6b;
   box-shadow: none;
   outline: 0;
 }
@@ -370,7 +370,7 @@ table.table td h2 span {
 }
 .bg-primary,
 .badge-primary {
-  background-color: #680a83 !important;
+  background-color: #555b6b !important;
 }
 a.bg-primary:focus,
 a.bg-primary:hover,
@@ -469,8 +469,8 @@ button.bg-danger:hover {
   color: #757575 !important;
 }
 .btn-primary {
-  background-color: #680a83;
-  border: 1px solid #680a83;
+  background-color: #555b6b;
+  border: 1px solid #555b6b;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -1027,7 +1027,7 @@ button.bg-danger:hover {
 }
 .select2-container--default
   .select2-results__option--highlighted[aria-selected] {
-  background-color: #680a83;
+  background-color: #555b6b;
 }
 .select2-container--default .select2-selection--multiple {
   border: 1px solid #ddd;
@@ -1141,7 +1141,7 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-top > li > a.active,
 .nav-tabs.nav-tabs-top > li > a.active:hover,
 .nav-tabs.nav-tabs-top > li > a.active:focus {
-  border-top-color: #680a83;
+  border-top-color: #555b6b;
 }
 .nav-tabs.nav-tabs-bottom > li {
   margin-bottom: -1px;
@@ -1151,7 +1151,7 @@ button.bg-danger:hover {
 .nav-tabs.nav-tabs-bottom > li > a.active:focus {
   border-bottom-width: 2px;
   border-color: transparent;
-  border-bottom-color: #680a83;
+  border-bottom-color: #555b6b;
   background-color: transparent;
   transition: none 0s ease 0s;
   -moz-transition: none 0s ease 0s;
@@ -1642,7 +1642,7 @@ html.menu-opened body {
 .top-nav-search .btn {
   background-color: transparent;
   border-color: transparent;
-  color: #680a83;
+  color: #555b6b;
   min-height: 40px;
   padding: 7px 15px;
   position: absolute;
@@ -2541,7 +2541,7 @@ table.table-inbox tbody tr.checked {
 .table-search button {
   background-color: transparent;
   border-color: transparent;
-  color: #680a83;
+  color: #555b6b;
   padding: 5px 10px;
   position: absolute;
   top: 0;
@@ -3522,7 +3522,7 @@ table .actions .btn {
   font-size: 16px;
 }
 .profile-list i {
-  color: #680a83;
+  color: #555b6b;
   padding-right: 5px;
 }
 .product-content {
@@ -3836,7 +3836,7 @@ table .actions .btn {
 @media only screen and (min-width: 992px) {
   #toggle_btn {
     align-items: center;
-    color: #680a83;
+    color: #555b6b;
     display: inline-flex;
     float: left;
     font-size: 30px;
@@ -3952,7 +3952,7 @@ table .actions .btn {
     width: 100%;
   }
   .mobile_btn {
-    color: #680a83 !important;
+    color: #555b6b !important;
     cursor: pointer;
     display: block;
     font-size: 24px;

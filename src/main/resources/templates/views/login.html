@@ -3,64 +3,82 @@
   lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/auth_base}"
+  layout:decorate="~{layouts/guest_base}"
 >
   <div layout:fragment="content">
-    <div class="login-right">
-      <div class="login-right-wrap">
-        <a th:href="@{/}">
-          <img
-            class="d-block mx-auto mb-5"
-            th:src="@{/img/logo.png}"
-            alt="Logo application"
-            title="Page accueil"
-        /></a>
-        <form th:action="@{/login}" method="post">
-          <div
-            class="alert alert-success"
-            th:text="${success}"
-            th:if="${success}"
-          ></div>
-          <div class="alert alert-danger" th:if="${param.error}">
-            Les informations de connexion sont invalides.
+    <section class="container d-flex flex-column">
+      <div
+        class="align-items-center justify-content-center g-0 min-vh-100 row"
+      
+      >
+        <div class="py-8 py-xl-0 col-lg-5 col-md-5">
+          <div class="card">
+            <div class="p-6 card-body">
+              <div class="mb-4">
+                <h1 class="mb-1 fw-bold">Connexion</h1>
+                <span
+                  >Vous n'avez pas encore de compte?
+                  <a class="ms-1" href="/authentication/sign-up">Creer un compte</a>
+                </span>
+              </div>
+              <form  th:action="@{/login}" method="post">
+                <div
+                class="alert alert-success"
+                th:text="${success}"
+                th:if="${success}"
+              ></div>
+              <div class="alert alert-danger" th:if="${param.error}">
+                Les informations de connexion sont invalides.
+              </div>
+              <div class="alert alert-success" th:if="${param.logout}">
+                Vous etes deconnecté avec success.
+              </div>
+                <div class="row">
+                  <div class="mb-3 col-lg-12 col-md-12">
+                    <label class="form-label">Email </label>
+                    <input
+                      placeholder="Email address here"
+                      required=""
+                      type="text"
+                      id="email"
+                      name="username"
+                      class="form-control"
+                    />
+                  </div>
+                  <div class="mb-3 col-lg-12 col-md-12" style="position: relative;">
+                    <label class="form-label">Mot de passe </label>
+                    <input
+                      placeholder="**************"
+                      required=""
+                      type="password"
+                      id="password"
+                      name="password"
+                      class="form-control"
+                    />
+                    <i class="bi bi-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
+                  </div>
+                  <div class="mb-3 col-lg-12 col-md-12">
+                    <div
+                      class="d-md-flex justify-content-between align-items-center"
+                    
+                    >
+                  
+                    </div>
+                  </div>
+                  <div
+                    class="mb-0 d-grid gap-2 col-lg-12 col-md-12"
+                  
+                  >
+                    <button type="submit" class="btn btn-primary">
+                      Se connecter
+                    </button>
+                  </div>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="alert alert-success" th:if="${param.logout}">
-            Vous etes deconnecté avec success.
-          </div>
-          <div class="form-group">
-            <label for="email" class="fw-bolder">Email</label>
-            <input
-              class="form-control form-control-lg"
-              type="text"
-              name="username"
-              placeholder="Email"
-            />
-          </div>
-          <div class="form-group" style="position: relative;">
-            <label for="password" class="fw-bolder">Mot de passe</label>
-            <input
-                class="form-control form-control-lg"
-                type="password"
-                name="password"
-                id="password"
-                placeholder="Password"
-            />
-            <i class="bi bi-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
-        </div>        
-          <div class="form-group">
-            <button class="btn btn-primary btn-lg btn-block" type="submit">
-              Se connecter
-            </button>
-          </div>
-        </form>
-
-        <div class="text-center forgotpass">
-          <p class="text-muted">
-            Vous n'avez pas de compte?
-            <a th:href="@{/register}">S'inscrire</a>
-          </p>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </html>

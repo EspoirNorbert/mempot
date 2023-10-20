@@ -86,6 +86,6 @@ public class Helper {
 	public static String getDefautlAvatar(String firstname , String lastname) {
 		return 
 				"https://ui-avatars.com/api/?name=" + firstname + "+"+ lastname 
-				+ "&background=680a83&color=fff&size=100";
+				+ "&background=7a8194&color=fff&size=100";
 	}
 }

@@ -9,11 +9,7 @@
           <!-- navbar -->
           <div th:replace="~{fragments/navbar}"></div>
           <!-- content -->
-          <div class="page-wrapper p-2 mt-5">
-            <div class="content container-fluid">
-                <div layout:fragment="content"></div>
-            </div>
-        </div>
+          <div layout:fragment="content"></div>
         </div>
        <!-- insert script -->
        <div th:replace="~{fragments/scripts}"></div>

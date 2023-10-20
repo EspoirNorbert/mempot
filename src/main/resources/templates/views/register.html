@@ -3,108 +3,179 @@
   lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/auth_base}"
+  layout:decorate="~{layouts/guest_base}"
 >
   <div layout:fragment="content">
-    <div class="login-right">
-      <div class="login-right-wrap">
-        <a th:href="@{/home}">
-          <img
-            class="d-block mx-auto mb-3"
-            th:src="@{/img/logo.png}"
-            alt="Logo application"
-            title="Page accueil"
-        /></a>
-        <p class="account-subtitle">Inscriver pour deposer votre Mémoire </p>
-        <form method="post" th:action="@{/save}" th:object="${student}">
-          <div class="alert alert-info">
-            <p class="text-muted mt-3"><span class="text-danger">*</span> Les champs sont obligatoires</p>
+    <section class="container d-flex flex-column mt-5">
+      <div class="align-items-center justify-content-center g-0 min-vh-100 row">
+        <div class="py-8 py-xl-0 col-lg-5 col-md-5">
+          <div class="card border-none shadow">
+            <div class="p-6 card-body">
+              <div class="mb-4">
+                <h1 class="mb-1 fw-bold">Creation de compte</h1>
+                <span
+                  >Vous avez deja un compte?
+                  <a class="ms-1" th:href="@{/login}">Connectez-vous</a>
+                </span>
+              </div>
+              <form method="post" th:action="@{/save}" th:object="${student}">
+                <div class="alert alert-info">
+                  <p class="text-muted mt-3">
+                    <span class="text-danger">*</span>
+                    Les champs sont obligatoires
+                  </p>
+                </div>
+                <div class="form-group">
+                  <label for="firstname" class="fw-bolder"
+                    >Nom
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Entrer votre nom: (Doe)"
+                    name="firstname"
+                    th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
+                    required="required"
+                    th:field="*{firstname}"
+                  />
+                  <div id="FirstnameHelpBlock" class="form-text">
+                    Le nom de famille inscrit dans l'ecole.
+                  </div>
+                  <div
+                    th:if="${#fields.hasErrors('firstname')}"
+                    th:errors="*{firstname}"
+                    class="text-danger w-100"
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label for="lastname" class="fw-bolder"
+                    >Prenom(s)
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Entrer votre prenom: (John)"
+                    th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
+                    required="required"
+                    th:field="*{lastname}"
+                  />
+                  <div id="LastnameHelpBlock" class="form-text">
+                    Le prenom(s) inscrit dans l'ecole.
+                  </div>
+                  <div
+                    th:if="${#fields.hasErrors('firstname')}"
+                    th:errors="*{firstname}"
+                    class="text-danger w-100"
+                  ></div>
+                </div>
+                <div class="form-group">
+                  <label for="matricule" class="fw-bolder"
+                    >Matricule
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="Entrer votre matricule scolaire"
+                    required="required"
+                    th:field="*{matricule}"
+                  />
+                  <div id="MatriculeHelpBlock" class="form-text">
+                    Le matricule scolaire donnée par l'ecole.
+                  </div>
+                </div>
+                <!-- grades -->
+                <div class="form-group">
+                  <label for="grade" class="fw-bolder"
+                    >Niveaux
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select
+                    name="grades"
+                    id="grades"
+                    class="form-control"
+                    required="required"
+                    th:field="*{grade}"
+                  >
+                    <option value="">Selectionner votre niveau scolaire</option>
+                    <option
+                      th:each="grade : ${grades}"
+                      th:value="${grade.id}"
+                      th:text="${grade.name}"
+                    ></option>
+                  </select>
+                  <div id="GradeHelpBlock" class="form-text">
+                    Le Niveau scolaire dans lequel vous etre inscrit.
+                  </div>
+                </div>
+                <!-- sectors -->
+                <div class="form-group">
+                  <label for="sectors" class="fw-bolder"
+                    >Filières
+                    <span class="text-danger">*</span>
+                  </label>
+                  <select
+                    name="sectors"
+                    id="sectors"
+                    class="form-control"
+                    required="required"
+                    th:field="*{sector}"
+                  >
+                    <option value="">Selectionner votre Filière</option>
+                    <option
+                      th:each="sector : ${sectors}"
+                      th:value="${sector.id}"
+                      th:text="${sector.name}"
+                    ></option>
+                  </select>
+                  <div id="SectorHelpBlock" class="form-text">
+                    La Filière dans lequel vous etre inscrit.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="email" class="fw-bolder"
+                    >Email
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="text"
+                    placeholder="johndoe@example.com"
+                    required="required"
+                    th:field="*{email}"
+                  />
+                  <div id="EmailHelpBlock" class="form-text">
+                    L'email personnel.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="fw-bolder"
+                    >Mot de passe
+                    <span class="text-danger">*</span>
+                  </label>
+                  <input
+                    class="form-control"
+                    type="password"
+                    placeholder="**********"
+                    th:field="*{password}"
+                    required="required"
+                  />
+                  <div id="EmailHelpBlock" class="form-text">
+                    Le mot de passe personnel.
+                  </div>
+                </div>
+                <div class="form-group">
+                  <button class="btn btn-primary btn-block" type="submit">
+                    S'inscrire
+                  </button>
+                </div>
+              </form>
+            </div>
           </div>
-          <div class="form-group">
-            <label for="firstname" class="fw-bolder">Nom <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" placeholder="Entrer votre nom: (Doe)" name="firstname" 
-            th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
-            required
-            th:field="*{firstname}" />
-            <div id="FirstnameHelpBlock" class="form-text">
-              Le nom de famille inscrit dans l'ecole.
-          </div>
-          <div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger w-100"></div>
-          </div>
-          <div class="form-group">
-            <label for="lastname" class="fw-bolder">Prenom(s) <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" placeholder="Entrer votre prenom: (John)" 
-            th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
-            required
-            th:field="*{lastname}" />
-            <div id="LastnameHelpBlock" class="form-text">
-              Le prenom(s) inscrit dans l'ecole.
-          </div>
-          <div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger w-100"></div>
-          </div>
-          <div class="form-group">
-            <label for="matricule" class="fw-bolder">Matricule <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" placeholder="Entrer votre matricule scolaire" required  th:field="*{matricule}" />
-            <div id="MatriculeHelpBlock" class="form-text">
-              Le matricule scolaire donnée par l'ecole.
-          </div>
-          </div>
-          <!-- grades -->
-          <div class="form-group">
-            <label for="grade" class="fw-bolder">Niveaux <span class="text-danger">*</span></label>
-            <select name="grades" id="grades" class="form-control" required th:field="*{grade}">
-              <option value="">Selectionner votre niveau scolaire</option>
-              <option th:each="grade : ${grades}" th:value="${grade.id}" th:text="${grade.name}"></option>
-            </select>
-            <div id="GradeHelpBlock" class="form-text">
-              Le Niveau scolaire dans lequel vous etre inscrit.
-          </div>
-          </div>
-          <!-- sectors -->
-          <div class="form-group">
-            <label for="sectors" class="fw-bolder">Filières <span class="text-danger">*</span></label>
-            <select name="sectors" id="sectors" class="form-control" required th:field="*{sector}">
-              <option value="">Selectionner votre Filière</option>
-              <option th:each="sector : ${sectors}" th:value="${sector.id}" th:text="${sector.name}"></option>
-            </select>
-            <div id="SectorHelpBlock" class="form-text">
-              La Filière dans lequel vous etre inscrit.
-          </div>
-          </div>
-          <div class="form-group">
-            <label for="email" class="fw-bolder">Email <span class="text-danger">*</span></label>
-            <input class="form-control" type="text" placeholder="johndoe@example.com" required th:field="*{email}" />
-            <div id="EmailHelpBlock" class="form-text">
-              L'email personnel.
-          </div>
-          </div>
-          <div class="form-group">
-            <label for="password" class="fw-bolder">Mot de passe <span class="text-danger">*</span></label>
-            <input
-              class="form-control"
-              type="password"
-              placeholder="**********"
-              th:field="*{password}"
-              required
-            />
-            <div id="EmailHelpBlock" class="form-text">
-              Le mot de passe personnel.
-          </div>
-          </div>
-          <div class="form-group">
-            <button class="btn btn-primary btn-block" type="submit">
-              S'inscrire
-            </button>
-          </div>
-        </form>
-
-        <div class="text-center forgotpass">
-          <p class="text-muted">
-            Vous n'avez deja un compte?
-            <a th:href="@{/login}">Se connecter</a>
-          </p>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </html>

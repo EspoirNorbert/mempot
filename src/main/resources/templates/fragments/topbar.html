@@ -1,10 +1,13 @@
 <div xmlns:th="http://www.thymeleaf.org" class="header">
   <div class="header-left">
     <a th:href="@{/}" class="logo">
-      <img th:src="@{/img/logo.png}" alt="Logo"
-    /></a>
+      <div class="logo-container">
+          <img th:src="@{/img/logo.png}" alt="Logo" class="logo-image">
+          <strong class="logo-text">Mempot</strong>
+      </div>
+  </a>
     <a th:href="@{/}" class="logo logo-small">
-      <img th:src="@{img/logo-small.png}" alt="Logo" width="30" height="30"
+      <img th:src="@{/img/logo-small.png}" alt="Logo" width="30" height="30"
     /></a>
   </div>
 

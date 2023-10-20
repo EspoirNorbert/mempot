@@ -1,26 +1,35 @@
-<nav 
-xmlns:th="http://www.thymeleaf.org" 
-class="navbar navbar-expand-sm navbar-light navbar-end bg-white">
-    <div class="container">
-        <a class="navbar-brand" th:href="@{/}">
-            <img th:src="@{/img/logo-small.png}" width="30" alt="Nono logo" class="me-2">
-            <span class="fs-4 text-white fw-bolder">DeposerTonMémoire </span>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-            <div class="d-flex ms-auto">
-                <ul class="navbar-nav">
-                    <li class="nav-item me-3">
-                        <a class="nav-link" th:href="@{/register}">S'inscrire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" th:href="@{/login}">
-                           <i class="fa fa-user"></i> Se connecter</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<nav
+  xmlns:th="http://www.thymeleaf.org"
+  class="navbar navbar-expand-sm navbar-light navbar-end bg-app"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" th:href="@{/}">
+      <img
+        th:src="@{/img/logo-small.png}"
+        width="30"
+        alt="Nono logo"
+        class="me-2"
+      />
+      <span class="fs-4 text-white fw-bolder text-uppercase">Mempot</span>
+    </a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#collapsibleNavbar"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <div class="d-flex ms-auto">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link text-white" th:href="@{/login}">
+              <i class="fa fa-user"></i> Se connecter</a
+            >
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </nav>

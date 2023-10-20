@@ -1,30 +1,32 @@
 <!DOCTYPE html>
-<html lang="fr" 
-    xmlns:th="http://www.thymeleaf.org" 
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" 
-    layout:decorate="~{layouts/guest_base}">
-
-    <div layout:fragment="content">
-        <section id="hero">
-            <div class="px-4 pt-5 my-5 text-center border-bottom h-100">
-                <h1 class="display-4 fw-bold">Deposer rapidement votre Mémoire  !</h1>
-                <div class="col-lg-6 mx-auto">
-                    <p class="lead mb-4 text-left">
-                        Bienvenue sur notre plateforme de dépôt de mémoires étudiants, un espace conçu pour célébrer l'excellence de nos étudiants. 
-                        Que vous ayez accompli un travail de recherche exceptionnel, une thèse inspirante ou un mémoire innovant, 
-                        cette plateforme est votre chance de partager vos découvertes et vos connaissances avec le monde.
-                    </p>
-                    <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-5">
-                        <a th:href="@{/user/thesis/deposit}" class="btn btn-primary btn-lg px-4 me-sm-3">Deposer votre Mémoire </a>
-                        <a th:href="@{/register}" class="btn btn-outline-secondary btn-lg px-4">Commencer des maintenant</a>
-                    </div>
-                </div>
-                <div class="overflow-hidden" style="max-height: 30vh;">
-                    <div class="container px-5">
-                        <img src="https://st3.depositphotos.com/31068556/33397/v/450/depositphotos_333978056-stock-illustration-the-guy-and-the-girl.jpg" class="img-fluid border rounded-3 shadow-lg mb-4" alt="Example image" width="700" height="500" loading="lazy">
-                    </div>
-                </div>
-            </div>
-        </section>
-    </div>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/guest_base}"
+>
+  <div layout:fragment="content">
+    <section class="home-submit">
+        <div class="row home-title m-0">
+          <div class="col-12 col-md-6 d-none d-md-block text-center">
+            <img
+              th:src="@{img/logo-small.png}"
+              class="logo-hal-home"
+              alt="HAL open science"
+            />
+          </div>
+          <div class="col-12 col-md-6 text-center">
+            <h1 class="home-promise">Partager librement les savoirs</h1>
+          </div>
+        </div>
+        <div class="deposit-index-link text-center"> <!-- Ajout de la classe text-center -->
+          <a href="/submit/index" class="btn-primary-orange hal-submit-button">
+            <span style="font-weight: bold; position: relative"
+              ><i class="fas fa-plus fs-4" aria-hidden="true"></i> Déposer
+            </span>
+          </a>
+        </div>
+      </section>
+      
+  </div>
 </html>
