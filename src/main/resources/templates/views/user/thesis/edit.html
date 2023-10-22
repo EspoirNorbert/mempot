@@ -40,34 +40,34 @@
               <form
                 th:action="@{/user/thesis/update}"
                 method="post"
-                th:object="${thesis}"
-              >
+                th:object="${thesis}">
                 <input type="hidden" name="id" th:field="*{id}" />
                 <div class="mb-3">
-                  <label class="mb-2 fw-bold"
-                    >Theme <span class="text-danger">*</span></label
-                  >
+                  <label class="mb-2 fw-bold">Theme <span class="text-danger">*</span></label>
                   <input
                     type="text"
                     required
+                    th:errorclass="is-invalid"
                     class="form-control"
                     th:field="*{topic}"
                   />
                   <div id="NameHelpBlock" class="form-text">
                     La taille du theme est de 200 caracteres maximal.
                 </div>
+                <div th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}" class="text-danger w-100"></div>
+          
                 </div>
                 <div class="mb-3">
-                  <label class="mb-2 fw-bold"
-                    >Année academique
-                    <span class="text-danger">*</span></label
-                  >
+                  <label class="mb-2 fw-bold">Année academique
+                    <span class="text-danger">*</span></label>
                   <input
                     type="number"
                     required
+                    th:errorclass="is-invalid"
                     class="form-control"
-                    th:field="*{academicYear}"
-                  />
+                    th:field="*{academicYear}"/>
+                  
+                  <div th:if="${#fields.hasErrors('academicYear')}" th:errors="*{academicYear}" class="text-danger w-100"></div>
                 </div>
                 
                 <div class="text-end">

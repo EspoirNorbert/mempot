@@ -15,6 +15,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "thesis")
@@ -31,6 +32,7 @@ public class Thesis implements Serializable {
 	private String topic;
 	
 	@Column(name="academic_year" , nullable = false)
+	@NotNull(message = "Année est obligatoire")
 	private Integer academicYear;
 	
 	@CreationTimestamp

@@ -67,7 +67,7 @@ public class StudentController {
     @PostMapping("/update")
     public String updateStudent(@Valid @ModelAttribute("student") UpdateStudentRequest requestStudent,
                                BindingResult result, Model model, RedirectAttributes rd) {
-        Student student = Helper.updateStudentRequestToStudent(requestStudent);
+       
 
         if (result.hasErrors()) {
             List<Sector> sectors = sectorService.list();
@@ -77,6 +77,8 @@ public class StudentController {
             return MAIN_PATH + "/edit";
         }
 
+        Student student = Helper.updateStudentRequestToStudent(requestStudent);
+        
         rd.addFlashAttribute("success", "Les informations de l'étudiant ayant le numéro " + requestStudent.getId() + " ont été mises à jour avec succès!");
         studentService.update(student);
         return "redirect:/admin/students";

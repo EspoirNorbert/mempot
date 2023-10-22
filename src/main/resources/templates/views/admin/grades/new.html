@@ -29,34 +29,25 @@
         </div>
         <div class="card-body">
           <div th:replace="~{fragments/require_alert}"></div>
-          <form
-            th:action="@{/admin/grades/new}"
-            method="post"
-            th:object="${grade}"
-          >
+          <form th:action="@{/admin/grades/new}" method="post" th:object="${grade}">
             <div class="form-group">
-              <label for="name" class="fw-bold"
-                >Nom
+              <label for="name" class="fw-bold">Nom
                 <span class="text-danger">*</span>
               </label>
               <input
                 type="text"
                 class="form-control"
-                required
                 th:field="*{name}"
                 name="nom"
-                th:classappend="${#fields.hasErrors('name')} ? 'form-control-invalid' : ''"
+                required
+                th:errorclass="is-invalid"
                 placeholder="Entrer le nom de la Filière (ex: Master)"
               />
               <div id="NameHelpBlock" class="form-text">
                 Le nom du nouveau Filière.
               </div>
               <!-- display error -->
-              <div
-                th:if="${#fields.hasErrors('name')}"
-                th:errors="*{name}"
-                class="invalid-field w-100"
-              ></div>
+              <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}" class="text-danger w-100"></div>
             </div>
             <div class="form-group">
               <label for="name" class="fw-bold">Description (facultatif)</label>

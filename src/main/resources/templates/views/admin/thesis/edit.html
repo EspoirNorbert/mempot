@@ -40,22 +40,22 @@
               <form
                 th:action="@{/admin/thesis/update}"
                 method="post"
-                th:object="${thesis}"
-              >
+                th:object="${thesis}">
                 <input type="hidden" name="id" th:field="*{id}" />
                 <div class="mb-3">
-                  <label class="mb-2 fw-bold"
-                    >Theme <span class="text-danger">*</span></label
-                  >
+                  <label class="mb-2 fw-bold">Theme <span class="text-danger">*</span></label>
                   <input
                     type="text"
                     required
                     class="form-control"
+                    th:errorclass="is-invalid"
                     th:field="*{topic}"
                   />
                   <div id="NameHelpBlock" class="form-text">
                     La taille du theme est de 200 caracteres maximal.
                 </div>
+                <div th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}" class="text-danger w-100"></div>
+
                 </div>
                 <div class="mb-3">
                   <label class="mb-2 fw-bold"
@@ -66,8 +66,11 @@
                     type="number"
                     required
                     class="form-control"
+                    th:errorclass="is-invalid"
                     th:field="*{academicYear}"
                   />
+                <div th:if="${#fields.hasErrors('academicYear')}" th:errors="*{academicYear}" class="text-danger w-100"></div>
+
                 </div>
                 
                 <div class="text-end">
@@ -89,7 +92,7 @@
             </div>
           
               <div class="p-0 card-body">
-                <div class="list-group list-group-flush">
+             <div th:if="${thesis.student}" class="list-group list-group-flush">
                   <div class="list-group-item">
                     <span class="text-body">Identifiant du Mémoire </span>
                     <h5 class="fs-5" th:text="${thesis.id}"></h5>
@@ -113,6 +116,7 @@
                   </div>
                  
                 </div>
+                <p th:unless="${thesis.student}" class="text-danger p-3">Les informations de l'etudiant ne sont pas disponible</p>
               </div>
             </div>
           </div>

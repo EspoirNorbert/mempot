@@ -25,7 +25,7 @@ public class UpdateStudentRequest implements Serializable {
 	@NotEmpty(message = "Le niveau est obligatoire")
 	private String grade;
 	
-	@NotEmpty(message = "L'email est obligatoire")
+	@NotEmpty(message = "Email est obligatoire")
 	private String email;
 	
 	private String address;

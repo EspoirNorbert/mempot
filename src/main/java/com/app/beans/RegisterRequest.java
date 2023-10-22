@@ -23,7 +23,7 @@ public class RegisterRequest implements Serializable {
 	@NotEmpty(message = "Le niveau est obligatoire")
 	private String grade;
 	
-	@NotEmpty(message = "L'email est obligatoire")
+	@NotEmpty(message = "Email est obligatoire")
 	private String email;
 	
 	@NotEmpty(message = "Le mot de passe est obligatoire")

@@ -3,8 +3,7 @@
   lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/base}"
->
+  layout:decorate="~{layouts/base}">
   <div layout:fragment="content">
     <div >
       <div class="page-header">
@@ -32,21 +31,22 @@
           <form
             th:action="@{/admin/students/update}"
             method="post"
-            th:object="${student}"
-          >
+            th:object="${student}">
           <input type="hidden" name="id" th:field="*{id}">
           <div class="row">
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Nom  <span class="text-danger">*</span></label>
-                <input type="text" required class="form-control" th:field="*{lastname}">
-            </div>
+                <input type="text" class="form-control" required  th:field="*{lastname}" placeholder="Nom de l'etudiant" th:errorclass="is-invalid">
+                <div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}"  class="text-danger w-100"></div>
+             </div>
           
             </div>
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Prénom(s)  <span class="text-danger">*</span></label>
-                <input type="text" required class="form-control" th:field="*{firstname}">
+                <input type="text" class="form-control" required th:field="*{firstname}" placeholder="Prénom(s) de l'etudiant" th:errorclass="is-invalid">
+                <div th:if="${#fields.hasErrors('firstname')}" th:errors="*{firstname}" class="text-danger w-100"></div>
             </div>
             </div>
           </div>
@@ -62,14 +62,16 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Matricule  <span class="text-danger">*</span></label>
-                <input type="text" required  class="form-control" th:field="*{matricule}">
+                <input type="text"  class="form-control" required th:field="*{matricule}" placeholder="Matricule de l'etudiant" th:errorclass="is-invalid">
+                <div th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}" class="text-danger w-100"></div>
             </div>
           
             </div>
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Email  <span class="text-danger">*</span></label>
-                <input type="email" class="form-control" th:field="*{email}">
+                <input type="email" class="form-control" required th:field="*{email}" th:erroclass="is-invalid" placeholder="E-mail de l'etudiant (johndoe@gmail.com)">
+                <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger w-100"></div>
             </div>
             </div>
           </div>
@@ -78,31 +80,30 @@
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Niveaux  <span class="text-danger">*</span></label>
-                <select name="grades" id="grades" class="form-control" required th:field="*{grade}">
+                <select name="grades" id="grades" class="form-control" required th:field="*{grade}" th:errorclass="is-invalid">
                   <option value="">Selectionner votre niveau scolaire</option>
                   <option th:each="grade : ${grades}" 
                   th:selected="${grade == grade.name}"
                   th:value="${grade.id}" th:text="${grade.name}"></option>
                 </select>
-            </div>
-          
+                <div th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}" class="text-danger w-100"></div>
+            </div>          
             </div>
             <div class="col-md-6">
               <div class="mb-3">
                 <label class="mb-2 fw-bold">Filières  <span class="text-danger">*</span></label>
-                <select name="sectors" id="sectors" class="form-control" required th:field="*{sector}">
+                <select name="sectors" id="sectors" class="form-control" required th:field="*{sector}" th:errorclass="is-invalid">
                   <option value="">Selectionner votre Filière</option>
                   <option th:each="sector : ${sectors}" th:value="${sector.id}" 
                   th:selected="${sector == sector.name}"
                   th:text="${sector.name}"></option>
                 </select>
+                <div th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}" class="text-danger w-100"></div>
             </div>
             </div>
           </div>
             <div class="text-end">
-              <a th:href="@{/admin/students}" class="btn btn-outline-app me-3"
-                >Annuler</a
-              >
+              <a th:href="@{/admin/students}" class="btn btn-outline-app me-3">Annuler</a>
               <button type="submit" class="btn btn-primary">Mettre à jour</button>
             </div>
           </form>
