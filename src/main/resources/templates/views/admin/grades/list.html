@@ -3,10 +3,9 @@
   lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/base}"
->
+  layout:decorate="~{layouts/base}">
   <div layout:fragment="content">
-    <div >
+    <div>
       <div class="page-header">
         <div class="row align-items-center">
           <div class="col">
@@ -21,18 +20,17 @@
           <div class="col d-flex justify-content-end">
             <a th:href="@{/admin/grades/new}" class="btn btn-primary">
               <i class="fa fa-plus"></i>
-              Nouveau niveau</a
-            >
+              Nouveau niveau</a>
           </div>
         </div>
       </div>
+      <div th:replace="~{fragments/flash}"></div>
       <div class="row">
         <div th:if="${grades.size() == 0}">
           <div
             th:replace="~{fragments/empty('Vous n\'avez creer aucun niveau',
             'Tous vos niveau seront sauvegardées ici pour que
-            vous puissez les consulter tout moment.')}"
-          ></div>
+            vous puissez les consulter tout moment.')}"></div>
         </div>
         <div th:unless="${grades.size() == 0}" class="col-md-12 d-flex">
           <div class="card card-table flex-fill">
@@ -53,8 +51,7 @@
                       <td>
                         <div
                           th:if="${grade.students.size() != 0}"
-                          class="avatar-group"
-                        >
+                          class="avatar-group">
                           <div
                             class="avatar avatar-xs"
                             th:each="student : ${grade.students}"
@@ -70,9 +67,7 @@
                             />
                           </div>
                         </div>
-                        <span th:unless="${grade.students.size() != 0}"
-                          >Aucun etudiant n'est inscrit dans ce niveau.</span
-                        >
+                        <span th:unless="${grade.students.size() != 0}">Aucun etudiant n'est inscrit dans ce niveau.</span>
                       </td>
                       <td class="text-end">
                         <div class="dropdown">
@@ -80,8 +75,7 @@
                             class="btn-icon btn btn-ghost btn-sm rounded-circle"
                             id="dropdownMenuLink"
                             data-bs-toggle="dropdown"
-                            href="#"
-                          >
+                            href="#">
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               width="15px"
