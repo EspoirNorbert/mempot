@@ -10,7 +10,12 @@
       <!-- topbar -->
       <div th:replace="~{fragments/topbar}"></div>
       <!-- sidebar -->
-      <div th:replace="~{currentUser.roles[0].name == 'USER' ? 'fragments/user_sidebar' : 'fragments/sidebar'}"></div>
+      <div th:if="${userRole == 'admin'}">
+        <div th:replace="~{fragments/sidebar}"></div>
+      </div>
+      <div th:if="${userRole == 'user'}">
+        <div th:replace="~{fragments/user_sidebar}"></div>
+      </div>
       <!-- Page content -->
       <div class="page-wrapper p-2 mt-5">
         <div layout:fragment="content" class="content container-fluid"></div>

@@ -10,9 +10,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.models.Grade;
@@ -51,8 +51,8 @@ public class GradeController {
         return "redirect:/admin/grades";
     }
 
-    @GetMapping("/edit")
-    public String displayEditGradeForm(@RequestParam("id") Long id, Model model) {
+    @GetMapping("/edit/{gradeId}")
+    public String displayEditGradeForm(@PathVariable("gradeId") Long id, Model model) {
         Grade grade = gradeService.findById(id);
         if (grade != null) {
             model.addAttribute("grade", grade);
@@ -61,8 +61,8 @@ public class GradeController {
         return "redirect:/admin/grades";
     }
 
-    @GetMapping("/detail")
-    public String displayDetailGradeForm(@RequestParam("id") Long id, Model model) {
+    @GetMapping("/detail/{gradeId}")
+    public String displayDetailGradeForm(@PathVariable("gradeId") Long id, Model model) {
         Grade grade = gradeService.findById(id);
         if (grade != null) {
             model.addAttribute("grade", grade);
@@ -81,8 +81,8 @@ public class GradeController {
         return "redirect:/admin/grades";
     }
 
-    @GetMapping("/delete")
-    public String deleteGrade(@RequestParam("id") Long id, RedirectAttributes rd) {
+    @GetMapping("/delete/{gradeId}")
+    public String deleteGrade(@PathVariable("gradeId") Long id, RedirectAttributes rd) {
         if (gradeService.findById(id).getStudents().isEmpty()) {
             gradeService.delete(id);
             rd.addFlashAttribute("success", "Le niveau " + id + " a été supprimé avec succès !");

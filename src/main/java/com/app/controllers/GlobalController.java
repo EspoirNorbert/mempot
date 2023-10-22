@@ -22,9 +22,9 @@ public class GlobalController {
 	public void getCurrentUser(Model model, org.apache.coyote.Request request) {
 		User auth = userService.getCurrentUser();
 		if (auth != null) {
+			model.addAttribute("userRole", userService.currentUserRole());
 			model.addAttribute("userAvatar", Helper.getDefautlAvatar(auth.getFirstname(), auth.getLastname()));		
 			model.addAttribute("currentUser", auth);
-			System.out.println("Current User set !!!!!!");
 		}
 	}
 	

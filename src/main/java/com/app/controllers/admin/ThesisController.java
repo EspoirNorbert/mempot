@@ -1,7 +1,5 @@
 package com.app.controllers.admin;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.app.models.Thesis;
 import com.app.services.ThesisService;
@@ -31,10 +30,6 @@ public class ThesisController {
 	@GetMapping
 	public String list(Model model) {
 		List<Thesis> thesis  = thesisService.list();
-		Calendar cal = Calendar.getInstance();
-		
-		SimpleDateFormat dateFormat = new SimpleDateFormat("dd MMMM yyyy");
-		model.addAttribute("today", dateFormat.format(cal.getTime()));
 		model.addAttribute("thesis", thesis);
 		return MAIN_PATH + "/list";
 	}
@@ -66,17 +61,15 @@ public class ThesisController {
 	}
 	
 	@PostMapping("/update")
-	public String modifier(@Valid @ModelAttribute("Thesis") 
-	Thesis thesis,BindingResult result,Model model) {
+	public String modifier(@Valid @ModelAttribute("Thesis") Thesis thesis,BindingResult result,Model model , RedirectAttributes rd) {
 		
 		if (result.hasErrors()) {
 			return MAIN_PATH+ "/edit";
 		}
 	
+		rd.addFlashAttribute("success","La these " + thesis.getId() + 
+				" a été modifiée avec succès");	
 		this.thesisService.update(thesis);
 		return "redirect:/admin/thesis";
-	}
-	
-	
-	
+	}	
 }

@@ -16,73 +16,73 @@ import java.util.List;
 @RequestMapping("/admin/sectors")
 public class SectorController {
 
-    private static final String MAIN_PATH = "views/admin/sectors";
-    private static final String SUCCESS_MESSAGE = "Une nouvelle filière a été créée avec succès !";
+	private static final String MAIN_PATH = "views/admin/sectors";
+	private static final String SUCCESS_MESSAGE = "Une nouvelle filière a été créée avec succès !";
 
-    @Autowired
-    private SectorService sectorService;
+	@Autowired
+	private SectorService sectorService;
 
-    @GetMapping
-    public String listSectors(Model model) {
-        List<Sector> sectors = sectorService.list();
-        model.addAttribute("sectors", sectors);
-        return MAIN_PATH + "/list";
-    }
+	@GetMapping
+	public String listSectors(Model model) {
+		List<Sector> sectors = sectorService.list();
+		model.addAttribute("sectors", sectors);
+		return MAIN_PATH + "/list";
+	}
 
-    @GetMapping("/new")
-    public String displayNewSectorForm(Model model) {
-        model.addAttribute("sector", new Sector());
-        return MAIN_PATH + "/new";
-    }
+	@GetMapping("/new")
+	public String displayNewSectorForm(Model model) {
+		model.addAttribute("sector", new Sector());
+		return MAIN_PATH + "/new";
+	}
 
-    @PostMapping("/new")
-    public String createNewSector(@Valid @ModelAttribute("sector") Sector sector, BindingResult bindingResult, RedirectAttributes rd) {
-        if (bindingResult.hasErrors()) {
-            return MAIN_PATH + "/new";
-        }
+	@PostMapping("/new")
+	public String createNewSector(@Valid @ModelAttribute("sector") Sector sector, BindingResult bindingResult, RedirectAttributes rd) {
+		if (bindingResult.hasErrors()) {
+			return MAIN_PATH + "/new";
+		}
 
-        sectorService.save(sector);
-        rd.addFlashAttribute("success", SUCCESS_MESSAGE);
-        return "redirect:/admin/sectors";
-    }
+		sectorService.save(sector);
+		rd.addFlashAttribute("success", SUCCESS_MESSAGE);
+		return "redirect:/admin/sectors";
+	}
 
-    @GetMapping("/edit/{sectorId}")
-    public String displayEditSectorForm(@PathVariable("sectorId") Long id, Model model) {
-        Sector sector = sectorService.findById(id);
-        if (sector != null) {
-            model.addAttribute("sector", sector);
-        }
-        return MAIN_PATH + "/edit";
-    }
+	@GetMapping("/edit/{sectorId}")
+	public String displayEditSectorForm(@PathVariable("sectorId") Long id, Model model) {
+		Sector sector = sectorService.findById(id);
+		if (sector != null) {
+			model.addAttribute("sector", sector);
+		}
+		return MAIN_PATH + "/edit";
+	}
 
-    @GetMapping("/detail/{sectorId}")
-    public String displayDetailSector(@PathVariable("sectorId") Long id, Model model) {
-        Sector sector = sectorService.findById(id);
-        if (sector != null) {
-            model.addAttribute("sector", sector);
-        }
-        return MAIN_PATH + "/detail";
-    }
+	@GetMapping("/detail/{sectorId}")
+	public String displayDetailSector(@PathVariable("sectorId") Long id, Model model) {
+		Sector sector = sectorService.findById(id);
+		if (sector != null) {
+			model.addAttribute("sector", sector);
+		}
+		return MAIN_PATH + "/detail";
+	}
 
-    @PostMapping("/update")
-    public String updateSector(@Valid @ModelAttribute("sector") Sector sector, BindingResult result, RedirectAttributes rd) {
-        if (result.hasErrors()) {
-            return MAIN_PATH + "/edit";
-        }
+	@PostMapping("/update")
+	public String updateSector(@Valid @ModelAttribute("sector") Sector sector, BindingResult result, RedirectAttributes rd) {
+		if (result.hasErrors()) {
+			return MAIN_PATH + "/edit";
+		}
 
-        sectorService.save(sector);
-        rd.addFlashAttribute("success", "La filière " + sector.getId() + " a été modifiée avec succès");
-        return "redirect:/admin/sectors";
-    }
+		sectorService.save(sector);
+		rd.addFlashAttribute("success", "La filière " + sector.getId() + " a été modifiée avec succès");
+		return "redirect:/admin/sectors";
+	}
 
-    @GetMapping("/delete/{sectorId}")
-    public String deleteSector(@PathVariable("sectorId") Long id, RedirectAttributes rd) {
-        if (sectorService.findById(id).getStudents().isEmpty()) {
-            sectorService.delete(id);
-            rd.addFlashAttribute("success", "La filière portant l'identifiant " + id + " a été supprimée avec succès!");
-        } else {
-            rd.addFlashAttribute("danger", "Suppression impossible, cette filière contient encore des étudiants");
-        }
-        return "redirect:/admin/sectors";
-    }
+	@GetMapping("/delete/{sectorId}")
+	public String deleteSector(@PathVariable("sectorId") Long id, RedirectAttributes rd) {
+		if (sectorService.findById(id).getStudents().isEmpty()) {
+			sectorService.delete(id);
+			rd.addFlashAttribute("success", "La filière portant l'identifiant " + id + " a été supprimée avec succès!");
+		} else {
+			rd.addFlashAttribute("danger", "Suppression impossible, cette filière contient encore des étudiants");
+		}
+		return "redirect:/admin/sectors";
+	}
 }

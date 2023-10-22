@@ -54,7 +54,12 @@
       </li>
     </ul>
   </div>
+  <!-- Alert -->
+  <div th:replace="~{fragments/flash}"></div>
+  <!-- End Alert -->
   <div class="tab-content profile-tab-cont">
+
+    <!-- detail tab -->
     <div id="per_details_tab" class="tab-pane fade show active">
       <div class="row">
         <div class="col-lg-12">
@@ -114,6 +119,7 @@
         </div>
       </div>
     </div>
+    <!-- password tab -->
     <div id="password_tab" class="tab-pane fade">
       <div class="card">
         <div class="card-body">
@@ -144,6 +150,7 @@
         </div>
       </div>
     </div>
+    <!-- Edit profil tab -->
     <div id="edit_profil_tab" class="tab-pane fade">
       <div class="card">
         <div class="card-body">
