@@ -3,8 +3,7 @@
   lang="fr"
   xmlns:th="http://www.thymeleaf.org"
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-  layout:decorate="~{layouts/guest_base}"
->
+  layout:decorate="~{layouts/guest_base}">
   <div layout:fragment="content" class="page-container">
     <div class="container">
       <div class="row justify-content-center">
@@ -19,23 +18,18 @@
                       th:src="@{/img/logo.png}"
                       alt=""
                       width="72"
-                      height="57"
-                    />
+                      height="57"/>
                     <h3 class="h3 mb-3 fw-bold text-center">S'identifier</h3>
                     <p>Entrer vos informations de connexion</p>
                   </div>
                 </div>
               </div>
               <form th:action="@{/login}" method="post">
-                <div
-                  class="alert custom-alert-success"
-                  th:text="${success}"
-                  th:if="${success}"
-                ></div>
-                <div class="alert custom-alert-danger" th:if="${param.error}">
+                <div th:replace="~{fragments/flash}"></div>
+                <div class="alert alert-danger" th:if="${param.error}">
                   Les informations de connexion sont invalides.
                 </div>
-                <div class="alert custom-alert-success" th:if="${param.logout}">
+                <div class="alert alert-success" th:if="${param.logout}">
                   Vous etes deconnecté avec success.
                 </div>
                 <div class="row gy-3 overflow-hidden">
@@ -48,8 +42,7 @@
                         name="username"
                         id="email"
                         placeholder="name@example.com"
-                        required=""
-                      />
+                        required/>
                       <label for="email" class="form-label">Email</label>
                     </div>
                   </div>
@@ -60,10 +53,8 @@
                         class="form-control"
                         name="password"
                         id="password"
-                        value=""
                         placeholder="Password"
-                        required=""
-                      />
+                        required/>
                       <label for="password" class="form-label">Password</label>
                       <i
                         class="bi bi-eye-slash"
@@ -74,16 +65,14 @@
                           top: 50%;
                           transform: translateY(-50%);
                           cursor: pointer;
-                        "
-                      ></i>
+                        "></i>
                     </div>
                   </div>
                   <div class="col-12">
                     <div class="d-grid">
                       <button
                         class="btn bsb-btn-xl btn-lg btn-primary"
-                        type="submit"
-                      >
+                        type="submit">
                         Se connecter
                       </button>
                     </div>
@@ -92,15 +81,11 @@
               </form>
               <div class="row mt-3">
                 <div class="col-12">
-                  <div
-                    class="d-flex flex-column justify-content-center border-bottom"
-                  >
+                  <div class="d-flex flex-column justify-content-center border-bottom">
                     <a
                       class="fs-14 text-app-secondary text-center mb-3"
-                      href="#"
-                    >
-                      Vous avez oublier votre mot de passe ?</a
-                    >
+                      href="#">
+                      Vous avez oublier votre mot de passe ?</a>
                   </div>
                   <div class="d-flex flex-column justify-content-center">
                     <p class="text-center mt-3">Vous n'avez pas de compte ?</p>
@@ -109,11 +94,8 @@
                       class="btn text-white border btn-block btn-lg btn-primary text-center"
                       id="btnlogin"
                       name="btnlogin"
-                      type="submit"
-                    >
-                      <i class="fas fa-plus"></i>
-                      Creer un Compte</a
-                    >
+                      type="submit">
+                      <i class="fas fa-plus"></i> Creer un Compte</a>
                   </div>
                 </div>
               </div>
