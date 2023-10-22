@@ -1,8 +1,19 @@
-<!-- Success Alert -->
-<div th:if="${success != null || danger !=null}" xmlns:th="http://www.thymeleaf.org" 
-    th:classappend="${success} ? 'alert-success' : 'alert-danger'"
-    class="alert alert-dismissible fade show">
-    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-    <strong th:text="${success ? 'Opération réussie' : 'Opération échouée'}"></strong>
-    [[${success or danger}]]
+<!-- Alert success Message-->
+<div
+  th:if="${success}"
+  xmlns:th="http://www.thymeleaf.org"
+  class="alert alert-success alert-dismissible fade show">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Opération réussie</strong>
+  <span th:text="${success}"></span>
+</div>
+
+<!-- Alert Error Message -->
+<div
+  th:if="${danger}"
+  xmlns:th="http://www.thymeleaf.org"
+  class="alert alert-danger alert-dismissible fade show">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <strong>Opération échouée</strong>
+  <span th:text="${danger}"></span>
 </div>

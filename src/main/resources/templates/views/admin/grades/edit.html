@@ -32,8 +32,8 @@
           <form
             th:action="@{/admin/grades/update}"
             method="post"
-            th:object="${grade}"
-          >
+            th:object="${grade}">
+            <input type="hidden" name="id" th:field="*{id}">
             <div class="form-group">
               <label for="name" class="fw-bold"
                 >Nom

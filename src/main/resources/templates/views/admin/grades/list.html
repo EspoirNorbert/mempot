@@ -107,6 +107,10 @@
                                 <i class="fas fa-edit me-3 text-app"></i>
                                 <span th:text="'Modifier'"></span>
                               </a>
+                              <a class="dropdown-item"  th:href="@{'/admin/grades/delete/' + ${grade.id}}">
+                                <i class="fas fa-trash me-3 text-app"></i>
+                                <span th:text="'Supprimer'"></span>
+                              </a>
                             </div>
                           </div>
                         </div>

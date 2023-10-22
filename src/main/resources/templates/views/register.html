@@ -20,11 +20,6 @@
                 </div>
               </div>
               <form th:action="@{/save}" th:object="${student}" method="post">
-                <div
-                  class="alert custom-alert-success"
-                  th:text="${success}"
-                  th:if="${success}"
-                ></div>
                   
                 <div class="form-group">
                   <label for="firstname" class="fw-bolder"
@@ -35,17 +30,16 @@
                     class="form-control"
                     type="text"
                     placeholder="Entrer votre nom: (Doe)"
-                    name="firstname"
-                    th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
+                    name="lastname"
                     required="required"
-                    th:field="*{firstname}"
+                    th:field="*{lastname}"
                   />
                   <div id="FirstnameHelpBlock" class="form-text">
                     Le nom de famille inscrit dans l'ecole.
                   </div>
                   <div
-                    th:if="${#fields.hasErrors('firstname')}"
-                    th:errors="*{firstname}"
+                    th:if="${#fields.hasErrors('lastname')}"
+                    th:errors="*{lastname}"
                     class="text-danger w-100"
                   ></div>
                 </div>
@@ -60,7 +54,7 @@
                     placeholder="Entrer votre prenom: (John)"
                     th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
                     required="required"
-                    th:field="*{lastname}"
+                    th:field="*{firstname}"
                   />
                   <div id="LastnameHelpBlock" class="form-text">
                     Le prenom(s) inscrit dans l'ecole.
