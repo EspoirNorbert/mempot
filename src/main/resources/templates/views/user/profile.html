@@ -1,26 +1,25 @@
 <!DOCTYPE html>
-<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    layout:decorate="~{layouts/base}">
-
-<div layout:fragment="content">
-    <div >
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col">
-                    <h3 class="page-title fw-bolder">Profile</h3>
-                    <ul class="breadcrumb">
-                        <li class="breadcrumb-item">
-                            <a th:href="@{/}">Tableau de bord</a>
-                        </li>
-                        <li class="breadcrumb-item active">Profile</li>
-                    </ul>
-                </div>
-            </div>
-
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  layout:decorate="~{layouts/base}">
+  <div layout:fragment="content">
+    <div>
+      <div class="page-header">
+        <div class="row align-items-center">
+          <div class="col">
+            <h3 class="page-title fw-bolder">Profile</h3>
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item">
+                <a th:href="@{/}">Tableau de bord</a>
+              </li>
+              <li class="breadcrumb-item active">Profile</li>
+            </ul>
+          </div>
         </div>
-
-        <div th:replace="~{fragments/profil}"></div>
+      </div>
+      <div th:replace="~{fragments/profil}"></div>
     </div>
-</div>
-
+  </div>
 </html>
