@@ -1,24 +1,24 @@
 <!DOCTYPE html>
-<html lang="fr" 
-    xmlns:th="http://www.thymeleaf.org"
-    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-    data-bs-theme="dark"
-    >
+<html lang="fr" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" data-bs-theme="dark">
     <div th:replace="~{fragments/head}"></div>
     <body>
-        <div class="main-wrapper">
+        <div
+            class="main-wrapper user-bg">
             <!-- top -->
             <div th:replace="~{fragments/topbar}"></div>
-            <!-- sidebar -->
-            <div th:replace="~{fragments/sidebar}"></div>
+
+            <div th:if="currentUser.roles[0].name == 'ADMIN'" th:replace="~{fragments/sidebar}"></div>
+
+            <!-- student -->
+            <div th:unless="currentUser.roles[0].name == 'ADMIN'" th:replace="~{fragments/user_sidebar}"></div>
             <!-- Page content -->
+
             <div class="page-wrapper p-2 mt-5">
-                <div class="content container-fluid">
-                    <div layout:fragment="content"></div>
-                </div>
+                <div layout:fragment="content" class="content container-fluid"></div>
             </div>
         </div>
-       <!-- insert script -->
-       <div th:replace="~{fragments/scripts}"></div>
+        <!-- insert script -->
+        <div th:replace="~{fragments/scripts}"></div>
     </body>
 </html>
+

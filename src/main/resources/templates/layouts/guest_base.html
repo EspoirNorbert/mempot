@@ -4,14 +4,16 @@
     xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
     >
     <div th:replace="~{fragments/head}"></div>
-    <body>
-        <div class="main-wrapper">
-          <!-- navbar -->
-          <div th:replace="~{fragments/navbar}"></div>
-          <!-- content -->
-          <div layout:fragment="content"></div>
-        </div>
-       <!-- insert script -->
+    <body class="d-flex flex-column h-100">
+       <!-- navbar -->
+       <div th:replace="~{fragments/navbar}"></div>
+        <!-- main -->
+          <main class="flex-shrink-0">
+            <!-- content -->
+            <div layout:fragment="content"></div>
+          </main>
+        <!-- footer -->
+       <div th:replace="~{fragments/footer}"></div>
        <div th:replace="~{fragments/scripts}"></div>
     </body>
 </html>

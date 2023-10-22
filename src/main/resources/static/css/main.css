@@ -10,7 +10,7 @@
   }
 
 .sidebar-bg {
-    background-color: #555b6b;
+    background-color: #373b46;
     color: white;
 }
 
@@ -19,11 +19,11 @@
 }
 
 .text-app {
-    color: #555b6b;
+    color: #373b46;
 }
 
 .bg-avatar-title {
-    background-color: #555b6b;
+    background-color: #373b46;
 }
 
 .bg-transparent {
@@ -35,7 +35,7 @@
 }
 
 .bg-app {
-    background-color: #555b6b;
+    background-color: #373b46;
 }
 
 .bg-light-app {
@@ -93,7 +93,7 @@
     display: flex;
     align-items: center;
     background-color: white; /* Couleur bleue de Google Drive */
-    color: #555b6b;
+    color: #373b46;
     padding: 10px 20px;
     border: none;
     border-radius: 48px;
@@ -110,8 +110,8 @@
 .nav-tabs.nav-tabs-solid > li > a.active,
 .nav-tabs.nav-tabs-solid > li > a.active:hover,
 .nav-tabs.nav-tabs-solid > li > a.active:focus {
-    background-color: #555b6b;
-    border-color: #555b6b;
+    background-color: #373b46;
+    border-color: #373b46;
     color: #fff;
 }
 
@@ -132,7 +132,7 @@ div.file {
 }
 
 .typdoc {
-    background-color: #555b6b;
+    background-color: #373b46;
     color: #fff;
     font-size: .85rem;
     font-weight: 700;
@@ -225,13 +225,16 @@ div.authors {
 
 
 .home-submit {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), 
+    background: linear-gradient( rgb(84, 87, 96), rgba(193, 116, 33, 0.5)), 
     url(https://www.servicescape.com/img/blog/post/postbg95097.webp);
-    background-position: top -50px center;
     background-repeat: no-repeat;
     border-top: 1px solid #fff;
     padding-top: 60px;
-    position: relative; /* Ajout de cette propriété pour empiler correctement le gradient et le contenu */
+    height: 50vh;
+}
+
+.home-submit .logo-hal-home {
+    width: 250px;
 }
 
 .deposit-index-link {
@@ -242,19 +245,119 @@ div.authors {
 }
 
 .btn-primary-orange {
-    background: #515b9d;
-    border: 1px solid #515b9d;
+    background: #f8bf66;
+    border: 1px solid white;
     color: #fff;
     margin-right: -1px;
     margin-bottom: 6px;
     padding: 19px 18px 16px;
     transition: 0.5s;
+    border-radius: 48px;
+}
+
+.btn-primary-orange:hover {
+    background: #ac7925;
+    color: #fff;
+    transition: .1s ease-in-out background;
+    cursor: pointer;
+}
+
+.deposit-index-link a {
+    font-size: 2.125rem;
+    padding: 10px 25px;
+}
+
+.home-promise {
+    color: #fff;
+    font-size: 2.125rem;
+    font-weight: 700;
+    margin-top: 125px;
+}
+
+.home-description {
+    padding: 15px;
+    margin-top: 30px;
+}
+
+.footer-widget-area {
+    background-color: #373b46;
+    color: #fff;
+}
+
+.footer-widget-area {
+    background-color: #373b46;
+}
+
+.sidebar-column {
+    width: 100%;
+}
+
+.footer-widget-area a {
+    color: #DADADA;
+}
+
+.footer-terms {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    padding: 15px;
+    /* Ajoutez d'autres styles CSS si nécessaire */
+}
+
+.footer-terms a {
+    text-decoration: none;
+    color: #DADADA;
+    font-weight: 800;
+    transition: text-decoration 0.3s; /* Animation de transition */
+}
+
+.footer-terms a:hover {
+    text-decoration: underline; /* Soulignement au survol */
+}
+
+.footer-right {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.text-app-secondary {
+    color: #f8bf66
+}
+
+.rounded-form {
+    border-radius: 8px;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  /*padding-top: 40px;*/
+  padding-bottom: 40px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.user-bg {
+    background-color: #fafbff;;
+}
+
+.fs-14 {
+    font-size: 14px;
+}
+
+.form-signin {
+    width: 100%;
+    max-width: 500px;
+    padding: 15px;
+    margin: auto;
 }
 
 /***
 
-color: #555b6b
+color: #373b46
 deuxieme: #515b9d
 troisieme: #f2a452
-quatrieme: #010100
+quatrieme: #010100 black
+cinquieme: #f8bf66
 **/

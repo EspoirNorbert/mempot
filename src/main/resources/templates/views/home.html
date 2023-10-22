@@ -11,20 +11,32 @@
           <div class="col-12 col-md-6 d-none d-md-block text-center">
             <img
               th:src="@{img/logo-small.png}"
-              class="logo-hal-home"
-              alt="HAL open science"
+              class="logo-hal-home bg- p-3 rounded"
+              alt="Mempot open science"
             />
           </div>
           <div class="col-12 col-md-6 text-center">
-            <h1 class="home-promise">Partager librement les savoirs</h1>
+            <h1 class="home-promise">Deposer librement vos memoires dans votre ecole</h1>
           </div>
         </div>
         <div class="deposit-index-link text-center"> <!-- Ajout de la classe text-center -->
-          <a href="/submit/index" class="btn-primary-orange hal-submit-button">
+          <a th:href="@{/user/thesis/deposit}" class="btn-primary-orange hal-submit-button shadow">
             <span style="font-weight: bold; position: relative"
               ><i class="fas fa-plus fs-4" aria-hidden="true"></i> Déposer
             </span>
           </a>
+        </div>
+      </section>
+      <section class="home-description">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <h3 class="fw-bold">Mempot</h3>
+              <p class="text-leaf fs-5">
+                Mempot est une plateforme en ligne dédiée au dépôt et à la gestion de mémoires de fin d'étude. Conçue spécifiquement pour les étudiants, les établissements éducatifs et les universités, Mempot offre une solution complète pour la collecte, la conservation et la mise à disposition de mémoires académiques.
+            </p>
+            </div>
+          </div>
         </div>
       </section>
       

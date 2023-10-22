@@ -5,80 +5,121 @@
   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
   layout:decorate="~{layouts/guest_base}"
 >
-  <div layout:fragment="content">
-    <section class="container d-flex flex-column">
-      <div
-        class="align-items-center justify-content-center g-0 min-vh-100 row"
-      
-      >
-        <div class="py-8 py-xl-0 col-lg-5 col-md-5">
-          <div class="card">
-            <div class="p-6 card-body">
-              <div class="mb-4">
-                <h1 class="mb-1 fw-bold">Connexion</h1>
-                <span
-                  >Vous n'avez pas encore de compte?
-                  <a class="ms-1" href="/authentication/sign-up">Creer un compte</a>
-                </span>
+  <div layout:fragment="content" class="page-container">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-11 col-lg-8 col-xl-7 col-xxl-6">
+          <div class="border border-3 rounded-4">
+            <div class="card-body">
+              <div class="row">
+                <div class="col-12">
+                  <div class="mb-4 text-center">
+                    <img
+                      class="mb-4"
+                      th:src="@{/img/logo.png}"
+                      alt=""
+                      width="72"
+                      height="57"
+                    />
+                    <h3 class="h3 mb-3 fw-bold text-center">S'identifier</h3>
+                  </div>
+                </div>
               </div>
-              <form  th:action="@{/login}" method="post">
+              <form th:action="@{/login}" method="post">
                 <div
-                class="alert alert-success"
-                th:text="${success}"
-                th:if="${success}"
-              ></div>
-              <div class="alert alert-danger" th:if="${param.error}">
-                Les informations de connexion sont invalides.
-              </div>
-              <div class="alert alert-success" th:if="${param.logout}">
-                Vous etes deconnecté avec success.
-              </div>
-                <div class="row">
-                  <div class="mb-3 col-lg-12 col-md-12">
-                    <label class="form-label">Email </label>
-                    <input
-                      placeholder="Email address here"
-                      required=""
-                      type="text"
-                      id="email"
-                      name="username"
-                      class="form-control"
-                    />
-                  </div>
-                  <div class="mb-3 col-lg-12 col-md-12" style="position: relative;">
-                    <label class="form-label">Mot de passe </label>
-                    <input
-                      placeholder="**************"
-                      required=""
-                      type="password"
-                      id="password"
-                      name="password"
-                      class="form-control"
-                    />
-                    <i class="bi bi-eye-slash" id="togglePassword" style="position: absolute; right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"></i>
-                  </div>
-                  <div class="mb-3 col-lg-12 col-md-12">
-                    <div
-                      class="d-md-flex justify-content-between align-items-center"
-                    
-                    >
-                  
+                  class="alert custom-alert-success"
+                  th:text="${success}"
+                  th:if="${success}"
+                ></div>
+                <div class="alert custom-alert-danger" th:if="${param.error}">
+                  Les informations de connexion sont invalides.
+                </div>
+                <div class="alert custom-alert-success" th:if="${param.logout}">
+                  Vous etes deconnecté avec success.
+                </div>
+                <div class="row gy-3 overflow-hidden">
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input
+                        autofocus
+                        type="email"
+                        class="form-control"
+                        name="username"
+                        id="email"
+                        placeholder="name@example.com"
+                        required=""
+                      />
+                      <label for="email" class="form-label">Email</label>
                     </div>
                   </div>
-                  <div
-                    class="mb-0 d-grid gap-2 col-lg-12 col-md-12"
-                  
-                  >
-                    <button type="submit" class="btn btn-primary">
-                      Se connecter
-                    </button>
+                  <div class="col-12">
+                    <div class="form-floating mb-3">
+                      <input
+                        type="password"
+                        class="form-control"
+                        name="password"
+                        id="password"
+                        value=""
+                        placeholder="Password"
+                        required=""
+                      />
+                      <label for="password" class="form-label">Password</label>
+                      <i
+                        class="bi bi-eye-slash"
+                        id="togglePassword"
+                        style="
+                          position: absolute;
+                          right: 10px;
+                          top: 50%;
+                          transform: translateY(-50%);
+                          cursor: pointer;
+                        "
+                      ></i>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                    <div class="d-grid">
+                      <button
+                        class="btn bsb-btn-xl btn-lg btn-primary"
+                        type="submit"
+                      >
+                        Se connecter
+                      </button>
+                    </div>
                   </div>
                 </div>
               </form>
+              <div class="row mt-3">
+                <div class="col-12">
+                  <div
+                    class="d-flex flex-column justify-content-center border-bottom"
+                  >
+                    <a
+                      class="fs-14 text-app-secondary text-center mb-3"
+                      href="#"
+                    >
+                      Vous avez oublier votre mot de passe ?</a
+                    >
+                  </div>
+                  <div class="d-flex flex-column justify-content-center">
+                    <p class="text-center mt-3">Vous n'avez pas de compte ?</p>
+                    <a
+                      th:href="@{/register}"
+                      class="btn text-white border btn-block btn-lg btn-primary text-center"
+                      id="btnlogin"
+                      name="btnlogin"
+                      type="submit"
+                    >
+                      <i class="fas fa-plus"></i>
+                      Creer un Compte</a
+                    >
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
   </div>
 </html>
