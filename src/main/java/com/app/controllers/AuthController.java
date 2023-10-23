@@ -84,5 +84,4 @@ public class AuthController {
 		rd.addFlashAttribute("success", "Votre profile a été mise à jour avec success !");
 		return "redirect:/"+viewAccordingProfile+"/profile";	
 	}
-
 }

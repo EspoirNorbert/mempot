@@ -23,7 +23,7 @@ class UserServiceTestCase {
 	@Autowired private SectorService sectorService;
 	@Autowired private StudentService studentService;
 
-	//@Test
+	@Test
 	void createUser() {
 		User defautUser = new User();
 		defautUser.setEmail("admin@deposer.com");

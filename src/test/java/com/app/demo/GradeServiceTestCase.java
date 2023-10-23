@@ -16,7 +16,7 @@ class GradeServiceTestCase {
 
 	@Autowired GradeService gradeService;
 	
-	//@Test
+	@Test
 	void create() {
 		Grade gradeLicence = new Grade("Licence");
 		Grade gradeMaster = new Grade("Master");
@@ -24,7 +24,7 @@ class GradeServiceTestCase {
 		gradeService.save(gradeMaster);
 	}
 	
-	//@Test
+	@Test
 	void listAllGrades() {
 		 List<Grade> grades = gradeService.list();
 		 assertEquals(2, grades.size());
