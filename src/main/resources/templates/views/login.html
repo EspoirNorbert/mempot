@@ -26,12 +26,6 @@
               </div>
               <form th:action="@{/login}" method="post">
                 <div th:replace="~{fragments/flash}"></div>
-                <div class="alert alert-danger" th:if="${param.error}">
-                  Les informations de connexion sont invalides.
-                </div>
-                <div class="alert alert-success" th:if="${param.logout}">
-                  Vous etes deconnecté avec success.
-                </div>
                 <div class="row gy-3 overflow-hidden">
                   <div class="col-12">
                     <div class="form-floating mb-3">
@@ -42,6 +36,7 @@
                         name="username"
                         id="email"
                         placeholder="name@example.com"
+                        th:classappend="${param.error} ? 'is-invalid' : ''"
                         required/>
                       <label for="email" class="form-label">Email</label>
                     </div>
@@ -54,6 +49,7 @@
                         name="password"
                         id="password"
                         placeholder="Password"
+                        th:classappend="${param.error} ? 'is-invalid' : ''"
                         required/>
                       <label for="password" class="form-label">Password</label>
                       <i

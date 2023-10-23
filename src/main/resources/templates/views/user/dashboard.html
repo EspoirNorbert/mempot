@@ -6,9 +6,10 @@
   layout:decorate="~{layouts/base}"
 >
   <div layout:fragment="content">
-    <div >
+    <div>
+      <!-- top header -->
       <div
-        class="card alert alert-dismissible shadow-sm mb-4 border-left-decoration bg-primary"
+        class="card alert alert-dismissible shadow-sm mb-4 border-left-decoration bg-primary mb-3"
         role="alert"
       >
         <div class="inner">
@@ -40,6 +41,104 @@
         <!--//inner-->
       </div>
       <!-- Afficher le Mémoire  des autres -->
+
+      <!-- create row 1 -->
+      <div class="row mb-3">
+        <!-- Depots-->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h5 class="text-white"><i class="fas fa-folder-open" aria-hidden="true"></i> Mes dépots </h5>
+            </div>
+            <div class="card-body">
+              <!-- read to for introduise students -->
+              <p class="text-justify">Gérez facilement vos mémoires et dépôts grâce à notre interface conviviale. 
+                Créez, organisez et recherchez vos mémoires en un clin d'œil. 
+                Collaborer et garder un historique des modifications en toute simplicité.</p>
+              
+            </div>
+          </div>
+        </div>
+
+        <!-- Bibliotheques -->
+        <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h5 class="text-white"> <i class="fas fa-folder-open" aria-hidden="true"></i> Bibliotheque</h5>
+            </div>
+            <div class="card-body">
+            <p class="text-justify">
+              Explorez notre riche collection de mémoires et de ressources. 
+              La bibliothèque est votre source de référence pour accéder à une variété de mémoires, 
+              de documents et de références pour vos besoins de recherche et d'étude.
+            </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Profil -->
+      <div class="col-md-4">
+          <div class="card">
+            <div class="card-header bg-primary">
+              <h5 class="text-white"> <i class="fa fa-user" aria-hidden="true"></i> Profile</h5>
+            </div>
+            <div class="card-body">
+            <p class="text-justify">
+              Gérez votre profil personnel et personnalisez votre expérience. 
+              Dans cet espace, vous pouvez mettre à jour vos informations, ajouter une photo de profil, et personnaliser vos préférences pour une utilisation optimale de l'application.
+            </p>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!-- end create row 1 -->
+    <div class="card">
+      <div class="card-header bg-primary">
+        <div class="d-flex justify-content-between">
+          <h5 class="fw-bold text-white">Dépôts récents</h5>
+          <a th:href="@{/user/thesis}" class="btn btn-sm btn-primary"
+            >Voir toutes mes Dépôts</a
+          >
+        </div>
+      </div>
+      <div class="card-body">
+        <div
+          th:if="${thesis.size() != 0}"
+          th:each="thesisItem : ${thesis}"
+          class="list-group w-auto mb-3"
+        >
+          <a
+            th:href="@{'/user/thesis/detail/' + ${thesisItem.id}}"
+            class="list-group-item list-group-item-action d-flex gap-3 py-3"
+            aria-current="true"
+          >
+            <div class="d-flex gap-2 w-100 justify-content-between">
+              <div>
+                <h6 class="mb-0" th:text="${thesisItem.topic}"></h6>
+                <p
+                  class="mb-0 opacity-75"
+                  th:text="'Soumis le ' + ${thesisItem.submissionDate}"
+                ></p>
+              </div>
+              <small class="opacity-50 text-nowrap">
+                <span
+                  class="badge bg-primary"
+                  th:text="${thesisItem.academicYear}"
+                ></span>
+              </small>
+            </div>
+          </a>
+        </div>
+        <div th:unless="${thesis.size() != 0}">
+          <div
+            th:replace="~{fragments/empty('Aucune depots ajouté pour le moment',
+              'Toutes les depots ajoutées recement sont afficher ici pour que
+              vous puissez les consulter tout moment.')}"
+          ></div>
+        </div>
+      </div>
+    </div>
+      </div>
     </div>
   </div>
 </html>

@@ -26,7 +26,8 @@ public class UserController {
 	private FilesStorageService filesStorageService;
 
 	@GetMapping({"/dashboard", ""})
-	public String home() {
+	public String home(Model model) {
+		model.addAttribute("thesis", thesisService.getLatestThesis());
 		return "views/user/dashboard";
 	}
 

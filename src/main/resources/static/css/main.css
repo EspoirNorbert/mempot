@@ -353,6 +353,17 @@ div.authors {
     margin: auto;
 }
 
+.bg-error-app {
+    background-color: #F2F4F6;
+}
+
+.feature {
+    background-color: #fff;
+}
+
+.text-justify {
+    text-align: justify;
+}
 /***
 
 color: #373b46

@@ -1,8 +1,10 @@
 package com.app.services;
 
 import java.time.LocalDate;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +20,8 @@ public class ThesisService {
 
 	@Autowired private ThesisRepository thesisRepository;
 	@Autowired private CustomUserDetailService userService;
-
+	@Autowired private CustomUserDetailService customUserDetailService;
+	
 
 	public List<Thesis> list() {
 		return thesisRepository.findAll();
@@ -26,6 +29,16 @@ public class ThesisService {
 	
 	public List<Thesis> getLatestThesis() {
 		return thesisRepository.findFirst5ByOrderByIdDesc();
+	}
+	
+	public List<Thesis> getLatestThesisByCurrentStudent() {
+		Student student = (Student) customUserDetailService.getCurrentUser();
+		List<Thesis> latestTheses = student.getThesis().stream()
+	            .sorted(Comparator.comparing(Thesis::getSubmissionDate).reversed())
+	            .limit(5)
+	            .collect(Collectors.toList());
+
+	    return latestTheses;
 	}
 
 	public void save(Thesis thesis) {

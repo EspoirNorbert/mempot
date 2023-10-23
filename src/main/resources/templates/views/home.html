@@ -19,7 +19,9 @@
             <h1 class="home-promise">Deposer librement vos memoires dans votre ecole</h1>
           </div>
         </div>
-        <div class="deposit-index-link text-center"> <!-- Ajout de la classe text-center -->
+        <div 
+        th:if="${userRole != 'admin'}"
+        class="deposit-index-link text-center"> <!-- Ajout de la classe text-center -->
           <a th:href="@{/user/thesis/deposit}" class="btn-primary-orange hal-submit-button shadow">
             <span style="font-weight: bold; position: relative"
               ><i class="fas fa-plus fs-4" aria-hidden="true"></i> Déposer

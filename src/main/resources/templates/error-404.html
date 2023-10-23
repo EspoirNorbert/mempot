@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html
+  lang="fr"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+  data-bs-theme="dark">
+  <div th:replace="~{fragments/head}"></div>
+  <body>
+    <main class="bg-error-app">
+      <section class="vh-100 d-flex align-items-center justify-content-center">
+          <div class="container">
+              <div class="row">
+                  <div class="col-12 text-center d-flex align-items-center justify-content-center">
+                      <div>
+                          <img class="img-fluid w-25" th:src="@{/img/errors/404.svg}" alt="404 image">
+                          <h1 class="mt-5">Erreur 404 - Page non trouvée</h1>
+                          <p class="lead my-4">
+                            Désolé, la page que vous cherchez n'a pas été trouvée. Elle peut avoir été déplacée, renommée ou supprimée. 
+                            Veuillez vérifier l'URL que vous avez saisie et réessayer. 
+                            Si le problème persiste, veuillez contacter l'administrateur du site.
+                          </p>
+                          <a th:href="@{/}" class="btn btn-dark d-inline-flex align-items-center justify-content-center mb-4">
+                             Retourner à l'accueil
+                          </a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </section>
+  </main>
+  </body>
+</html>
+

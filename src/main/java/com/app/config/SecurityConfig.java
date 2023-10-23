@@ -42,8 +42,11 @@ public class SecurityConfig {
 			// rediriger l'utilisateur vers la page /dashbord
 			.successHandler(authenticationSuccessHandler());
 		})
-		.logout((logout) -> logout.logoutUrl("/logout").permitAll());
-
+		.logout((logout) -> logout.logoutUrl("/logout").permitAll())
+		// gestion des execeptions
+		.exceptionHandling(exception -> {
+			exception.accessDeniedPage("/error");
+		});
 		return http.build();
 	}
 

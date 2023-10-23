@@ -8,6 +8,22 @@
   <span th:text="${success}"></span>
 </div>
 
+<div
+  th:if="${param.logout}"
+  xmlns:th="http://www.thymeleaf.org"
+  class="alert alert-success alert-dismissible fade show">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <span th:text="'Vous etes deconnecté avec success.'"></span>
+</div>
+
+<div
+  th:if="${param.error}"
+  xmlns:th="http://www.thymeleaf.org"
+  class="alert alert-danger alert-dismissible fade show">
+  <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+  <span th:text="'Les informations de connexion sont invalides.'"></span>
+</div>
+
 <!-- Alert Error Message -->
 <div
   th:if="${danger}"

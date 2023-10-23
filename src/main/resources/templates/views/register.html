@@ -27,21 +27,18 @@
                     <span class="text-danger">*</span>
                   </label>
                   <input
+                  autofocus
                     class="form-control"
                     type="text"
+                    required
                     placeholder="Entrer votre nom: (Doe)"
                     name="lastname"
-                    required="required"
-                    th:field="*{lastname}"
+                    th:errorclass="is-invalid"
                   />
                   <div id="FirstnameHelpBlock" class="form-text">
                     Le nom de famille inscrit dans l'ecole.
                   </div>
-                  <div
-                    th:if="${#fields.hasErrors('lastname')}"
-                    th:errors="*{lastname}"
-                    class="text-danger w-100"
-                  ></div>
+                  <div th:if="${#fields.hasErrors('lastname')}" th:errors="*{lastname}" class="text-danger w-100"></div>
                 </div>
                 <div class="form-group">
                   <label for="lastname" class="fw-bolder"
@@ -51,9 +48,9 @@
                   <input
                     class="form-control"
                     type="text"
+                    required
                     placeholder="Entrer votre prenom: (John)"
-                    th:classappend="${#fields.hasErrors('firstname')} ? 'btn-outline-danger' : ''"
-                    required="required"
+                    th:errorclass="is-invalid"
                     th:field="*{firstname}"
                   />
                   <div id="LastnameHelpBlock" class="form-text">
@@ -73,13 +70,15 @@
                   <input
                     class="form-control"
                     type="text"
+                    required
                     placeholder="Entrer votre matricule scolaire"
-                    required="required"
+                    th:errorclass="is-invalid"
                     th:field="*{matricule}"
                   />
                   <div id="MatriculeHelpBlock" class="form-text">
                     Le matricule scolaire donnée par l'ecole.
                   </div>
+                  <div th:if="${#fields.hasErrors('matricule')}" th:errors="*{matricule}" class="text-danger w-100"></div>
                 </div>
                 <!-- grades -->
                 <div class="form-group">
@@ -91,7 +90,8 @@
                     name="grades"
                     id="grades"
                     class="form-control"
-                    required="required"
+                    required
+                    th:errorclass="is-invalid"
                     th:field="*{grade}"
                   >
                     <option value="">Selectionner votre niveau scolaire</option>
@@ -104,6 +104,7 @@
                   <div id="GradeHelpBlock" class="form-text">
                     Le Niveau scolaire dans lequel vous etre inscrit.
                   </div>
+                  <div th:if="${#fields.hasErrors('grade')}" th:errors="*{grade}" class="text-danger w-100"></div>
                 </div>
                 <!-- sectors -->
                 <div class="form-group">
@@ -115,7 +116,8 @@
                     name="sectors"
                     id="sectors"
                     class="form-control"
-                    required="required"
+                    required
+                    th:errorclass="is-invalid"
                     th:field="*{sector}"
                   >
                     <option value="">Selectionner votre Filière</option>
@@ -128,6 +130,7 @@
                   <div id="SectorHelpBlock" class="form-text">
                     La Filière dans lequel vous etre inscrit.
                   </div>
+                  <div th:if="${#fields.hasErrors('sector')}" th:errors="*{sector}" class="text-danger w-100"></div>
                 </div>
                 <div class="form-group">
                   <label for="email" class="fw-bolder"
@@ -136,16 +139,18 @@
                   </label>
                   <input
                     class="form-control"
-                    type="text"
+                    type="email"
                     placeholder="johndoe@example.com"
-                    required="required"
+                    required
+                    th:errorclass="is-invalid"
                     th:field="*{email}"
                   />
                   <div id="EmailHelpBlock" class="form-text">
                     L'email personnel.
                   </div>
+                  <div th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger w-100"></div>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="position: relative;">
                   <label for="password" class="fw-bolder"
                     >Mot de passe
                     <span class="text-danger">*</span>
@@ -155,11 +160,23 @@
                     type="password"
                     placeholder="**********"
                     th:field="*{password}"
-                    required="required"
+                    required
+                    th:errorclass="is-invalid"
                   />
+                  <i
+                  class="bi bi-eye-slash"
+                  id="togglePassword"
+                  style="
+                    position: absolute;
+                    right: 10px;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    cursor: pointer;
+                  "></i>
                   <div id="EmailHelpBlock" class="form-text">
                     Le mot de passe personnel.
                   </div>
+                  <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger w-100"></div>
                 </div>
               
                 <div class="col-12">
