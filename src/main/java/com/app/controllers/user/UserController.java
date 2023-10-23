@@ -19,93 +19,98 @@ import java.util.List;
 @RequestMapping(value = "/user")
 public class UserController {
 
-    @Autowired
-    private ThesisService thesisService;
+	@Autowired
+	private ThesisService thesisService;
 
-    @Autowired
-    private FilesStorageService filesStorageService;
+	@Autowired
+	private FilesStorageService filesStorageService;
 
-    @GetMapping({"/dashboard", ""})
-    public String home() {
-        return "views/user/dashboard";
-    }
+	@GetMapping({"/dashboard", ""})
+	public String home() {
+		return "views/user/dashboard";
+	}
 
-    @GetMapping("/thesis")
-    public String thesis(Model model) {
-        List<Thesis> thesis = thesisService.findByCurrentUser();
-        model.addAttribute("thesis", thesis);
-        return "views/user/thesis/list";
-    }
+	@GetMapping("/thesis")
+	public String thesis(Model model) {
+		List<Thesis> thesis = thesisService.findByCurrentUser();
+		model.addAttribute("thesis", thesis);
+		return "views/user/thesis/list";
+	}
 
-    @GetMapping("/thesis/deposit")
-    public String formDeposit(Model model) {
-        model.addAttribute("thesis", new Thesis());
-        return "views/user/thesis/deposit";
-    }
+	@GetMapping("/thesis/deposit")
+	public String formDeposit(Model model) {
+		model.addAttribute("thesis", new Thesis());
+		return "views/user/thesis/deposit";
+	}
 
-    @GetMapping("/thesis/detail/{thesisId}")
-    public String detailsThesis(@PathVariable("thesisId") Long id, Model model) {
-        Thesis thesis = thesisService.findById(id);
-        model.addAttribute("thesis", thesis);
-        return "views/user/thesis/detail";
-    }
+	@PostMapping("/thesis/deposit")
+	public String deposit(@Valid @ModelAttribute("thesis") Thesis thesis,
+			BindingResult bindingResult,
+			@RequestParam("file") MultipartFile file,
+			RedirectAttributes rd) {
 
-    @GetMapping("/thesis/edit/{thesisId}")
-    public String displayEditThesisForm(@PathVariable("thesisId") Long id, Model model) {
-        Thesis thesis = thesisService.findById(id);
-        if (thesis == null) {
-            return "redirect:/user/thesis";
-        }
-        model.addAttribute("thesis", thesis);
-        return "views/user/thesis/edit";
-    }
+		System.out.println(bindingResult);
+		if (bindingResult.hasErrors()) {
+			return "views/user/thesis/deposit";
+		}
 
-    @PostMapping("/thesis/update")
-    public String updateThesis(@Valid @ModelAttribute("thesis") Thesis thesis,
-                               BindingResult result, RedirectAttributes rd) {
-        if (result.hasErrors()) {
-            return "views/user/thesis/edit";
-        }
-        rd.addFlashAttribute("success", "Le dépôt N°" + thesis.getId() + " a été mis à jour avec succès!");
-        thesisService.update(thesis);
-        return "redirect:/user/thesis";
-    }
+		filesStorageService.save(file);
+		String pathFile = getFilePath(file);
+		thesis.setFilePath(pathFile);
+		thesisService.create(thesis);
+		rd.addFlashAttribute("success", "Un nouveau dépôt a été créé avec succès!");
+		return "redirect:/user/thesis";
+	}
 
-    @PostMapping("/thesis/deposit")
-    public String deposit(@Valid @ModelAttribute("thesis") Thesis thesis,
-                          @RequestParam("file") MultipartFile file, BindingResult bindingResult,
-                          RedirectAttributes rd) {
-        if (bindingResult.hasErrors()) {
-            return "views/user/thesis/deposit";
-        }
-        filesStorageService.save(file);
-        String pathFile = getFilePath(file);
-        thesis.setFilePath(pathFile);
-        thesisService.create(thesis);
-        rd.addFlashAttribute("success", "Un nouveau dépôt a été créé avec succès!");
-        return "redirect:/user/thesis";
-    }
+	@GetMapping("/thesis/detail/{thesisId}")
+	public String detailsThesis(@PathVariable("thesisId") Long id, Model model) {
+		Thesis thesis = thesisService.findById(id);
+		model.addAttribute("thesis", thesis);
+		return "views/user/thesis/detail";
+	}
 
-    @GetMapping("/library")
-    public String library(Model model) {
-        List<Thesis> thesis = thesisService.list();
-        model.addAttribute("thesis", thesis);
-        return "views/user/libraries/list";
-    }
+	@GetMapping("/thesis/edit/{thesisId}")
+	public String displayEditThesisForm(@PathVariable("thesisId") Long id, Model model) {
+		Thesis thesis = thesisService.findById(id);
+		if (thesis == null) {
+			return "redirect:/user/thesis";
+		}
+		model.addAttribute("thesis", thesis);
+		return "views/user/thesis/edit";
+	}
 
-    @GetMapping("/library/thesis/{thesisId}")
-    public String getLibraryOneThesis(@PathVariable("thesisId") Long id, Model model) {
-        Thesis thesis = thesisService.findById(id);
-        model.addAttribute("thesis", thesis);
-        return "views/user/libraries/detail";
-    }
 
-    @GetMapping("/profile")
-    public String profile() {
-        return "views/user/profile";
-    }
+	@PostMapping("/thesis/update")
+	public String updateThesis(@Valid @ModelAttribute("thesis") Thesis thesis,
+			BindingResult result, RedirectAttributes rd) {
+		if (result.hasErrors()) {
+			return "views/user/thesis/edit";
+		}
+		rd.addFlashAttribute("success", "Le dépôt N°" + thesis.getId() + " a été mis à jour avec succès!");
+		thesisService.update(thesis);
+		return "redirect:/user/thesis";
+	}
 
-    private String getFilePath(MultipartFile file) {
-        return "/files/" + com.app.utils.Helper.replaceSpaceByDash(file.getOriginalFilename());
-    }
+	@GetMapping("/library")
+	public String library(Model model) {
+		List<Thesis> thesis = thesisService.list();
+		model.addAttribute("thesis", thesis);
+		return "views/user/libraries/list";
+	}
+
+	@GetMapping("/library/thesis/{thesisId}")
+	public String getLibraryOneThesis(@PathVariable("thesisId") Long id, Model model) {
+		Thesis thesis = thesisService.findById(id);
+		model.addAttribute("thesis", thesis);
+		return "views/user/libraries/detail";
+	}
+
+	@GetMapping("/profile")
+	public String profile() {
+		return "views/user/profile";
+	}
+
+	private String getFilePath(MultipartFile file) {
+		return "/files/" + com.app.utils.Helper.replaceSpaceByDash(file.getOriginalFilename());
+	}
 }

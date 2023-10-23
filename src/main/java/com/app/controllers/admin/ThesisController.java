@@ -62,8 +62,7 @@ public class ThesisController {
 	
 	@PostMapping("/update")
 	public String modifier(@Valid @ModelAttribute("thesis") Thesis thesis,BindingResult result,Model model , RedirectAttributes rd) {
-				
-		System.out.println(thesis);
+	
 		if (result.hasErrors()) {
 			return MAIN_PATH+ "/edit";
 		}

@@ -36,23 +36,21 @@
                 th:action="@{/user/thesis/deposit}"
                 method="post"
                 enctype="multipart/form-data"
-                th:object="${thesis}"
-              >
+                th:object="${thesis}">
                 <div class="form-group">
-                  <label for="name"
-                    >Theme <span class="text-danger">*</span></label
-                  >
+                  <label for="name">Theme <span class="text-danger">*</span></label>
                   <input
                     type="text"
                     class="form-control"
-                    th:field="*{topic}"
                     required
+                    th:field="*{topic}"
                     name="nom"
-                    placeholder="Entrer le theme de votre Mémoire "
-                  />
+                    th:errorclass="is-invalid"
+                    placeholder="Entrer le theme de votre Mémoire "/>
                   <div id="NameHelpBlock" class="form-text">
                     Le titre du Mémoire 
                   </div>
+                  <div th:if="${#fields.hasErrors('topic')}" th:errors="*{topic}" class="text-danger w-100"></div>
                 </div>
                 <div class="form-group">
                   <label for="name"
@@ -61,20 +59,21 @@
                   <input
                     type="number"
                     class="form-control"
-                    th:field="*{academicYear}"
                     required
+                    th:field="*{academicYear}"
                     name="academicYear"
+                    th:errorclass="is-invalid"
                     placeholder="Entrer l'année academique de la Filière (ex: 2023)"
                   />
-                  <div id="NameHelpBlock" class="form-text">
+                  <div id="AcademicYearHelpBlock" class="form-text">
                     L'année academique du Mémoire 
                   </div>
+                <div th:if="${#fields.hasErrors('academicYear')}" th:errors="*{academicYear}" class="text-danger w-100"></div>
+
                 </div>
                 <div class="form-group">
-                  <label for="name"
-                    >Fichier du Mémoire  (.pdf)
-                    <span class="text-danger">*</span></label
-                  >
+                  <label for="name">Fichier du Mémoire  (.pdf)
+                    <span class="text-danger">*</span></label>
                   <input
                     type="file"
                     class="form-control"
@@ -84,7 +83,8 @@
                     accept=".pdf"
                   />
                   <div id="NameHelpBlock" class="form-text">
-                    Fichier du Mémoire . Seule les pdf sont autorisé.
+                    Fichier du Mémoire . Seule les pdf sont autorisé. <br>
+                    Taille Max <strong>10MB</strong>
                   </div>
                 </div>
                 <div>
