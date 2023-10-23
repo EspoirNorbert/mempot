@@ -63,7 +63,7 @@
                   </div>
                   <a
                     class="dropdown-item"
-                    th:href="@{${currentUser.roles[0].name == 'USER'} ? '/user/profile' : '/admin/profile'}"
+                    th:href="@{${userRole == 'user'} ? '/user/profile' : '/admin/profile'}"
                   >
                     <i class="far fa-user me-2"></i> Mon profil
                   </a>

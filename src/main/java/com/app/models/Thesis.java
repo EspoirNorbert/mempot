@@ -27,7 +27,7 @@ public class Thesis implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(length = 200, nullable = false)
+	@Column(length = 250, nullable = false)
 	@NotEmpty(message = "Le theme est obligatoire")
 	private String topic;
 	

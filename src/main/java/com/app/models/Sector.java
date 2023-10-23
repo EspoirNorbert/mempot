@@ -25,7 +25,7 @@ public class Sector implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false, length = 30)
+	@Column(nullable = false, length = 30, unique = true)
 	@NotEmpty(message = "Le nom de la filiere est obligatoire")
 	private String name;
 	

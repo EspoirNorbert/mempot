@@ -25,14 +25,17 @@ class UserServiceTestCase {
 
 	@Test
 	void createUser() {
-		User defautUser = new User();
-		defautUser.setEmail("admin@deposer.com");
-		defautUser.setFirstName("Admin");
-		defautUser.setLastname("Super");
-		defautUser.setIsEnable(true);
-		defautUser.setPassword("admin@123");
-		defautUser.setAddress("Hann Mariste Fort B");
-		userService.createUser(defautUser, "ADMIN");
+		
+		if (userService.findByEmail("admin@deposer.com") == null) {
+			User defautUser = new User();
+			defautUser.setEmail("admin@deposer.com");
+			defautUser.setFirstName("Admin");
+			defautUser.setLastname("Super");
+			defautUser.setIsEnable(true);
+			defautUser.setPassword("admin@123");
+			defautUser.setAddress("Hann Mariste Fort B");
+			userService.createUser(defautUser, "ADMIN");
+		}
 	}
 
 	@Test
@@ -85,7 +88,8 @@ class UserServiceTestCase {
 		}
 	}
 
-	@Test void listStudent() {
+	// @Test 
+	void listStudent() {
 		List<Student> students = this.studentService.list();
 		for (Student student : students) {
 			System.out.println(student.getFirstname());

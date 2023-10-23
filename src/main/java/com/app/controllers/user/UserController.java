@@ -28,6 +28,7 @@ public class UserController {
 	@GetMapping({"/dashboard", ""})
 	public String home(Model model) {
 		model.addAttribute("thesis", thesisService.getLatestThesis());
+		model.addAttribute("title", "Tableau de bord");
 		return "views/user/dashboard";
 	}
 
@@ -35,12 +36,14 @@ public class UserController {
 	public String thesis(Model model) {
 		List<Thesis> thesis = thesisService.findByCurrentUser();
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", "Mes Dépôts");
 		return "views/user/thesis/list";
 	}
 
 	@GetMapping("/thesis/deposit")
 	public String formDeposit(Model model) {
 		model.addAttribute("thesis", new Thesis());
+		model.addAttribute("title", "Faire un dépôt");
 		return "views/user/thesis/deposit";
 	}
 
@@ -67,6 +70,7 @@ public class UserController {
 	public String detailsThesis(@PathVariable("thesisId") Long id, Model model) {
 		Thesis thesis = thesisService.findById(id);
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", thesis.getTopic());
 		return "views/user/thesis/detail";
 	}
 
@@ -77,6 +81,7 @@ public class UserController {
 			return "redirect:/user/thesis";
 		}
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", "Modification d'un depot");
 		return "views/user/thesis/edit";
 	}
 
@@ -96,6 +101,7 @@ public class UserController {
 	public String library(Model model) {
 		List<Thesis> thesis = thesisService.list();
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", "Bibliotheque");
 		return "views/user/libraries/list";
 	}
 
@@ -103,11 +109,13 @@ public class UserController {
 	public String getLibraryOneThesis(@PathVariable("thesisId") Long id, Model model) {
 		Thesis thesis = thesisService.findById(id);
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", thesis.getTopic());
 		return "views/user/libraries/detail";
 	}
 
 	@GetMapping("/profile")
-	public String profile() {
+	public String profile(Model model) {
+		model.addAttribute("title","Mon profile");
 		return "views/user/profile";
 	}
 

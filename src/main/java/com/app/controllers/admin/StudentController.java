@@ -43,6 +43,7 @@ public class StudentController {
     public String listStudents(Model model) {
         List<Student> students = studentService.list();
         model.addAttribute("students", students);
+        model.addAttribute("title", "Liste des etudiants");
         return MAIN_PATH + "/list";
     }
 
@@ -61,6 +62,7 @@ public class StudentController {
         model.addAttribute("student", student);
         model.addAttribute("grades", grades);
         model.addAttribute("sectors", sectors);
+        model.addAttribute("title", "Modification d'un etudiant");
         return MAIN_PATH + "/edit";
     }
 
@@ -78,7 +80,6 @@ public class StudentController {
         }
 
         Student student = Helper.updateStudentRequestToStudent(requestStudent);
-        
         rd.addFlashAttribute("success", "Les informations de l'étudiant ayant le numéro " + requestStudent.getId() + " ont été mises à jour avec succès!");
         studentService.update(student);
         return "redirect:/admin/students";

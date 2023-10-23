@@ -31,6 +31,7 @@ public class ThesisController {
 	public String list(Model model) {
 		List<Thesis> thesis  = thesisService.list();
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", "Liste des dépots");
 		return MAIN_PATH + "/list";
 	}
 	
@@ -44,6 +45,7 @@ public class ThesisController {
 		}
 		
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", "Modification d'un depot");
 		return MAIN_PATH + "/edit";
 	}
 	
@@ -57,6 +59,7 @@ public class ThesisController {
 		}
 	
 		model.addAttribute("thesis", thesis);
+		model.addAttribute("title", thesis.getTopic());
 		return MAIN_PATH + "/detail";
 	}
 	

@@ -41,6 +41,7 @@ public class AuthController {
 		model.addAttribute("student", student);
 		model.addAttribute("grades", grades);
 		model.addAttribute("sectors", sectors);
+		model.addAttribute("title", "Crée un compte");
 		return "views/register";
 	}
 

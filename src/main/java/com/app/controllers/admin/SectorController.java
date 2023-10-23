@@ -26,12 +26,14 @@ public class SectorController {
 	public String listSectors(Model model) {
 		List<Sector> sectors = sectorService.list();
 		model.addAttribute("sectors", sectors);
+		model.addAttribute("title", "Liste des filières");
 		return MAIN_PATH + "/list";
 	}
 
 	@GetMapping("/new")
 	public String displayNewSectorForm(Model model) {
 		model.addAttribute("sector", new Sector());
+		model.addAttribute("title", "Creation d'une nouvelle filières");
 		return MAIN_PATH + "/new";
 	}
 
@@ -52,6 +54,8 @@ public class SectorController {
 		if (sector != null) {
 			model.addAttribute("sector", sector);
 		}
+		
+		model.addAttribute("title", "Modification d'une filière");
 		return MAIN_PATH + "/edit";
 	}
 
@@ -61,6 +65,8 @@ public class SectorController {
 		if (sector != null) {
 			model.addAttribute("sector", sector);
 		}
+		
+		model.addAttribute("title", "Details d'une filière");
 		return MAIN_PATH + "/detail";
 	}
 

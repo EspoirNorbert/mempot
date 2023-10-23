@@ -38,6 +38,7 @@ public class AdminController {
 		List<Student> students = this.studentService.getLatestStudents();
 		List<Thesis> thesis = this.thesisService.getLatestThesis();
 		
+		model.addAttribute("title", "Tableau de bord");
 		model.addAttribute("totalSector", totalSector);
 		model.addAttribute("totalGrade", totalGrade);
 		model.addAttribute("totalStudent", totalStudent);
@@ -52,7 +53,8 @@ public class AdminController {
 	}
 	
 	@GetMapping("/profile")
-	public String profile() {
+	public String profile(Model model) {
+		model.addAttribute("title", "Profile");
 		return "views/admin/profile";
 	}
 }
